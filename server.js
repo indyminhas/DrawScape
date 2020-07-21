@@ -8,6 +8,11 @@ const exphbs = require("express-handlebars");
 // Express App Setup
 // =============================================================
 const app = express();
+
+// setup for socket.io
+const server = require('http').createServer(app);
+const io=require('socket.io')(server);
+
 const PORT = process.env.PORT || 3000;
 
 // Requiring our models for syncing
@@ -27,6 +32,20 @@ app.set("view engine", "handlebars");
 // Routes
 // =============================================================
 // require("./app/routes/api-routes.js")(app);
+
+//socket.io setup
+//Listen for incoming connections from clients
+io.on('connection', function(socket){
+  console.log('Client connected...')
+  //start listening for mouse move events
+  socket.on('mousemove', function(data){
+  
+      //This line sends the event (broadcasts it) to everyone except the original client.
+      socket.broadcast.emit('moving', data);
+      
+  });
+});
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
