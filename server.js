@@ -29,12 +29,11 @@ app.set("view engine", "handlebars");
 // require("./app/routes/api-routes.js")(app);
 
 
-//TODO: move this to controller file!!!
+var routes = require("./controllers/index_controller.js");
 
-app.get('/',(req, res, next)=>{
-  res.render('index')
-});
-// Syncing our sequelize models and then starting our Express app
+app.use(routes);
+
+// Syncing our sequelize models and then starting our Express and socket.io app
 // =============================================================
 var server;
 db.sequelize.sync().then(function() {
