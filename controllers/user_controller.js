@@ -4,9 +4,9 @@ const router = express.Router();
 
 const db = require("../models");
 
+router.get('/api/user/:id', (req,res)=>{
 
-router.get('/',(req, res, next)=>{
-    res.render('index')
-  });
+});
+
 
 module.exports = router;

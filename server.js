@@ -29,7 +29,7 @@ app.set("view engine", "handlebars");
 // require("./app/routes/api-routes.js")(app);
 
 
-var routes = require("./controllers/index_controller.js");
+var routes = require("./controllers/handlebars_controller.js");
 
 app.use(routes);
 
