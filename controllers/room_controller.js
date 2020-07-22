@@ -9,6 +9,7 @@ router.get('/api/rooms/:userid', (req,res)=>{
     //find all where this user belongs
 });
 
+router.post('/api/rooms')
 //owner can delete so need destroy to delete room
 //how do we add users to rooms or rooms to users
 //create room needs a router.create
