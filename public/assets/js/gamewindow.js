@@ -110,7 +110,7 @@ $(function () {
     $.get("/api/messages/", function(data) {
         console.log(data)
         data.forEach(element => {
-            appendMessage(element.message)
+            appendMessage(element.UserId + ": " + element.message)
         })
         
       });
@@ -126,8 +126,8 @@ $(function () {
         // RoomId and UserId are placeholder values for now.
         var postMessage = {
             message: message,
-            RoomId: 1,
-            UserId: 1
+            roomId: 1,
+            userId: 1
         }
         console.log(postMessage)
         // This is the post request to the messages table
