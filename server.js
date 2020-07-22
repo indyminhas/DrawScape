@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // configure handlebars as the view engine
+
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
