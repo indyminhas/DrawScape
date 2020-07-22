@@ -4,9 +4,12 @@ const db = require("../models");
 
 //get request to get all user info for the user page
 router.get('/api/user/:id', (req, res) => {
-    db.User.findOne({ where: { id: req.params.id } }).then(result =>{
+    db.User.findOne({ where: { id: req.params.id } }).then(result => {
         res.json(result)
-    }).catch( err=>err);
+    }).catch(err => {
+        res.status(500).end();
+    })
+    res.status(204).end();
 });
 
 //post request when user signs up for a username/password, etc
@@ -18,9 +21,10 @@ router.post('/api/user', (req, res) => {
     }).then(dbCreateUser => {
         res.json(dbCreateUser)
     }).catch(err => {
-        res.json(err)
-    });
-}) 
+        res.status(500).end();
+    })
+    res.status(204).end();
+})
 
 //put request for updating user info on user page
 // (have to think about what the user is allowed to/can update and adjust accordingly)
@@ -36,12 +40,13 @@ router.put('/api/user/:id', (req, res) => {
     }).then(dbUpdateUser => {
         res.json(dbUpdateUser)
     }).catch(err => {
-        res.json(err)
-    });
+        res.status(500).end();
+    })
+    res.status(204).end();
 })
 
 //delete request to shut down user's profile
-router.delete('/api/user/:id', (req,res) => {
+router.delete('/api/user/:id', (req, res) => {
     db.User.destroy({
         where: {
             id: req.params.id
@@ -49,8 +54,9 @@ router.delete('/api/user/:id', (req,res) => {
     }).then(function (dbPost) {
         res.json(dbPost);
     }).catch(function (err) {
-        res.json(err);
-    });
+        res.status(500).end();
+    })
+    res.status(204).end();
 })
 
 module.exports = router;
