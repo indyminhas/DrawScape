@@ -4,7 +4,9 @@ const db = require("../models");
 
 //get request to get all user info for the user page
 router.get('/api/user/:id', (req, res) => {
-    db.User.findOne({ where: { id: req.params.id } }).then().catch();
+    db.User.findOne({ where: { id: req.params.id } }).then(result =>{
+        res.json(result)
+    }).catch( err=>err);
 });
 
 //post request when user signs up for a username/password, etc
@@ -29,7 +31,7 @@ router.put('/api/user/:id', (req, res) => {
         password: req.body.password
     }, {
         where: {
-            id: req.body.id
+            id: req.params.id
         }
     }).then(dbUpdateUser => {
         res.json(dbUpdateUser)
