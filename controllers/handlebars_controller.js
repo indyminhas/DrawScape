@@ -8,7 +8,10 @@ const db = require("../models");
 router.get('/',(req, res)=>{
     res.render('index')
   });
-
+// renders the room page 
+router.get('/room', (req,res) =>{
+  res.render('gamewindow')
+});
 // renders the room page with specific room data
 router.get('/:room', (req,res) =>{
   res.json('This is a room ' + req.params.room)
