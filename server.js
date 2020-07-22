@@ -26,12 +26,17 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-// require("./app/routes/api-routes.js")(app);
 var handlebarRoute = require("./controllers/handlebars_controller.js")
 var messageRoute = require("./controllers/message_controller.js")
+var roomRoute = require("./controllers/room_controller.js")
+var userRoute = require("./controllers/user_controller.js")
+var wordRoute = require("./controllers/word_controller.js")
 
 app.use(handlebarRoute);
 app.use(messageRoute);
+app.use(roomRoute);
+app.use(userRoute);
+app.use(wordRoute);
 
 // Syncing our sequelize models and then starting our Express and socket.io app
 // =============================================================
