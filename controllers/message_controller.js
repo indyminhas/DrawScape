@@ -7,10 +7,10 @@ const db = require("../models");
 //TODO: responses cleaned up
 
 //get all chats where room_id = smth
-router.get('/api/messages/:room_id', (req,res)=>{
+router.get('/api/messages/:roomid', (req,res)=>{
     db.Message.findAll({
         where: {
-            RoomId: req.params.room_id
+            RoomId: req.params.roomid
         }
     }).then(allRoomMessages=>{
         res.json(allRoomMessages)
