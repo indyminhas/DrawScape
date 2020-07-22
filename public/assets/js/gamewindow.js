@@ -71,7 +71,7 @@ $(function () {
     var lastEmit = $.now();
 
     doc.on('mousemove', function (e) {
-        if ($.now() - lastEmit > 30) {
+        if ($.now() - lastEmit > 10) {
             socket.emit('mousemove', {
                 'x': e.pageX,
                 'y': e.pageY,
