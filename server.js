@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // configure handlebars as the view engine
+
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
@@ -41,7 +42,7 @@ app.use(wordRoute);
 // Syncing our sequelize models and then starting our Express and socket.io app
 // =============================================================
 var server;
-db.sequelize.sync({force:false}).then(function() {
+db.sequelize.sync({force:true}).then(function() {
   server = app.listen(PORT, function() {
     console.log("Server listening on PORT " + PORT);
   });
