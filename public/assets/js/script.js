@@ -1,10 +1,10 @@
 $(function(){
-    alert('I am linked')
     //error handling in case user browser doesn't support canvas element
     if(!('getContext' in document.createElement('canvas'))){
         alert('Sorry, it looks like your browser does not support canvas!');
         return false;
     }
+    
     //URL of my web server
     var url = 'localhost:3000';
 
