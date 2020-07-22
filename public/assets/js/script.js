@@ -2,6 +2,7 @@
 
 const userForm = document.getElementById("user-send-container")
 const userInput = document.getElementById('userInput')
+let userName = ""
 
 userForm.addEventListener('submit', e => {
     e.preventDefault()
@@ -11,7 +12,17 @@ userForm.addEventListener('submit', e => {
         password: "password"
     }
     // This is the post request to the messages table
+    userName = userInput.value.trim()
     $.post("/api/user", user);
     userInput.value = ''
     window.location.href = "/room"
 })
+
+
+
+
+
+
+
+
+
