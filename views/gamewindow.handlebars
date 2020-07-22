@@ -1,9 +1,13 @@
 {{!-- this part is the drawing box with the cursor divs --}}
 <div id="cursors"></div>    
 <canvas id="paper" width="1900" height="1000"></canvas>
+
+{{!-- chat box --}}
 <div id="message-container">
-    <form id="send-container">
-        <input type="text" name="chat" id="message-input" placeholder="Enter Username Here">
-        <button type="submit" id="send-button">Send</button>
-    </form>
+  <form id= "send-container">
+    <h1>Chat</h1>
+    <input placeholder="Type message.." id="message-input"></textarea>
+    <button type="submit" class="btn" id="send-button">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+  </form>
 </div>

@@ -3,6 +3,7 @@ var url = 'localhost:3000';
 var socket = io.connect(url);
 
 
+
 //canvas function
 $(function () {
     //error handling in case user browser doesn't support canvas element
