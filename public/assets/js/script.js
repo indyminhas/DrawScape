@@ -43,7 +43,7 @@ $(function(){
             drawLine(clients[data.id].x, clients[data.id].y, data.x, data.y);
         }
 
-        //saving the curretn client state
+        //saving the current client state
         clients[data.id] = data;
         clients[data.id].updated = $.now();
     });
@@ -104,3 +104,13 @@ $(function(){
 
 
 });
+
+//Chat Box//
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }

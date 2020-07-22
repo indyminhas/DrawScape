@@ -1,25 +1,17 @@
-<h1>Welcome</h1>
+<h1>Welcome to DIMM</h1>
 
 <form action="action_page.php" method="post">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
 
   <div class="container">
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
-
-    <button type="submit">Submit</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+    <button type="submit">GO</button>
   </div>
-
   <div class="container" style="background-color:#f1f1f1">
-    <a class="waves-effect waves-light btn">button</a>
+    <button type="button" class="cancelbtn">Cancel</button>
   </div>
 </form>
 
 {{!-- this part is the drawing box with the cursor divs --}}
 <div id="cursors"></div>    
-<canvas id="paper" width="1900" height="1000"></canvas>
+<canvas id="paper" width="1900" height="1000"></canvas> 
