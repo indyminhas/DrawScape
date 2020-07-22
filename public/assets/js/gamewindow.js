@@ -53,6 +53,7 @@ $(function () {
     });
 
     var prev = {};
+    
     canvas.on('mousedown', function (e) {
         e.preventDefault();
         drawing = true;
