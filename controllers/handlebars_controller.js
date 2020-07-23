@@ -13,8 +13,8 @@ router.get('/room', (req,res) =>{
   res.render('gamewindow')
 });
 // renders the room page with specific room data
-router.get('/:room', (req,res) =>{
-  res.json('This is a room ' + req.params.room)
+router.get('/room/:roomnumber', (req,res) =>{
+  res.render('gamewindow', {roomnumber: req.params.roomnumber})
   //TODO: must render the room.handlebars in the future
 });
 
