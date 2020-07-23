@@ -1,18 +1,14 @@
 //URL of my web server
 var url = 'localhost:3000';
 var socket = io.connect(url);
-
-
-//canvas function
+var user = "Test User"
+    //canvas function
 $(function () {
     //error handling in case user browser doesn't support canvas element
     if (!('getContext' in document.createElement('canvas'))) {
         alert('Sorry, it looks like your browser does not support canvas!');
         return false;
     }
-
-
-
 
     var doc = $(document);
     var win = $(window);
@@ -70,7 +66,7 @@ $(function () {
     var lastEmit = $.now();
 
     doc.on('mousemove', function (e) {
-        if ($.now() - lastEmit > 30) {
+        if ($.now() - lastEmit > 10) {
             socket.emit('mousemove', {
                 'x': e.pageX,
                 'y': e.pageY,
@@ -106,16 +102,10 @@ $(function () {
         ctx.stroke();
     }
 
-
-});
-
-//chat function
-$(function () {
     // Grabbing HTML Elements
     const messageContainer = document.getElementById('message-container')
     const messageForm = document.getElementById("send-container")
     const messageInput = document.getElementById('message-input')
-    const userName = "Temp Name"
     // On connection it appends all previous messages to the chat room
     $.get("/api/messages/", function(data) {
         console.log(data)
@@ -126,15 +116,18 @@ $(function () {
       });
     
     //Temp User Message
-    appendMessage(userName + " Joined")
+    appendMessage(user + " Joined")
 
     messageForm.addEventListener('submit', e => {
         e.preventDefault()
         //Sends chat value to server
         const message =  messageInput.value
-        socket.emit('send-chat-message', userName + ": " + message)
+        socket.emit('send-chat-message', user + ": " + message)
+        // RoomId and UserId are placeholder values for now.
         var postMessage = {
-            message: message
+            message: message,
+            RoomId: 1,
+            UserId: 1
         }
         console.log(postMessage)
         // This is the post request to the messages table
@@ -153,3 +146,6 @@ $(function () {
         messageContainer.append(messageElement)
     }
 })
+
+
+

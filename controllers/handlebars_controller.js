@@ -11,7 +11,6 @@ router.get('/',(req, res)=>{
 // renders the room page 
 router.get('/room', (req,res) =>{
   res.render('gamewindow')
-  //TODO: must render the room.handlebars in the future
 });
 // renders the room page with specific room data
 router.get('/:room', (req,res) =>{
@@ -22,7 +21,7 @@ router.get('/:room', (req,res) =>{
 //renders the user page in the future
 router.get('/user', (req,res)=>{
   res.json('This will be the user page')
-  //and it will render the user.handlebars file
+  //TODO: and it will render the user.handlebars file
 });
 
 module.exports = router;

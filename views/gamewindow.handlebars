@@ -1,29 +1,44 @@
 {{!-- this part is the drawing box with the cursor divs --}}
+ <div class = "row">
+         <div class = "col m4 l3">
+            <h5>Current Drawer</h5>
+         </div>
+    </div>
+
  <div class="row">
     <form class="col s12">
       <div class="row">
-        <div class="input-field col s9 m9 l9 xl9">
+        <div class="input-field col m9 blue lighten-2 center">
           <div id="cursors"></div>    
           <canvas id="paper" width="1200" height="1000"></canvas>
         </div>
         {{!-- chat box --}}
-        <div class="input-field col s3 m3 l3 xl3" id="message-container">
-          {{!-- <div class="chat-popup" id="message-container"> --}}
-                <form class="form-container" id="send-container">
+        <div class = "input-field col m3 center" id="message-container">
+             <form class="form-container" id="send-container">
                     <h4>Chat</h4>
-                    {{!-- <label for="msg"><b>Message</b></label> --}}
                     <input placeholder="Type message.." id="message-input" name="msg" required></input>
                     <button type="submit" class="btn" id="send-button">Send</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
                 </form>
-            {{!-- </div>  --}}
-        </div>
+         </div>
       </div>
     </form>
+    <div class = "row">
+         <div class = "col m4 l3">
+            <h5>Score:</h5>
+         </div>
+    </div>
   </div>
+   
 
+<script src="/assets/js/gamewindow.js"></script>
+    
 
-{{!--<div id="message-container">
+     
+      
+      
+      
+      {{!--<div id="message-container">
     <form id="send-container">
         <input type="text" name="chat" id="message-input" placeholder="Enter Username Here">
         <button type="submit" id="send-button">Send</button>
