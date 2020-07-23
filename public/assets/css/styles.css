@@ -1,5 +1,7 @@
 #paper {
-    background-color: salmon;
+  display:block;  
+  width: 50vw;
+    height: 50vh;
 }
 
 /* SIGN IN */
