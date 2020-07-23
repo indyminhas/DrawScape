@@ -2,18 +2,21 @@
 //URL of my web server
 var url = 'localhost:3000';
 var socket = io.connect(url);
-var user = "Test User"
-//canvas function
+var user = "Maria"
+var room = $("#room").val()
+
 $(function () {
- 
+    socket.emit('roomchoice', room)
 //=======================================================================================
 //chat
     // Grabbing HTML Elements
     const messageContainer = document.getElementById('message-container')
     const messageForm = $('#send-container')
     const messageInput = document.getElementById('message-input')
+    
+ 
     // On connection it appends all previous messages to the chat room
-    $.get("/api/messages/", function (data) {
+    $.get(`/api/messages/${room}`, function (data) {
         console.log(data)
         data.forEach(element => {
             appendMessage(element.User.user_name + ": " + element.message)
@@ -32,7 +35,7 @@ $(function () {
         // RoomId and UserId are placeholder values for now.
         var postMessage = {
             message: message,
-            roomId: 1,
+            roomId: room,
             userId: 1
         }
         console.log(postMessage)
