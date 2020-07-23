@@ -20,7 +20,7 @@ router.get('/api/messages/:roomid', (req,res)=>{
 
 //get all chats
 router.get('/api/messages', (req,res)=>{
-    db.Message.findAll().then(function(allMessages) {
+    db.Message.findAll({include: [db.User]}).then(function(allMessages) {
         res.json(allMessages)
         res.status(204).end();
     }).catch(err=> {
