@@ -1,6 +1,8 @@
-/* #paper {
-    background-color: salmon;
-} */
+#paper {
+  display:block;  
+  width: 100%;
+}
+
 /* 
 /* SIGN IN */
 
