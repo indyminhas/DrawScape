@@ -1,8 +1,115 @@
+<<<<<<< HEAD
 /* HEADER (STICKY) */
 .header {
   padding: 10px 16px;
   background: #555;
   color: #f1f1f1;
+=======
+#paper {
+  display:block;  
+  width: 100%;
+}
+
+/* 
+/* SIGN IN */
+.testing{
+
+    display:block;
+    width:100%;
+    height:400px;
+    background-color:#475;
+    overflow:scroll;
+
+}
+/* Bordered form */
+.form {
+    border: 3px solid #f1f1f1;
+  }
+  
+  /* Full-width inputs */
+  .input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for all buttons */
+  .button {
+    background-color: grey;
+    color: white;
+    padding: 14px 20px;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+  }
+  
+  /* Add a hover effect for buttons */
+  .button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Extra style for the cancel button (red) */
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: grey;
+  }
+
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+  }
+  
+  
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+    .cancelbtn {
+      width: 100%;
+    }
+  }
+
+  /* Drawing Room */
+
+
+.body {
+  background: #111;
+  color: #f8f8f8;
+}
+.html, body {
+    width:  100%;
+    height: 100%;
+    margin: 0;
+  }
+.canvas {
+  background: #f8f8f8;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* CHAT BOX */
+
+
+
+/* The popup chat - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px blue;
+  z-index: 9;
+>>>>>>> dev
 }
 
 /* Page content */

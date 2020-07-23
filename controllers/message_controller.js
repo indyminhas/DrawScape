@@ -4,8 +4,6 @@ const router = express.Router();
 
 const db = require("../models");
 
-//TODO: responses cleaned up
-
 //get all chats where room_id = smth
 router.get('/api/messages/:roomid', (req,res)=>{
     db.Message.findAll({
@@ -22,7 +20,7 @@ router.get('/api/messages/:roomid', (req,res)=>{
 
 //get all chats
 router.get('/api/messages', (req,res)=>{
-    db.Message.findAll().then(function(allMessages) {
+    db.Message.findAll({include: [db.User]}).then(function(allMessages) {
         res.json(allMessages)
         res.status(204).end();
     }).catch(err=> {
