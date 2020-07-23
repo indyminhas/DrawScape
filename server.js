@@ -52,6 +52,7 @@ db.sequelize.sync({force:false}).then(function() {
   //Listen for incoming connections from clients
   io.on('connection', function(socket){
     console.log('Client connected...')
+    console.log(socket)
     //start listening for mouse move events
     socket.on('mousemove', function(data){
         //This line sends the event (broadcasts it) to everyone except the original client.
