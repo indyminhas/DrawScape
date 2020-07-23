@@ -1,106 +1,52 @@
+var canvas, stage;
+var drawingCanvas;
+var oldPt;
+var oldMidPt;
+var title;
+var color;
+var stroke;
+var colors;
+var index;
+    //a flag for drawing activity
+var drawing = false;
+var lastEmit = $.now();
 //URL of my web server
 var url = 'localhost:3000';
 var socket = io.connect(url);
+//generate unique id for the new user
+var id = Math.round($.now()*Math.random());
 var user = "Test User"
 //canvas function
 $(function () {
-    //error handling in case user browser doesn't support canvas element
-    if (!('getContext' in document.createElement('canvas'))) {
-        alert('Sorry, it looks like your browser does not support canvas!');
-        return false;
-    }
-
-    var doc = $(document);
-    var win = $(window);
-    var canvas = $('#paper');
-    var ctx = canvas[0].getContext('2d');
-
-    //generate a unique id
-    //TODO: we should use the user id from the database
-    var id = Math.round($.now() * Math.random());
-
-    //a flag for drawing activity
-    var drawing = false;
-
-    var clients = {};
-    var cursors = {};
-
-    socket.on('moving', function (data) {
-        if (!(data.id in clients)) {
-            //a new user has come online. create a cursor for them
-            cursors[data.id] = $('<div class="cursor">').appendTo('#cursors');
-        }
-
-        //move the mouse pointer
-        cursors[data.id].css({
-            'left': data.x,
-            'right': data.y
-        });
-
-        //is the user drawing?
-        if (data.drawing && clients[data.id]) {
-            //Draw a line on the canvas. clients[data.id] holds the previous position of this user's mouse pointer
-            drawLine(clients[data.id].x, clients[data.id].y, data.x, data.y);
-        }
-
-        //saving the curretn client state
-        clients[data.id] = data;
-        clients[data.id].updated = $.now();
-    });
-
-    var prev = {};
+//===================================================================
+//drawing with socket
+    canvas = document.getElementById("paper");
+	index = 0;
+	colors = ["#828b20", "#b0ac31", "#cbc53d", "#fad779", "#f9e4ad", "#faf2db", "#563512", "#9b4a0b", "#d36600", "#fe8a00", "#f9a71f"];
+	
+	//check to see if we are running in a browser with touch support
+	stage = new createjs.Stage(canvas);
+	stage.autoClear = false;
+	stage.enableDOMEvents(true);
+	
+	createjs.Touch.enable(stage);
+	createjs.Ticker.framerate = 24;
+	
+	drawingCanvas = new createjs.Shape();
+	
+	stage.addEventListener("stagemousedown", handleMouseDown);
+	stage.addEventListener("stagemouseup", handleMouseUp);
+	
+	title = new createjs.Text("Click and Drag to draw", "36px Arial", "#777777");
+	title.x = 300;
+	title.y = 200;
+	stage.addChild(title);
+	
+	stage.addChild(drawingCanvas);
+	stage.update();
     
-    canvas.on('mousedown', function (e) {
-        e.preventDefault();
-        drawing = true;
-        prev.x = e.pageX;
-        prev.y = e.pageY;
-
-    });
-
-    doc.bind('mouseup mouseleave', function () {
-        drawing = false;
-    });
-
-    var lastEmit = $.now();
-
-    doc.on('mousemove', function (e) {
-        if ($.now() - lastEmit > 10) {
-            socket.emit('mousemove', {
-                'x': e.pageX,
-                'y': e.pageY,
-                'drawing': drawing,
-                'id': id
-            });
-            lastEmit = $.now();
-        }
-
-        //Draw a line for the current user's movement, as it is not recieved in the socket.on('moving') event above
-        if (drawing) {
-            drawLine(prev.x, prev.y, e.pageX, e.pageY);
-            prev.x = e.pageX;
-            prev.y = e.pageY
-        }
-    });
-
-    //remove inactive clients after 10sec of inactivity
-    setInterval(function () {
-        for (ident in clients) {
-            if ($.now() - clients[ident].updated > 10000) {
-                cursors[ident].remove();
-                delete clients[ident];
-                delete cursors[ident];
-            }
-        }
-    }, 10000); //checking every 10 seconds
-
-    //define the drawing function here for ease of reference
-    function drawLine(fromx, fromy, tox, toy) {
-        ctx.moveTo(fromx, fromy);
-        ctx.lineTo(tox, toy);
-        ctx.stroke();
-    }
-
+//=======================================================================================
+//chat
     // Grabbing HTML Elements
     const messageContainer = document.getElementById('message-container')
     const messageForm = $('#send-container')
@@ -144,6 +90,66 @@ $(function () {
         messageContainer.append(messageElement)
     }
 })
+
+
+//===============================================================================
+//drawing helper functions
+function handleMouseDown(event) {
+	if (!event.primary) { return; }
+	if (stage.contains(title)) {
+		stage.clear();
+		stage.removeChild(title);
+	}
+	drawing=true;
+	color = colors[(index++) % colors.length];
+	stroke = Math.random() * 30 + 10 | 0;
+	oldPt = new createjs.Point(stage.mouseX, stage.mouseY);
+	oldMidPt = oldPt.clone();
+	stage.addEventListener("stagemousemove", handleMouseMove);
+}
+
+function handleMouseMove(event) {
+	if (!event.primary) { return; }
+	var midPt = new createjs.Point(oldPt.x + stage.mouseX >> 1, oldPt.y + stage.mouseY >> 1);
+	
+	//draw your line
+	drawingCanvas.graphics.clear().setStrokeStyle(stroke, 'round', 'round').beginStroke(color).moveTo(midPt.x, midPt.y).curveTo(oldPt.x, oldPt.y, oldMidPt.x, oldMidPt.y);
+	//send data
+	if($.now() - lastEmit > 1){
+		socket.emit('mousemove', {
+			'midx':midPt.x,
+			'midy': midPt.y,
+			'oldx': oldPt.x,
+			'oldy': oldPt.y,
+			'oldMidx': oldMidPt.x,
+			'oldMidy': oldMidPt.y,
+			'color':color,
+			'stroke':stroke,
+			'drawing': drawing,
+			'id': id
+		});
+		lastEmit = $.now();
+	}
+
+	oldPt.x = stage.mouseX;
+	oldPt.y = stage.mouseY;
+
+	oldMidPt.x = midPt.x;
+	oldMidPt.y = midPt.y;
+	
+	stage.update();
+}
+
+function handleMouseUp(event) {
+	if (!event.primary) { return; }
+	drawing = false;
+	stage.removeEventListener("stagemousemove", handleMouseMove);
+}
+
+socket.on('moving', function (data) {
+	drawingCanvas.graphics.clear().setStrokeStyle(data.stroke, 'round', 'round').beginStroke(data.color).moveTo(data.midx, data.midy).curveTo(data.oldx, data.oldy, data.oldMidx, data.oldMidy);
+	stage.update();
+});
 
 
 
