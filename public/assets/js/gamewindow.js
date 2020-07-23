@@ -1,6 +1,6 @@
 
 //URL of my web server
-var url = 'localhost:3000';
+var url = 'https://darwscape.herokuapp.com/';
 var socket = io.connect(url);
 var user = "Test User"
 //canvas function
