@@ -16,7 +16,7 @@ $(function () {
     $.get("/api/messages/", function (data) {
         console.log(data)
         data.forEach(element => {
-            appendMessage(element.UserId + ": " + element.message)
+            appendMessage(element.User.user_name + ": " + element.message)
         })
     });
 
