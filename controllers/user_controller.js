@@ -6,10 +6,11 @@ const db = require("../models");
 router.get('/api/user/:id', (req, res) => {
     db.User.findOne({ where: { id: req.params.id } }).then(result => {
         res.json(result)
+        res.status(204).end();
     }).catch(err => {
         res.status(500).end();
     })
-    res.status(204).end();
+    
 });
 
 //post request when user signs up for a username/password, etc
@@ -20,10 +21,10 @@ router.post('/api/user', (req, res) => {
         password: req.body.password
     }).then(dbCreateUser => {
         res.json(dbCreateUser)
+        res.status(204).end();
     }).catch(err => {
         res.status(500).end();
-    })
-    res.status(204).end();
+    })    
 })
 
 //put request for updating user info on user page
@@ -39,10 +40,11 @@ router.put('/api/user/:id', (req, res) => {
         }
     }).then(dbUpdateUser => {
         res.json(dbUpdateUser)
+        res.status(204).end();
     }).catch(err => {
         res.status(500).end();
     })
-    res.status(204).end();
+    
 })
 
 //delete request to shut down user's profile
@@ -53,10 +55,11 @@ router.delete('/api/user/:id', (req, res) => {
         }
     }).then(function (dbPost) {
         res.json(dbPost);
+        res.status(204).end();
     }).catch(function (err) {
         res.status(500).end();
     })
-    res.status(204).end();
+    
 })
 
 module.exports = router;
