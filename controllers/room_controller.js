@@ -5,8 +5,9 @@ const router = express.Router();
 const db = require("../models");
 
 
-router.get('/api/rooms/:ownerid', (req,res)=>{
+router.get('/api/rooms', (req,res)=>{
     //find all where this user belongs
+    db.Room.findAll()
 });
 
 router.post('/api/rooms', (req, res)=>{
