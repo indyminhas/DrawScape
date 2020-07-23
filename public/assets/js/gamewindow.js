@@ -2,7 +2,7 @@
 var url = 'localhost:3000';
 var socket = io.connect(url);
 var user = "Test User"
-    //canvas function
+//canvas function
 $(function () {
     //error handling in case user browser doesn't support canvas element
     if (!('getContext' in document.createElement('canvas'))) {
@@ -103,24 +103,24 @@ $(function () {
 
     // Grabbing HTML Elements
     const messageContainer = document.getElementById('message-container')
-    const messageForm = $("#send-container")
+    const messageForm = $('#send-container')
     const messageInput = document.getElementById('message-input')
     // On connection it appends all previous messages to the chat room
-    $.get("/api/messages/", function(data) {
+    $.get("/api/messages/", function (data) {
         console.log(data)
         data.forEach(element => {
             appendMessage(element.UserId + ": " + element.message)
         })
-        
-      });
-    
+    });
+
     //Temp User Message
     appendMessage(user + " Joined")
 
     messageForm.on('submit', e => {
         e.preventDefault()
+        console.log("you got here")
         //Sends chat value to server
-        const message =  messageInput.value
+        const message = messageInput.value
         socket.emit('send-chat-message', user + ": " + message)
         // RoomId and UserId are placeholder values for now.
         var postMessage = {
@@ -132,7 +132,6 @@ $(function () {
         // This is the post request to the messages table
         $.post("/api/messages/", postMessage);
         messageInput.value = ''
-        
     })
     // Appends each new chat message to the page
     socket.on('chat-message', data => {
@@ -140,7 +139,7 @@ $(function () {
     })
 
     function appendMessage(message) {
-        const messageElement = document.createElement('div')
+        const messageElement = document.createElement('p')
         messageElement.innerText = message
         messageContainer.append(messageElement)
     }
