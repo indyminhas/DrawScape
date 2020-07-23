@@ -14,9 +14,9 @@ $(function () {
     var win = $(window);
     var canvas = $('#paper');
     var ctx = canvas[0].getContext('2d');
-    var instructions = $('#instructions');
 
     //generate a unique id
+    //TODO: we should use the user id from the database
     var id = Math.round($.now() * Math.random());
 
     //a flag for drawing activity
@@ -28,7 +28,7 @@ $(function () {
     socket.on('moving', function (data) {
         if (!(data.id in clients)) {
             //a new user has come online. create a cursor for them
-            cursors[data.id] = $('<div class="cursor">').appendTo('#cursor');
+            cursors[data.id] = $('<div class="cursor">').appendTo('#cursors');
         }
 
         //move the mouse pointer
@@ -56,8 +56,6 @@ $(function () {
         prev.x = e.pageX;
         prev.y = e.pageY;
 
-        //Hide the instructions
-        instructions.fadeOut();
     });
 
     doc.bind('mouseup mouseleave', function () {
@@ -105,7 +103,7 @@ $(function () {
 
     // Grabbing HTML Elements
     const messageContainer = document.getElementById('message-container')
-    const messageForm = document.getElementById("send-container")
+    const messageForm = $("#send-container")
     const messageInput = document.getElementById('message-input')
     // On connection it appends all previous messages to the chat room
     $.get("/api/messages/", function(data) {
@@ -119,7 +117,7 @@ $(function () {
     //Temp User Message
     appendMessage(user + " Joined")
 
-    messageForm.addEventListener('submit', e => {
+    messageForm.on('submit', e => {
         e.preventDefault()
         //Sends chat value to server
         const message =  messageInput.value
