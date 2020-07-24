@@ -77,12 +77,15 @@ db.sequelize.sync({ force: false}).then(function () {
       if(allUsers[room]){
         allUsers[room].push(socket.id)
         scores[room][socket.id] = 0
+        console.log(allUsers)
+        
         
       }else{
         allUsers[room] = []
         scores[room] = {}
         allUsers[room].push(socket.id)
         scores[room][socket.id] = 0
+        console.log(allUsers)
       }
 
       //server listens to game start socket.on 'game-start' 
@@ -91,7 +94,9 @@ db.sequelize.sync({ force: false}).then(function () {
         gamePlayObj.rounds = 0
         gamePlayObj.users = allUsers[room]
         gamePlayObj.scores = scores[room]
+        console.log("Looking for Word")
         gamePlayObj.wordArr = await db.Word.findAll();
+        console.log("Done Looking for Word")
         gamePlayObj.drawingUser = gamePlayObj.rounds
         io.to(room).emit('game-start', gamePlayObj)
       });
@@ -139,6 +144,7 @@ db.sequelize.sync({ force: false}).then(function () {
       });
       //When user disconnects take user out of allUsers and scores 
       socket.on('disconnect', ()=>{
+        console.log(socket.id + " disconnected")
         delete scores[room][socket.id]
         allUsers[room]=allUsers[room].filter(element => element !== socket.id)
         io.to(room).emit('chat-message', socket.id + " left the room.")

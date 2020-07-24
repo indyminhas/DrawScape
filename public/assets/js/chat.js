@@ -16,9 +16,7 @@ $(function () {
             })
         });
     
-        //Temp User Message
-        appendMessage(user + " Joined")
-        //when client writes a message
+    
         messageForm.on('submit', e => {
             e.preventDefault()
             //Sends chat value to server
