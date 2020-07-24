@@ -11,9 +11,10 @@
   </nav>
 
 {{!-- this part is the drawing box with the cursor divs --}}
+<input type="hidden" value={{roomnumber}} id = "room">
 <div class="row">
   <div class="col m4 l3">
-    <h5>Current Drawer</h5>
+    <h5>Word: <span id = "word"></span></h5>
   </div>
 </div>
 
@@ -22,23 +23,27 @@
     <div class="row">
       <div class="input-field col m9 blue lighten-2 center">
         <div id="cursors"></div>
+        
         <canvas id="paper" width="960" height="400"></canvas>
       </div>
       {{!-- chat box --}}
-      <div class="input-field col m3 center">
-        <div id="message-container">
+      <h4>Chat</h4>
+         <hr>
+      <div class="input-field col m3 center " >
+        <div id="message-container" class = "testing">
         </div>
         <form id="send-container">
-          <h4>Chat</h4>
           <input placeholder="Type message.." id="message-input"></input>
           <button type="submit" class="btn" id="send-button">Send</button>
           <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
         </form>
+        <br>
+        <button id="Game-Start-Button" class = "btn">Start Game</button>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col m4 l3">
+    <div class="col m4 l3" id = "scores">
       <h5>Score:</h5>
     </div>
   </div>
@@ -48,4 +53,5 @@
 
 
 <script src="/assets/js/gamewindow.js"></script>
+<script src="/assets/js/chat.js"></script>
 <script src="/assets/js/drawing.js"></script>

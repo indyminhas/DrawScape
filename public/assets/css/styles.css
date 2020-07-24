@@ -1,4 +1,3 @@
-
 #paper {
   display: block;
   width: 100%;
@@ -6,15 +5,21 @@
 
 /* 
 /* SIGN IN */
-
+.testing {
+  display: block;
+  width: 100%;
+  height: 400px;
+  background-color: #475;
+  overflow: scroll;
+}
 /* body of Index page*/
 .bodyIndex {
-    margin: 0;
-    padding: 0;
-    background-image: url(../images/abstract-art-artistic-background-459799.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/abstract-art-artistic-background-459799.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 /* Bordered form */
@@ -76,25 +81,24 @@ input[type="password"] {
 
 /* body of user profile page */
 .bodyUser {
-    margin: 0;
-    padding: 0;
-    background-image: url(../images/closeup-photo-of-multi-color-stick-226589.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/closeup-photo-of-multi-color-stick-226589.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
-
 
 /* Drawing Room */
 
 /* body of gamewindow */
 .bodyGameWindow {
-    margin: 0;
-    padding: 0;
-    background-image: url(../images/orange-and-blue-abstract-painting-1532704.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/orange-and-blue-abstract-painting-1532704.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 .html,
 body {

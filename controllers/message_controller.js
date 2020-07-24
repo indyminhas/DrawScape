@@ -5,35 +5,38 @@ const router = express.Router();
 const db = require("../models");
 
 //get all chats where room_id = smth
-router.get('/api/messages/:roomid', (req,res)=>{
+router.get('/api/messages/:roomid', (req, res) => {
     db.Message.findAll({
         where: {
-            RoomId: req.params.roomid
-        }
-    }).then(allRoomMessages=>{
+            RoomId: req.params.roomid,
+        },
+        include: [db.User]
+
+    }).then(allRoomMessages => {
         res.json(allRoomMessages)
-    }).catch(err=> {
+        res.status(204).end();
+    }).catch(err => {
         res.status(500).end();
     })
-    res.status(204).end();
+
 });
 
 //get all chats
-router.get('/api/messages', (req,res)=>{
-    db.Message.findAll({include: [db.User]}).then(function(allMessages) {
+router.get('/api/messages', (req, res) => {
+    db.Message.findAll({ include: [db.User] }).then(function (allMessages) {
         res.json(allMessages)
         res.status(204).end();
-    }).catch(err=> {
+    }).catch(err => {
         res.status(500).end();
     })
-    
+
 });
 
 //add new chat to database when it is written
-router.post('/api/messages', (req,res)=>{
+router.post('/api/messages', (req, res) => {
     db.Message.create({
         message: req.body.message,
-        UserId: req.body.userId,
+        UserId: req.session.user.id,
         RoomId: req.body.roomId
     }).then(postMessage => {
         res.json(postMessage)
@@ -41,7 +44,7 @@ router.post('/api/messages', (req,res)=>{
     }).catch(err => {
         res.status(500).end();
     })
-    
+
 });
 
 module.exports = router;
