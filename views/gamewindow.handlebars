@@ -1,11 +1,18 @@
 {{!-- this part is the drawing box with the cursor divs --}}
 <input type="hidden" value={{roomnumber}} id = "room">
 <div class="row">
+  <div class="col m4 l3">
+    <h5>Word: <span id = "word"></span></h5>
+  </div>
+</div>
+
+<div class="row">
   <div class="col s12">
     <div class="row">
       <div class="input-field col m9 blue lighten-2 center">
         <div id="cursors"></div>
-        <canvas id="paper" width="960" height="600"></canvas>
+        
+        <canvas id="paper" width="960" height="400"></canvas>
       </div>
       {{!-- chat box --}}
       <h4>Chat</h4>
@@ -17,6 +24,8 @@
           <input placeholder="Type message.." id="message-input"></input>
           <button type="submit" class="btn" id="send-button">Send</button>
         </form>
+        <br>
+        <button id="Game-Start-Button" class = "btn">Start Game</button>
       </div>
     </div>
   </div>
@@ -27,7 +36,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col m4 l3">
+    <div class="col m4 l3" id = "scores">
       <h5>Score:</h5>
     </div>
   </div>
