@@ -1,56 +1,66 @@
-
 //URL of my web server
 var url = 'https://darwscape.herokuapp.com/';
 var socket = io.connect(url);
-var user = "Test User"
-//canvas function
-$(function () {
- 
-//=======================================================================================
-//chat
-    // Grabbing HTML Elements
-    const messageContainer = document.getElementById('message-container')
-    const messageForm = $('#send-container')
-    const messageInput = document.getElementById('message-input')
-    // On connection it appends all previous messages to the chat room
-    $.get("/api/messages/", function (data) {
-        console.log(data)
-        data.forEach(element => {
-            appendMessage(element.User.user_name + ": " + element.message)
-        })
-    });
 
-    //Temp User Message
-    appendMessage(user + " Joined")
+// Defining Variables
+var user = socket.id
+var room = $("#room").val()
+var canvas, stage;
+var drawing = true;
+const gameButton = $("#Game-Start-Button")
 
-    messageForm.on('submit', e => {
-        e.preventDefault()
-        console.log("you got here")
-        //Sends chat value to server
-        const message = messageInput.value
-        socket.emit('send-chat-message', user + ": " + message)
-        // RoomId and UserId are placeholder values for now.
-        var postMessage = {
-            message: message,
-            roomId: 1,
-            userId: 1
-        }
-        console.log(postMessage)
-        // This is the post request to the messages table
-        $.post("/api/messages/", postMessage);
-        messageInput.value = ''
-    })
-    // Appends each new chat message to the page
-    socket.on('chat-message', data => {
-        appendMessage(data)
-    })
+//Puts user into correct Room
+socket.emit('roomchoice', room)
 
-    function appendMessage(message) {
-        const messageElement = document.createElement('p')
-        messageElement.innerText = message
-        messageContainer.append(messageElement)
-    }
+let gamePlayObj = {
+    game: false,
+    word: '',
+    drawingUser: '',
+    scores: {}
+}
+//Start game button listener
+gameButton.on('click', e => {
+    e.preventDefault()
+    //Object to send through for game play
+    //Game boolean flag to true
+    gamePlayObj.game = true
+    //Socket.emit gamePlayObj
+    socket.emit('game-start', gamePlayObj)
 })
+
+socket.on('game-start', object => {
+    if (object.game) {
+        drawing = false
+        gamePlayObj = object
+        stage.clear()
+        $("#word").text("")
+        gameButton.css("display", "none")
+        // When you are the drawer, then drawing = true
+        if (gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length] === socket.id) {
+            drawing = true;
+            $("#word").text(gamePlayObj.wordArr[gamePlayObj.rounds].word)
+        }
+    }else{
+        drawing = true
+        gamePlayObj.game = false
+        $("#word").text("")
+        gameButton.css("display","inline-block")
+    }
+    //update scores
+    $("#scores").empty()
+    $("<h5>").text("Scores:").appendTo("#scores")
+    for(let i in object.scores){
+        console.log(i)
+        $(`<p>`).text(`${i}: ${object.scores[i]}`).appendTo("#scores")
+    }
+    
+
+})
+
+
+
+
+
 
 
 

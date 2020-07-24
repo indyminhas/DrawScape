@@ -1,4 +1,4 @@
-var canvas, stage;
+
 var drawingCanvas;
 var oldPt;
 var oldMidPt;
@@ -7,8 +7,6 @@ var color;
 var stroke;
 var colors;
 var index;
-//a flag for drawing activity
-var drawing = false;
 var lastEmit = $.now();
 //generate unique id for the new user
 var id = Math.round($.now() * Math.random());
@@ -50,12 +48,11 @@ function handleMouseDown(event) {
         stage.clear();
         stage.removeChild(title);
     }
-    drawing = true;
     color = colors[(index++) % colors.length];
     stroke = Math.random() * 30 + 10 | 0;
     oldPt = new createjs.Point(stage.mouseX, stage.mouseY);
     oldMidPt = oldPt.clone();
-    stage.addEventListener("stagemousemove", handleMouseMove);
+    if (drawing) stage.addEventListener("stagemousemove", handleMouseMove);
 }
 
 function handleMouseMove(event) {
@@ -75,7 +72,6 @@ function handleMouseMove(event) {
             'oldMidy': oldMidPt.y,
             'color': color,
             'stroke': stroke,
-            'drawing': drawing,
             'id': id
         });
         lastEmit = $.now();
@@ -92,8 +88,7 @@ function handleMouseMove(event) {
 
 function handleMouseUp(event) {
     if (!event.primary) { return; }
-    drawing = false;
-    stage.removeEventListener("stagemousemove", handleMouseMove);
+    if (drawing) stage.removeEventListener("stagemousemove", handleMouseMove);
 }
 
 socket.on('moving', function (data) {
