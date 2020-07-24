@@ -7,31 +7,46 @@ $(function () {
         const messageForm = $('#send-container')
         const messageInput = document.getElementById('message-input')
         
-     
-        // On connection it appends all previous messages to the chat room
-        $.get(`/api/messages/${room}`, function (data) {
+        function appendMessage(message) {
+            const messageElement = document.createElement('p')
+            messageElement.innerText = message
+            messageContainer.append(messageElement)
+        }
+        //TODO: This is where we want to assign username and/or ID to user for all socket transmission action
+        $.get("/loggedinuser", function (data, status) {
+            user = data.user_name
             console.log(data)
-            data.forEach(element => {
-                appendMessage(element.User.user_name + ": " + element.message)
-            })
-        });
+            console.log(data.id)
+            room = {
+                room: $("#room").val(),
+                user_name: user
+        
+            }
+            //Puts user into correct Room
+            socket.emit('roomchoice', room)
+            // On connection it appends all previous messages to the chat room
+            $.get(`/api/messages/${room.room}`, function (data) {
+                console.log(data)
+                data.forEach(element => {
+                    appendMessage(element.User.user_name + ": " + element.message)
+                })
+            });
+        
+        })
+
     
-        //Temp User Message
-        appendMessage(user + " Joined")
     
         messageForm.on('submit', e => {
             e.preventDefault()
-            console.log("you got here")
             //Sends chat value to server
             const message = messageInput.value
             gamePlayObj.message = message
-            gamePlayObj.user = socket.id
+            gamePlayObj.user = user
             socket.emit('send-chat-message', gamePlayObj)
             // RoomId and UserId are placeholder values for now.
             var postMessage = {
                 message: message,
-                roomId: room,
-                userId: 1
+                roomId: room.room
             }
             console.log(postMessage)
             // This is the post request to the messages table
@@ -43,9 +58,5 @@ $(function () {
             appendMessage(data)
         })
     
-        function appendMessage(message) {
-            const messageElement = document.createElement('p')
-            messageElement.innerText = message
-            messageContainer.append(messageElement)
-        }
+        
     })

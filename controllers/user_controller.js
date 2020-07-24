@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
+const bcrypt = require("bcrypt");
+const { route } = require("./handlebars_controller");
 
 //get request to get all user info for the user page
 router.get('/api/user/:id', (req, res) => {
@@ -12,9 +14,11 @@ router.get('/api/user/:id', (req, res) => {
     })
     
 });
-
+router.get('/loggedinuser', (req,res)=>{
+    res.json(req.session.user)
+} )
 //post request when user signs up for a username/password, etc
-router.post('/api/user', (req, res) => {
+router.post('/signup', (req, res) => {
     db.User.create({
         user_name: req.body.user_name,
         email: req.body.email,
@@ -23,8 +27,30 @@ router.post('/api/user', (req, res) => {
         res.json(dbCreateUser)
         res.status(204).end();
     }).catch(err => {
-        res.status(500).end();
+        return res.status(500).end();
     })    
+})
+
+//check if user exists
+router.post('/login',(req,res)=>{
+    db.User.findOne({where: {email:req.body.email}}).then(data =>{
+        if(!data){
+            return res.status(404).send('no such user')
+        } else {
+            if (bcrypt,bcrypt.compareSync(req.body.password, data.password)){
+                req.session.user = {
+                    id: data.id,
+                    user_name: data.user_name
+                }
+                console.log(req.session.user)
+                return res.send('login successful')
+            } else {
+                return res.status(401).send('wrong password')
+            }
+        }
+    }).catch(err=>{
+        return res.status(500).end()
+    });
 })
 
 //put request for updating user info on user page

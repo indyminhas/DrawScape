@@ -1,41 +1,83 @@
 {{!-- this part is the drawing box with the cursor divs --}}
 <input type="hidden" value={{roomnumber}} id = "room">
 <div class="row">
-  <div class="col m4 l3">
+  <div class="col m9 blue lighten-2">
     <h5>Word: <span id = "word"></span></h5>
+  </div>
+  <div class="col m3 blue lighten-2">
+    <h5>Chat Room</h5>
   </div>
 </div>
 
 <div class="row">
   <div class="col s12">
     <div class="row">
-      <div class="input-field col m9 blue lighten-2 center">
+      <div class="input-field col m9">
         <div id="cursors"></div>
-        
-        <canvas id="paper" width="960" height="400"></canvas>
+        <canvas id="paper" width="960" height="500"></canvas>
       </div>
       {{!-- chat box --}}
-      <h4>Chat</h4>
-         <hr>
-      <div class="input-field col m3 center " >
+      
+      {{!-- <h4>Chat</h4> --}}
+         {{!-- <hr> --}}
+      <div class="input-field col m3 center" >
         <div id="message-container" class = "testing">
         </div>
         <form id="send-container">
           <input placeholder="Type message.." id="message-input"></input>
-          <button type="submit" class="btn" id="send-button">Send</button>
-          <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+          <button type="submit" class="btn" id="send-button">Send <i class="fa fa-pencil" style="font-size:14px"></i></button>
         </form>
         <br>
         <button id="Game-Start-Button" class = "btn">Start Game</button>
       </div>
     </div>
   </div>
+  
   <div class="row">
-    <div class="col m4 l3" id = "scores">
-      <h5>Score:</h5>
+    <div class="col m12 blue lighten-2">
+      <h5>Current Drawer</h5>
+    </div>
+    <div class="col m12 blue lighten-2" id = "scores">
+      <h6>Score:</h6>
     </div>
   </div>
+  <!--Footer-->
+    <footer class="page-footer blue lighten-2">
+    <div class="container">
+      <div class="row">
+        <div class="col l5 s12">
+          <h5 class="white-text">DrawScape <i class="fa fa-pencil" style="font-size:24px"></i></h5>
+          <p class="grey-text text-lighten-4">Draw away with your friends!</p>
+        </div>
+        <div class="col l5 offset-14 s12">
+          <h6 class="white-text">Built With:</h6>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://materializecss.com/" target="_blank">Materialize</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://socket.io/" target="_blank">Socket</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/indyminhas/project2" target="_blank"><i class="fa fa-github" style="font-size:24px"></i></a></li>
+
+          </ul>
+        </div>
+        <div class="col l2 s12">
+          <h6 class="white-text">Created by:</h6>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/domjparker" target="_blank">Dominic Parker</i></a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/maria-helbling" target="_blank">Maria Helbling</i></a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/MegaGrega" target="_blank">Matthew Grega</i></a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/indyminhas" target="_blank">Indy</i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © Copyright 2020 DrawScape
+      </div>
+    </div>
+    </footer>
 </div>
+
+
 
 
 <script src="/assets/js/gamewindow.js"></script>
