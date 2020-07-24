@@ -1,9 +1,12 @@
 //URL of my web server
 var url = 'localhost:3000';
 var socket = io.connect(url);
-
 // Defining Variables
-var user = socket.id
+var user;
+//TODO: This is where we want to assign username and/or ID to user for all socket transmission action
+$(function(){
+    user = socket.id
+})
 var room = $("#room").val()
 var canvas, stage;
 var drawing = true;

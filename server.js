@@ -94,8 +94,10 @@ db.sequelize.sync({ force: false }).then(function () {
         if (data.game) {
           if (data.message.trim() === data.wordArr[data.rounds].word) {
             data.scores[data.user] += 30
+            data.message = `Gussed the word ${data.wordArr[data.rounds].word}`
             data.rounds++
             data.drawingUser = data.rounds
+            io.to(room).emit('chat-message', data.user + ": " + data.message)
             if (data.rounds === 3) {
               data.game = false
               console.log("game is over")
@@ -103,9 +105,8 @@ db.sequelize.sync({ force: false }).then(function () {
             } else {
               io.to(room).emit('game-start', data)
             }
-          } 
-          //TODO: if drawer guesses their own word, PUNISH
-          else {
+            //TODO: if drawer guesses their own word, PUNISH
+          } else {
             io.to(room).emit('chat-message', data.user + ": " + data.message)
           }
 
