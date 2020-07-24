@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
+const bcrypt = require("bcrypt");
 
 //get request to get all user info for the user page
 router.get('/api/user/:id', (req, res) => {
@@ -23,7 +24,7 @@ router.post('/api/user', (req, res) => {
         res.json(dbCreateUser)
         res.status(204).end();
     }).catch(err => {
-        res.status(500).end();
+        return res.status(500).end();
     })    
 })
 
