@@ -1,0 +1,77 @@
+<body class="bodyUser">
+
+  <nav>
+    <div class="nav-wrapper blue lighten-2">
+      <a href="#home" class="brand-logo center black-text">User Profile</a>
+      <ul class="left hide-on-med-and-down">
+        <li><a href="#home"><i class="material-icons">home</i></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="section">
+    <div class="row">
+      <div class="container">
+        <div class="col m6 l6">
+          <div class="card mt5">
+            <div class="card-content white-text">
+              <span class="card-title">User:</span>
+              {{#each userDetails}}
+              <h5>Username: {{user_name}}</h5>
+              <h5>email: {{email}}</h5>
+              <h5>password: {{password}}</h5>
+              {{/each}}
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Card Title<i
+                  class="material-icons right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+
+            {{!-- <div class="row">
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                        <label for="first_name">First Name</label>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input id="email" type="email" class="validate">
+                          <label for="email">Email</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input id="password" type="password" class="validate">
+                          <label for="password">Password</label>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div> --}}
+
+            </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col m6 l6">
+        <ul class="collection with-header mt5">
+          <li class="collection-header">
+            <h4>Rooms you're in:</h4>
+          </li>
+          {{#each rooms}}
+          <li class="collection-item">
+            <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script src="/assets/js/user.js"></script>
