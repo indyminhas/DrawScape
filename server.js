@@ -4,6 +4,7 @@
 // =============================================================
 const express = require("express")
 const exphbs = require("express-handlebars");
+const session = require("express-session");
 
 // Express App Setup
 // =============================================================
@@ -19,6 +20,16 @@ app.use(express.json());
 
 // serve static assets(files) from the public directory
 app.use(express.static("public"));
+
+// session setup
+app.use(session({
+  secret: "dimm stealth",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+      maxAge: 7200000
+  }
+}))
 
 // configure handlebars as the view engine
 
@@ -42,7 +53,7 @@ app.use(wordRoute);
 // Syncing our sequelize models and then starting our Express and socket.io app
 // =============================================================
 var server;
-db.sequelize.sync({ force: false }).then(function () {
+db.sequelize.sync({ force: false}).then(function () {
   server = app.listen(PORT, function () {
     console.log("Server listening on PORT " + PORT);
   });

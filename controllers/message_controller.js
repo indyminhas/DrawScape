@@ -36,7 +36,7 @@ router.get('/api/messages', (req, res) => {
 router.post('/api/messages', (req, res) => {
     db.Message.create({
         message: req.body.message,
-        UserId: req.body.userId,
+        UserId: req.session.user.id,
         RoomId: req.body.roomId
     }).then(postMessage => {
         res.json(postMessage)

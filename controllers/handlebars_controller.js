@@ -12,10 +12,14 @@ router.get('/',(req, res)=>{
 router.get('/room', (req,res) =>{
   res.render('gamewindow')
 });
+
 // renders the room page with specific room data
 router.get('/room/:roomnumber', (req,res) =>{
-  res.render('gamewindow', {roomnumber: req.params.roomnumber})
-  //TODO: must render the room.handlebars in the future
+  if(!req.session.user){
+    res.redirect('/room')
+  } else{
+    res.render('gamewindow', {roomnumber: req.params.roomnumber})
+  }
 });
 
 //renders the user page in the future
