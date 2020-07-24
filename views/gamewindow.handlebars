@@ -2,7 +2,7 @@
 <input type="hidden" value={{roomnumber}} id = "room">
 <div class="row">
   <div class="col m4 l3">
-    <h5>Current Drawer</h5>
+    <h5>Word: <span id = "word"></span></h5>
   </div>
 </div>
 
@@ -11,6 +11,7 @@
     <div class="row">
       <div class="input-field col m9 blue lighten-2 center">
         <div id="cursors"></div>
+        
         <canvas id="paper" width="960" height="400"></canvas>
       </div>
       {{!-- chat box --}}
@@ -24,11 +25,13 @@
           <button type="submit" class="btn" id="send-button">Send</button>
           <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
         </form>
+        <br>
+        <button id="Game-Start-Button" class = "btn">Start Game</button>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col m4 l3">
+    <div class="col m4 l3" id = "scores">
       <h5>Score:</h5>
     </div>
   </div>
