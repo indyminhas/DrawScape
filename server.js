@@ -1,3 +1,4 @@
+
 //* SERVER SETUP
 
 // Dependencies
@@ -38,11 +39,11 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-var handlebarRoute = require("./controllers/handlebars_controller.js")
-var messageRoute = require("./controllers/message_controller.js")
-var roomRoute = require("./controllers/room_controller.js")
-var userRoute = require("./controllers/user_controller.js")
-var wordRoute = require("./controllers/word_controller.js")
+var handlebarRoute = require("./controllers/handlebars_controller.js");
+var messageRoute = require("./controllers/message_controller.js");
+var roomRoute = require("./controllers/room_controller.js");
+var userRoute = require("./controllers/user_controller.js");
+var wordRoute = require("./controllers/word_controller.js");
 
 app.use(handlebarRoute);
 app.use(messageRoute);
@@ -68,14 +69,15 @@ db.sequelize.sync({ force: false}).then(function () {
     // socket.nickname = Math.random()
     socket.on('roomchoice', function (room) {
       //TODO: When a user joins an in progress game, they have drawing capability
-      //TODO: When user disconnects take user out of allUsers and scores 
       // User joins specific room
       socket.join(room)
+      //tell the room that someone joined
+      io.to(room).emit('chat-message', socket.id + " joined the room.")
       // Pushes socket.id into user Array
       if(allUsers[room]){
         allUsers[room].push(socket.id)
         scores[room][socket.id] = 0
-
+        
       }else{
         allUsers[room] = []
         scores[room] = {}
@@ -100,12 +102,24 @@ db.sequelize.sync({ force: false}).then(function () {
       });
       // start listening for chat messages
       socket.on('send-chat-message', data => {
-        //Listen to chat messages in room to see if someone guessed it
+        //Listen to chat messages in room if the game is in play
         if (data.game) {
+          //check chat messages if the correct answer is guessed
           if (data.message.trim() === data.wordArr[data.rounds].word) {
-            data.scores[data.user] += 30
+            //if drawer guesses their own word, PUNISH, everyone else gets 30 pnts
+            if(data.users[data.drawingUser % data.users.length] === data.user){
+              for (let player in data.scores){
+                if(player !== data.user) data.scores[player] +=30
+              }
+            } else {
+              data.scores[data.user] += 30
+            }
+            //Notify the players that a round has ended
+            data.message = `Gussed the word ${data.wordArr[data.rounds].word}`
             data.rounds++
             data.drawingUser = data.rounds
+            io.to(room).emit('chat-message', data.user + ": " + data.message)
+            //check if we have reached the end of the game
             if (data.rounds === 3) {
               data.game = false
               console.log("game is over")
@@ -113,18 +127,22 @@ db.sequelize.sync({ force: false}).then(function () {
             } else {
               io.to(room).emit('game-start', data)
             }
-          } 
-          //TODO: if drawer guesses their own word, PUNISH
-          else {
+          } else {
+            //if the chat message was not the correct answer, emit as usual
             io.to(room).emit('chat-message', data.user + ": " + data.message)
           }
-
+          
         } else {
-          console.log(data.game)
+          //if game play is not on, emit chat messages as usual
           io.to(room).emit('chat-message', data.user + ": " + data.message)
         }
       });
-
+      //When user disconnects take user out of allUsers and scores 
+      socket.on('disconnect', ()=>{
+        delete scores[room][socket.id]
+        allUsers[room]=allUsers[room].filter(element => element !== socket.id)
+        io.to(room).emit('chat-message', socket.id + " left the room.")
+      })
     });
   });
 });
