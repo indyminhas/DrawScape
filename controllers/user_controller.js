@@ -15,7 +15,7 @@ router.get('/api/user/:id', (req, res) => {
 });
 
 //post request when user signs up for a username/password, etc
-router.post('/api/user', (req, res) => {
+router.post('/signup', (req, res) => {
     db.User.create({
         user_name: req.body.user_name,
         email: req.body.email,
@@ -39,9 +39,9 @@ router.post('/login',(req,res)=>{
                     id: data.id,
                     user_name: data.user_name
                 }
-                res.send('login successful')
+                return res.send('login successful')
             } else {
-                res.status(401).send('wrong password')
+                return res.status(401).send('wrong password')
             }
         }
     }).catch(err=>{

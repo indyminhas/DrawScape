@@ -1,9 +1,8 @@
 //URL of my web server
 var url = 'localhost:3000';
 var socket = io.connect(url);
-
+var user = socket.io
 // Defining Variables
-var user = socket.id
 var room = $("#room").val()
 var canvas, stage;
 var drawing = true;

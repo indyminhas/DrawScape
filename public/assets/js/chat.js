@@ -16,8 +16,6 @@ $(function () {
             })
         });
     
-        //Temp User Message
-        appendMessage(user + " Joined")
     
         messageForm.on('submit', e => {
             e.preventDefault()

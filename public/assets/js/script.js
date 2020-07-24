@@ -1,22 +1,43 @@
-// Need to direct to /localhost:3000/room on submit of username
 
-const userForm = document.getElementById("user-send-container")
+// Sign Up Handling
+const signUpForm = document.getElementById("sign-up-container")
 const userInput = document.getElementById('userInput')
-let userName = ""
+const emailInput = document.getElementById('emailInput')
+const passInput = document.getElementById('passInput')
 
-userForm.addEventListener('submit', e => {
+signUpForm.addEventListener('submit', e => {
     e.preventDefault()
     var user = {
         user_name: userInput.value.trim(),
-        email: "test@gmail.com",
-        password: "password"
+        email: emailInput.value.trim(),
+        password: passInput.value.trim(),
     }
     // This is the post request to the messages table
-    userName = userInput.value.trim()
-    $.post("/api/user", user);
+    $.post("/signup", user);
     userInput.value = ''
-    window.location.href = "/room"
+    emailInput.value = ''
+    passInput.value = ''
 })
+
+// Log In Handling
+const logInForm = document.getElementById("log-in-container")
+const emailLogInput = document.getElementById('emailLogInput')
+const passLogInput = document.getElementById('passLogInput')
+
+logInForm.addEventListener('submit', e => {
+    e.preventDefault()
+    var user = {
+        email: emailLogInput.value.trim(),
+        password: passLogInput.value.trim(),
+    }
+    // This is the post request to the messages table
+    $.post("/login", user).then(function(response){
+        console.log(response)
+    }).catch(err=>err)
+    emailLogInput.value = ''
+    passLogInput.value = ''
+})
+
 
 
 
