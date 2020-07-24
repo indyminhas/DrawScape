@@ -36,6 +36,7 @@ logInForm.addEventListener('submit', e => {
     }).catch(err=>err)
     emailLogInput.value = ''
     passLogInput.value = ''
+    //TODO: Redirect to profile page
 })
 
 
