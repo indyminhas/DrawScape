@@ -11,7 +11,10 @@ router.get('/api/rooms', (req,res)=>{
 });
 
 router.post('/api/rooms', (req, res)=>{
-    db.Room.create(req.body).then(result=> res.json(result))
+    db.Room.create({
+        room_name: req.body.name,
+        owner_id: req.session.user.id
+    }).then(result=> res.json(result)).catch(err => res.status(500).end())
 });
 
 //owner can delete so need destroy to delete room
