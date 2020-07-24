@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcrypt");
+const { route } = require("./handlebars_controller");
 
 //get request to get all user info for the user page
 router.get('/api/user/:id', (req, res) => {
@@ -13,7 +14,9 @@ router.get('/api/user/:id', (req, res) => {
     })
     
 });
-
+router.get('/loggedinuser', (req,res)=>{
+    res.json(req.session.user)
+} )
 //post request when user signs up for a username/password, etc
 router.post('/signup', (req, res) => {
     db.User.create({
@@ -39,6 +42,7 @@ router.post('/login',(req,res)=>{
                     id: data.id,
                     user_name: data.user_name
                 }
+                console.log(req.session.user)
                 return res.send('login successful')
             } else {
                 return res.status(401).send('wrong password')
