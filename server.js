@@ -90,14 +90,24 @@ db.sequelize.sync({ force: false }).then(function () {
       });
       // start listening for chat messages
       socket.on('send-chat-message', data => {
-        //Listen to chat messages in room to see if someone guessed it
+        //Listen to chat messages in room if the game is in play
         if (data.game) {
+          //check chat messages if the correct answer is guessed
           if (data.message.trim() === data.wordArr[data.rounds].word) {
-            data.scores[data.user] += 30
+            //TODO: if drawer guesses their own word, PUNISH, everyone else gets 30 pnts
+            if(data.users[data.drawingUser % data.users.length] === data.user){
+              for (let player in data.scores){
+                if(player !== data.user) data.scores[player] +=30
+              }
+            } else {
+              data.scores[data.user] += 30
+            }
+            //Notify the players that a round has ended
             data.message = `Gussed the word ${data.wordArr[data.rounds].word}`
             data.rounds++
             data.drawingUser = data.rounds
             io.to(room).emit('chat-message', data.user + ": " + data.message)
+            //check if we have reached the end of the game
             if (data.rounds === 3) {
               data.game = false
               console.log("game is over")
@@ -105,13 +115,13 @@ db.sequelize.sync({ force: false }).then(function () {
             } else {
               io.to(room).emit('game-start', data)
             }
-            //TODO: if drawer guesses their own word, PUNISH
           } else {
+            //if the chat message was not the correct answer, emit as usual
             io.to(room).emit('chat-message', data.user + ": " + data.message)
           }
 
         } else {
-          console.log(data.game)
+          //if game play is not on, emit chat messages as usual
           io.to(room).emit('chat-message', data.user + ": " + data.message)
         }
       });
