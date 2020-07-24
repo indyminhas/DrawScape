@@ -18,14 +18,13 @@ $(function () {
     
         //Temp User Message
         appendMessage(user + " Joined")
-    
+        //when client writes a message
         messageForm.on('submit', e => {
             e.preventDefault()
-            console.log("you got here")
             //Sends chat value to server
             const message = messageInput.value
             gamePlayObj.message = message
-            gamePlayObj.user = socket.id
+            gamePlayObj.user = user
             socket.emit('send-chat-message', gamePlayObj)
             // RoomId and UserId are placeholder values for now.
             var postMessage = {
