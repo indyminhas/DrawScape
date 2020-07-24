@@ -1,21 +1,65 @@
+<div class="header center blue lighten-2" id="myHeader">
+  <h2>DrawScape</h2>
+</div>
 
-<form id= "sign-up-container">
-
+<br>
+<br>
+<br>
+<form id="log-in-container">
   <div class="container">
-    <input class="name" placeholder="Enter Username" id="userInput" name="uname" required>
-    <input class="name" placeholder="Enter Email" id="emailInput" name="email" required>
-    <input class="password" placeholder="Enter Password" id="passInput" name="pass" required>
+    <h4>Log In</h4>
+    <div class="row">
+      <div class="input-field col s6 center">
+        <input id="emailLogInput" type="text" class="validate">
+        <label for="first_name">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6 center">
+        <input id="passLogInput" type="text" class="validate">
+        <label for="first_name">Password</label>
+      </div>
+    </div>
     <button class="button" id="user-send-button">Go</button>
-    <button class="button" class="cancelbtn">Cancel</button>
   </div>
 </form>
+<br>
+<br>
+<br>
+{{!-- materialize sign up  --}}
+<div class="row">
+  
+  <br>
+  <br>
+  <form id="sign-up-container" class="col s12">
+    <div class="container">
+      <h4>Sign Up!</h4>
+      <div class="row">
+        <div class="input-field col s6 center">
+          <input id="userInput" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 center">
+          <input id="emailInput" type="email" class="validate">
+          <label for="email">Enter Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 center">
+          <input id="passInput" type="password" class="validate">
+          <label for="password">Create Password</label>
+        </div>
+      </div>
+      <button class="button" id="user-send-button">Go <i class="fa fa-pencil" style="font-size:14px"></i></button>
+    </div>
 
-<form id= "log-in-container">
-  <div class="container">
-    <input class="name" placeholder="Enter Email" id="emailLogInput" name="email" required>
-    <input class="password" placeholder="Enter Password" id="passLogInput" name="pass" required>
-    <button class="button" id="user-send-button">Go</button>
-  </div>
-</form>
+  </form>
+</div>
 
-<script src = "/assets/js/script.js"></script>
+
+
+
+
+<script src="/assets/js/script.js"></script>
