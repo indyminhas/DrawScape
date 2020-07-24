@@ -22,7 +22,7 @@ app.use(express.static("public"));
 
 // configure handlebars as the view engine
 
-app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Routes
@@ -42,25 +42,28 @@ app.use(wordRoute);
 // Syncing our sequelize models and then starting our Express and socket.io app
 // =============================================================
 var server;
-db.sequelize.sync({force:false}).then(function() {
-  server = app.listen(PORT, function() {
+db.sequelize.sync({ force: false }).then(function () {
+  server = app.listen(PORT, function () {
     console.log("Server listening on PORT " + PORT);
   });
   //socket.io setup
   var io = require('socket.io')(server);
-  
+
   //Listen for incoming connections from clients
-  io.on('connection', function(socket){
+  io.on('connection', function (socket) {
     console.log('Client connected...')
-    //start listening for mouse move events
-    socket.on('mousemove', function(data){
+    socket.on('roomchoice', function (room) {
+      socket.join(room)
+      socket.on('mousemove', function (mouse) {
         //This line sends the event (broadcasts it) to everyone except the original client.
-        socket.broadcast.emit('moving', data);      
+        socket.to(room).broadcast.emit('moving', mouse);
+      });
+      // start listening for chat messages
+      socket.on('send-chat-message', message => {
+        // Broadcasts the message to everyone else
+        io.to(room).emit('chat-message', message)
+      })
     });
-    // start listening for chat messages
-    socket.on('send-chat-message', message =>{
-      // Broadcasts the message to everyone else
-      io.emit('chat-message', message)
-    })
+    //start listening for mouse move events
   });
 });
