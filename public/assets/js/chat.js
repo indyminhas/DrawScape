@@ -30,8 +30,7 @@ $(function () {
             // RoomId and UserId are placeholder values for now.
             var postMessage = {
                 message: message,
-                roomId: room,
-                userId: 1
+                roomId: room
             }
             console.log(postMessage)
             // This is the post request to the messages table

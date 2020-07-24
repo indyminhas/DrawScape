@@ -28,6 +28,27 @@ router.post('/api/user', (req, res) => {
     })    
 })
 
+//check if user exists
+router.post('/login',(req,res)=>{
+    db.User.findOne({where: {email:req.body.email}}).then(data =>{
+        if(!data){
+            return res.status(404).send('no such user')
+        } else {
+            if (bcrypt,bcrypt.compareSync(req.body.password, data.password)){
+                req.session.user = {
+                    id: data.id,
+                    user_name: data.user_name
+                }
+                res.send('login successful')
+            } else {
+                res.status(401).send('wrong password')
+            }
+        }
+    }).catch(err=>{
+        return res.status(500).end()
+    });
+})
+
 //put request for updating user info on user page
 // (have to think about what the user is allowed to/can update and adjust accordingly)
 router.put('/api/user/:id', (req, res) => {
