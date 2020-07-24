@@ -49,62 +49,72 @@ db.sequelize.sync({ force: false }).then(function () {
   });
   //socket.io setup
   var io = require('socket.io')(server);
-
+  var allUsers = {}
+  var scores = {}
   //Listen for incoming connections from clients
   io.on('connection', function (socket) {
     console.log('Client connected...')
+    // Listens for room choice
+    // socket.nickname = Math.random()
     socket.on('roomchoice', function (room) {
-      let game = false;
+      //TODO: When a user joins an in progress game, they have drawing capability
+      //TODO: When user disconnects take user out of allUsers and scores 
+      // User joins specific room
       socket.join(room)
+      // Pushes socket.id into user Array
+      if(allUsers[room]){
+        allUsers[room].push(socket.id)
+        scores[room][socket.id] = 0
+
+      }else{
+        allUsers[room] = []
+        scores[room] = {}
+        allUsers[room].push(socket.id)
+        scores[room][socket.id] = 0
+      }
+
+      //server listens to game start socket.on 'game-start' 
+      socket.on('game-start', async gamePlayObj => {
+        // receives game=true 
+        gamePlayObj.rounds = 0
+        gamePlayObj.users = allUsers[room]
+        gamePlayObj.scores = scores[room]
+        gamePlayObj.wordArr = await db.Word.findAll();
+        gamePlayObj.drawingUser = gamePlayObj.rounds
+        io.to(room).emit('game-start', gamePlayObj)
+      });
+      // Listens for Drawing Function
       socket.on('mousemove', function (mouse) {
         //This line sends the event (broadcasts it) to everyone except the original client.
         socket.to(room).broadcast.emit('moving', mouse);
       });
       // start listening for chat messages
-      socket.on('send-chat-message', message => {
-        // Broadcasts the message to everyone else
-        //TODO: listen to chat messages in room to see if someone guessed it
-        if (game) {
-
-          let rounds = 6;
-          let wordArr = await db.Word.findAll();
-    
-    
-          gamePlayObj.word = wordArr.shift()
-          gamePlay(gamePlayObj)
-          //TODO: need to know all users in room to loop through them
-          //TODO: need to get a random word
-          //TODO: send to that user that they are the one drawing
-          let gamePlay = (obj) => {
-            
-            if (rounds > 0) {
-              obj.word = wordArr.shift()
-              gamePlay(obj)
-              rounds--;
-    
-            } else if (rounds = 6) {
-              io.to(room).emit('game-play', obj)
+      socket.on('send-chat-message', data => {
+        //Listen to chat messages in room to see if someone guessed it
+        if (data.game) {
+          if (data.message.trim() === data.wordArr[data.rounds].word) {
+            data.scores[data.user] += 30
+            data.rounds++
+            data.drawingUser = data.rounds
+            if (data.rounds === 3) {
+              data.game = false
+              console.log("game is over")
+              io.to(room).emit('game-start', data)
             } else {
-              obj.game = false;
-              io.to(room).emit('game-play', obj)
+              io.to(room).emit('game-start', data)
             }
+          } 
+          //TODO: if drawer guesses their own word, PUNISH
+          else {
+            io.to(room).emit('chat-message', data.user + ": " + data.message)
           }
-    
-          //TODO: if correct guess, call scoring function and move to next user + emit that new round has started
-          //TODO: if all rounds done, emit scores to whole room and send game=false
+
         } else {
-          
-          io.to(room).emit('chat-message', message)
+          console.log(data.game)
+          io.to(room).emit('chat-message', data.user + ": " + data.message)
         }
+      });
 
-      });
-      //server listens to game start socket.on 'game-start' 
-      socket.on('game-start', gamePlayObj => {
-        // receives game=true 
-        game = gamePlayObj.game;
-      });
     });
-
-
   });
 });

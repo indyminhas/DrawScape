@@ -1,4 +1,4 @@
-var canvas, stage;
+
 var drawingCanvas;
 var oldPt;
 var oldMidPt;
@@ -7,8 +7,6 @@ var color;
 var stroke;
 var colors;
 var index;
-//a flag for drawing activity
-var drawing = true;
 var lastEmit = $.now();
 //generate unique id for the new user
 var id = Math.round($.now() * Math.random());
