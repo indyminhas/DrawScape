@@ -24,7 +24,9 @@ $(function () {
             console.log("you got here")
             //Sends chat value to server
             const message = messageInput.value
-            socket.emit('send-chat-message', user + ": " + message)
+            gamePlayObj.message = message
+            gamePlayObj.user = socket.id
+            socket.emit('send-chat-message', gamePlayObj)
             // RoomId and UserId are placeholder values for now.
             var postMessage = {
                 message: message,
