@@ -31,6 +31,7 @@ gameButton.on('click', e => {
 socket.on('game-start', object => {
     if (object.game) {
         drawing = false
+        stage.removeEventListener("stagemousemove", handleMouseMove);
         gamePlayObj = object
         stage.clear()
         $("#word").text("")
