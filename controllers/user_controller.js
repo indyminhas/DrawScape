@@ -14,6 +14,11 @@ router.get('/api/user/:id', (req, res) => {
     
 });
 
+router.get('/logout',(req,res)=>{
+    req.session.destroy();
+    res.send('logged out!');
+});
+
 //post request when user signs up for a username/password, etc
 router.post('/signup', (req, res) => {
     db.User.create({

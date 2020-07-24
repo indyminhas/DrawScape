@@ -71,6 +71,7 @@ db.sequelize.sync({ force: false}).then(function () {
       //TODO: When a user joins an in progress game, they have drawing capability
       // User joins specific room
       socket.join(room)
+      
       //tell the room that someone joined
       io.to(room).emit('chat-message', socket.id + " joined the room.")
       // Pushes socket.id into user Array
