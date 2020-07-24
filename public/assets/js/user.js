@@ -8,11 +8,3 @@ $(function () {
     })
 })
 
-
-// initialize dropdown button
-$('.dropdown-trigger').dropdown();
-
-// initialize update form in dropdown
-$(document).ready(function() {
-    M.updateTextFields();
-  });

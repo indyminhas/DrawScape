@@ -9,13 +9,14 @@
     </div>
   </nav>
 
+  {{!-- user details section card --}}
   <div class="section">
     <div class="row">
       <div class="container">
         <div class="col m6 l6">
           <div class="card mt5">
             <div class="card-content white-text">
-              <span class="card-title">User:</span>
+              <span class="card-title grey-text text-darken-3">User:</span>
               {{#each userDetails}}
               <h5>Username: {{user_name}}</h5>
               <h5>email: {{email}}</h5>
@@ -23,10 +24,12 @@
               {{/each}}
             </div>
             <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Card Title<i
+              <span class="card-title grey-text text-darken-3">Card Title<i
                   class="material-icons right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              <h5>Update Details</h5>
             </div>
+
+
 
             {{!-- <div class="row">
                   <form class="col s12">
@@ -51,11 +54,11 @@
                   </form>
                 </div> --}}
 
-            </li>
-            </ul>
+           
           </div>
         </div>
       </div>
+
 
       <div class="col m6 l6">
         <ul class="collection with-header mt5">
