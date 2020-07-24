@@ -1,5 +1,5 @@
 //URL of my web server
-var url = 'localhost:3000';
+var url = 'http://darwscape.herokuapp.com/';
 var socket = io.connect(url);
 // Defining Variables
 var user;
