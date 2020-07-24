@@ -4,6 +4,7 @@
 // =============================================================
 const express = require("express")
 const exphbs = require("express-handlebars");
+const session = require("express-session");
 
 // Express App Setup
 // =============================================================
@@ -19,6 +20,15 @@ app.use(express.json());
 
 // serve static assets(files) from the public directory
 app.use(express.static("public"));
+// session setup
+app.use(session({
+  secret: "dimm stealth",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+      maxAge: 7200000
+  }
+}))
 
 // configure handlebars as the view engine
 
