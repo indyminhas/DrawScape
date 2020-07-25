@@ -4,12 +4,9 @@ const router = express.Router();
 
 const db = require("../models");
 
-//renders homepage
-router.get('/login', (req, res) => {
-  res.render('index')
-});
 
-// renders the user page 
+
+// If user is not signed in, send to login, if they are send to user page.
 router.get('/', (req, res) => {
   if (!req.session.user) {
     res.redirect('/login')
@@ -18,10 +15,17 @@ router.get('/', (req, res) => {
   }
 });
 
+//renders login
+router.get('/login', (req, res) => {
+  res.render('index')
+});
+
 // renders the room page 
 router.get('/room', (req, res) => {
   res.render('gamewindow')
 });
+
+// If not signed in, send to log in otherwise render user page
 router.get('/user', (req, res) => {
   if (!req.session.user) {
     res.redirect('/login')
@@ -36,16 +40,23 @@ router.get('/user', (req, res) => {
       res.status(500).end();
     })
   }
+  
+  
 });
 
 
-// renders the room page with specific room data
+// Renders the room page with specific room data
 router.get('/room/:roomnumber', (req, res) => {
   if (!req.session.user) {
-    res.redirect('/room')
+    res.redirect('/login/' + req.params.roomnumber)
   } else {
     res.render('gamewindow', { roomnumber: req.params.roomnumber})
   }
+});
+
+//renders login
+router.get('/login/:roomnumber', (req, res) => {
+  res.render('index', {roomnumber: req.params.roomnumber})
 });
 
 
