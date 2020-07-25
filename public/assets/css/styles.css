@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Set a style for all buttons */
   .button {
     background-color: lightskyblue;
@@ -9,23 +10,116 @@
     width: auto;
   }
   
+=======
+main {
+    flex: 1 0 auto;
+}
+
+
+/* SIGN/LOG IN */
+
+.header-title {
+    /* font-family: 'Audiowide', cursive;
+font-family: 'Beth Ellen', cursive;
+font-family: 'Galada', cursive;
+font-family: 'Gloria Hallelujah', cursive;
+font-family: 'Gugi', cursive;
+font-family: 'Lobster', cursive;
+font-family: 'Lobster Two', cursive;
+font-family: 'Oleo Script', cursive; */
+font-family: 'Rock Salt', cursive;
+/* font-family: 'Sarina', cursive; */
+/* font-family: 'Shrikhand', cursive;  */
+/* font-family: 'Sonsie One', cursive; */
+}
+
+/* body of Index page*/
+.bodyIndex {
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/abstract-art-artistic-background-459799.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.indexCard {
+    opacity: .9;
+}
+
+/* Full-width inputs */
+.input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.button {
+  background-color: lightskyblue;
+  color: black;
+  padding: 14px 20px;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+>>>>>>> dev
 /* Add a hover effect for buttons */
-  .button:hover {
-    opacity: 0.8;
-  }
-  
+.button:hover {
+  opacity: 0.8;
+}
+
 /* Add padding to containers */
-  .container {
-    padding: 16px;
-  }
+.container {
+  padding: 16px;
+}
 
-/* Canvas */
+/* USER PROFILE TEMPLATE */
 
-.html, body {
-    width:  auto;
-    height: auto;
-    margin: 0;
-  }
+/* body of user profile page */
+.bodyUser {
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/closeup-photo-of-multi-color-stick-226589.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* GAMEWINDOW TEMPLATE */
+
+/* body of gamewindow */
+.bodyGameWindow {
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/orange-and-blue-abstract-painting-1532704.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.html,
+body {
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
 #paper {
   background: white;
   border: black;
@@ -37,12 +131,18 @@
 }
 
 /* CHAT BOX */
+<<<<<<< HEAD
 
 /* hr {
   border: 1px solid ;
+=======
+hr {
+  border: 1px solid;
+>>>>>>> dev
   margin-bottom: 25px;
 } */
 
+<<<<<<< HEAD
 .testing{
 
   display:block;
@@ -58,3 +158,12 @@
 
 
 
+=======
+.testing {
+  display: block;
+  width: auto;
+  height: 400px;
+  background-color: white;
+  overflow: scroll;
+}
+>>>>>>> dev

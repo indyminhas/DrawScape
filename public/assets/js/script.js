@@ -26,19 +26,31 @@ const passLogInput = document.getElementById('passLogInput')
 
 logInForm.addEventListener('submit', e => {
     e.preventDefault()
+    console.log("You got here")
     var user = {
         email: emailLogInput.value.trim(),
         password: passLogInput.value.trim(),
     }
     // This is the post request to the messages table
     $.post("/login", user).then(function(response){
-        console.log(response)
-    }).catch(err=>err)
+        window.location.href = "/user"
+    }).catch(err=>{
+        alert(err)
+    })
     emailLogInput.value = ''
     passLogInput.value = ''
+    //TODO: Redirect to profile page
+
 })
 
 
+
+
+// do get request from database to get specific user data based on username
+// and password
+// check to see if the username and password entered matched the data sent back
+
+// if username and password match, redirect user to user's profile page
 
 
 
