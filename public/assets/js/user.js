@@ -1,4 +1,3 @@
-
 // On connection, get data for user with that id
 $(function () {
     const roomList = $("#roomList")
