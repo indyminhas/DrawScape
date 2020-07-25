@@ -9,13 +9,13 @@ router.get('/api/user', (req, res) => {
     db.User.findOne({
         where: { id: req.session.user.id },
         include: [db.Room]
-    }
-    ).then(result => {
+      }
+      ).then(result => {
         res.json(result)
-        res.status(204).end();
-    }).catch(err => {
+        // res.status(204).end();
+      }).catch(err => {
         res.status(500).end();
-    })
+      })
 
 });
 router.get('/loggedinuser', (req, res) => {

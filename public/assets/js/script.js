@@ -26,6 +26,7 @@ const passLogInput = document.getElementById('passLogInput')
 
 logInForm.addEventListener('submit', e => {
     e.preventDefault()
+    console.log("You got here")
     var user = {
         email: emailLogInput.value.trim(),
         password: passLogInput.value.trim(),
