@@ -1,12 +1,11 @@
 main {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
-
 
 /* SIGN/LOG IN */
 
 .header-title {
-    /* font-family: 'Audiowide', cursive;
+  /* font-family: 'Audiowide', cursive;
 font-family: 'Beth Ellen', cursive;
 font-family: 'Galada', cursive;
 font-family: 'Gloria Hallelujah', cursive;
@@ -14,10 +13,10 @@ font-family: 'Gugi', cursive;
 font-family: 'Lobster', cursive;
 font-family: 'Lobster Two', cursive;
 font-family: 'Oleo Script', cursive; */
-font-family: 'Rock Salt', cursive;
-/* font-family: 'Sarina', cursive; */
-/* font-family: 'Shrikhand', cursive;  */
-/* font-family: 'Sonsie One', cursive; */
+  font-family: "Rock Salt", cursive;
+  /* font-family: 'Sarina', cursive; */
+  /* font-family: 'Shrikhand', cursive;  */
+  /* font-family: 'Sonsie One', cursive; */
 }
 
 /* body of Index page*/
@@ -34,24 +33,35 @@ font-family: 'Rock Salt', cursive;
 }
 
 .indexCard {
-    opacity: .9;
+  opacity: 0.9;
+}
+
+/* search input underline color */
+.input-field input:focus {
+  border-bottom: 1px solid lightskyblue !important;
+  box-shadow: 0 1px 0 0 lightskyblue !important;
+}
+
+/* trying to get the placeholder text to not be green. not working yet */
+.input-field input[for]:focus {
+  color: lightskyblue !important;
 }
 
 /* Full-width inputs */
-.input[type="text"],
+/* .input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; */
+/* } */
 
 /* Set a style for all buttons */
-.button {
-  background-color: lightskyblue;
-  color: black;
+button {
+  background-color: lightskyblue !important;
+  color: white;
   padding: 14px 20px;
   margin: 0;
   border: none;
@@ -127,5 +137,6 @@ hr {
   width: auto;
   height: 400px;
   background-color: white;
+  opacity: 0.9;
   overflow: scroll;
 }
