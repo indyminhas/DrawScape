@@ -22,6 +22,7 @@ router.get('/api/messages/:roomid', (req, res) => {
 });
 
 //get all chats
+//TODO: this can be deleted, check first that it is not used anywhere
 router.get('/api/messages', (req, res) => {
     db.Message.findAll({ include: [db.User] }).then(function (allMessages) {
         res.json(allMessages)
