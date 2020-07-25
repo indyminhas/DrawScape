@@ -14,6 +14,18 @@ router.get('/', (req, res) => {
   if (!req.session.user) {
     res.redirect('/login')
   } else {
+    res.redirect('/user')
+  }
+});
+
+// renders the room page 
+router.get('/room', (req, res) => {
+  res.render('gamewindow')
+});
+router.get('/user', (req, res) => {
+  if (!req.session.user) {
+    res.redirect('/login')
+  } else {
     db.User.findOne({
       where: { id: req.session.user.id },
     }
@@ -24,23 +36,8 @@ router.get('/', (req, res) => {
       res.status(500).end();
     })
   }
-<<<<<<< HEAD
-  
-=======
-  ).then(result => {
-    res.render('user', {user_name: result.user_name, email: result.email})
-    // res.status(204).end();
-  }).catch(err => {
-    res.status(500).end();
-  })
->>>>>>> dev
-  
 });
 
-// renders the room page 
-router.get('/room', (req, res) => {
-  res.render('gamewindow')
-});
 
 // renders the room page with specific room data
 router.get('/room/:roomnumber', (req, res) => {
