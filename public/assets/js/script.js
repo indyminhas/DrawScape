@@ -33,7 +33,7 @@ logInForm.addEventListener('submit', e => {
     }
     // This is the post request to the messages table
     $.post("/login", user).then(function(response){
-        window.location.href = "/user"
+        window.location.href = "/"
     }).catch(err=>{
         alert(err)
     })
