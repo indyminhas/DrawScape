@@ -1,95 +1,97 @@
 <body class="bodyGameWindow">
 
-<nav>
-  {{!-- need to insert the specific room name here --}}
+  <nav>
+    {{!-- need to insert the specific room name here --}}
     <div class="nav-wrapper blue lighten-2">
-      <a href="#home" class="brand-logo center white-text header-title"> {{roomnumber}}</a>
+      <a href="#home" class="brand-logo center white-text header-title"> DrawScape {{roomnumber}}</a>
       <ul class="left hide-on-med-and-down">
-          <li><a href="#home"><i class="material-icons">home</i></a></li>
-     </ul> 
+        <li><a href="#home"><i class="material-icons">home</i></a></li>
+      </ul>
     </div>
   </nav>
 
-{{!-- this part is the drawing box with the cursor divs --}}
-<input type="hidden" value={{roomnumber}} id = "room">
-<div class="row">
-  <div class="col m9 blue lighten-2">
-    <h5>Word: <span id = "word"></span></h5>
-  </div>
-  <div class="col m3 blue lighten-2">
-    <h5>Chat Room</h5>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col s12">
-    <div class="row">
-      <div class="input-field col m9">
-        <div id="cursors"></div>
-        <canvas id="paper" width="960" height="500"></canvas>
-      </div>
-      {{!-- chat box --}}
-
-      {{!-- <h4>Chat</h4> --}}
-      {{!-- <hr> --}}
-      <div class="input-field col m3 center">
-        <div id="message-container" class="testing">
-        </div>
-        <form id="send-container">
-          <input placeholder="Type message.." id="message-input"></input>
-          <button type="submit" class="button" id="send-button">Send <i class="fa fa-pencil"
-              style="font-size:14px"></i></button>
-        </form>
-        <br>
-        <button id="Game-Start-Button" class="button">Start Game</button>
-      </div>
+  {{!-- this part is the drawing box with the cursor divs --}}
+  <input type="hidden" value={{roomnumber}} id="room">
+  {{!-- <div class="row">
+    <div class="col m9 ">
+      <h5>Word: <span id="word"></span></h5>
     </div>
-  </div>
+    <div class="col m3 ">
+      <h5>Chat Room</h5>
+    </div>
+  </div> --}}
 
   <div class="row">
-    <div class="col m12 blue lighten-2">
-      <h5>Current Drawer</h5>
-    </div>
-    <div class="col m12 blue lighten-2" id="scores">
-      <h6>Score:</h6>
-    </div>
-  </div>
-  <!--Footer-->
-  <footer class="page-footer blue lighten-2">
-    <div class="container">
+    <div class="col s12">
       <div class="row">
-        <div class="col l5 s12">
-          <h5 class="black-text">DrawScape <i class="fa fa-pencil" style="font-size:24px"></i></h5>
-          <p class="black-text">Get creative w with your friends!</p>
+        <div class="input-field col m9">
+          <div id="cursors"></div>
+          <canvas id="paper" width="960" height="500"></canvas>
         </div>
-        <div class="col l5 offset-14 s12">
-          <h6 class="black-text">Built With:</h6>
-          <ul>
-            <li><a class="black-text" href="https://materializecss.com/" target="_blank">Materialize</a></li>
-            <li><a class="black-text" href="https://socket.io/" target="_blank">Socket</a></li>
-            <li><a class="black-text" href="https://github.com/indyminhas/project2" target="_blank"><iclass="fa fa-github" style="font-size:24px"></i></a></li>
+        {{!-- chat box --}}
 
-          </ul>
-        </div>
-        <div class="col l2 s12">
-          <h6 class="black-text">Created by:</h6>
-          <ul>
-            <li><a class="black-text" href="https://github.com/domjparker" target="_blank">Dominic Parker</i></a></li>
-            <li><a class="black-text" href="https://github.com/maria-helbling" target="_blank">Maria Helbling</i></a>
-            </li>
-            <li><a class="black-text" href="https://github.com/MegaGrega" target="_blank">Matthew Grega</i></a></li>
-            <li><a class="black-text" href="https://github.com/indyminhas" target="_blank">Indy</i></a></li>
-          </ul>
+        {{!-- <h4>Chat</h4> --}}
+        {{!-- <hr> --}}
+        <div class="input-field col m3 center">
+          <div id="message-container" class="testing">
+          </div>
+          <form id="send-container">
+            <input placeholder="Type message.." id="message-input"></input>
+            <button type="submit" class="button" id="send-button">Send <i class="fa fa-pencil"
+                style="font-size:14px"></i></button>
+          </form>
+          <br>
+          <button id="Game-Start-Button" class="button">Start Game</button>
         </div>
       </div>
     </div>
-    <div class="footer-copyright">
-      <div class="container black-text">
-        © Copyright 2020 DrawScape
+
+    <div class="row">
+      <div class="col m12 blue lighten-2">
+        <h5>Current Drawer</h5>
+      </div>
+      <div class="col m12 blue lighten-2" id="scores">
+        <h6>Score:</h6>
       </div>
     </div>
-  </footer>
-</div>
+    <!--Footer-->
+    <footer class="page-footer blue lighten-2">
+      <div class="container">
+        <div class="row">
+          <div class="col l5 s12">
+            <h5 class="black-text">DrawScape <i class="fa fa-pencil" style="font-size:24px"></i></h5>
+            <p class="black-text">Get creative w with your friends!</p>
+          </div>
+          <div class="col l5 offset-14 s12">
+            <h6 class="black-text">Built With:</h6>
+            <ul>
+              <li><a class="black-text" href="https://materializecss.com/" target="_blank">Materialize</a></li>
+              <li><a class="black-text" href="https://socket.io/" target="_blank">Socket</a></li>
+              <li><a class="black-text" href="https://github.com/indyminhas/project2" target="_blank">
+                  <iclass="fa fa-github" style="font-size:24px"></i>
+                </a></li>
+
+            </ul>
+          </div>
+          <div class="col l2 s12">
+            <h6 class="black-text">Created by:</h6>
+            <ul>
+              <li><a class="black-text" href="https://github.com/domjparker" target="_blank">Dominic Parker</i></a></li>
+              <li><a class="black-text" href="https://github.com/maria-helbling" target="_blank">Maria Helbling</i></a>
+              </li>
+              <li><a class="black-text" href="https://github.com/MegaGrega" target="_blank">Matthew Grega</i></a></li>
+              <li><a class="black-text" href="https://github.com/indyminhas" target="_blank">Indy</i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container black-text">
+          © Copyright 2020 DrawScape
+        </div>
+      </div>
+    </footer>
+  </div>
 
 </body>
 
