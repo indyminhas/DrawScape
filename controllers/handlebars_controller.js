@@ -5,23 +5,26 @@ const router = express.Router();
 const db = require("../models");
 
 //renders homepage
-router.get('/', (req, res) => {
+router.get('/login', (req, res) => {
   res.render('index')
 });
 
 // renders the user page 
-router.get('/user', (req, res) => {
-  db.User.findOne({
-    where: { id: req.session.user.id },
-    include: [db.Room]
+router.get('/', (req, res) => {
+  if (!req.session.user) {
+    res.redirect('/login')
+  } else {
+    db.User.findOne({
+      where: { id: req.session.user.id },
+    }
+    ).then(result => {
+      res.render('user', {user_name: result.user_name, email: result.email})
+      // res.status(204).end();
+    }).catch(err => {
+      res.status(500).end();
+    })
   }
-  ).then(result => {
-    console.log(result.Rooms[0].room_name)
-    res.render('user', {user_name: result.user_name, email: result.email, Rooms: result.Rooms[0]})
-    // res.status(204).end();
-  }).catch(err => {
-    res.status(500).end();
-  })
+  
   
 });
 
