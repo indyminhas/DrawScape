@@ -24,8 +24,7 @@ router.get('/room/:roomnumber', (req,res) =>{
 
 //renders the user page in the future
 router.get('/user', (req,res)=>{
-  res.json('This will be the user page')
-  //TODO: and it will render the user.handlebars file
+  res.render('user')
 });
 
 module.exports = router;

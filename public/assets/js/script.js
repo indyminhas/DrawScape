@@ -32,11 +32,14 @@ logInForm.addEventListener('submit', e => {
     }
     // This is the post request to the messages table
     $.post("/login", user).then(function(response){
-        console.log(response)
-    }).catch(err=>err)
+        window.location.href = "/user"
+    }).catch(err=>{
+        alert(err)
+    })
     emailLogInput.value = ''
     passLogInput.value = ''
     //TODO: Redirect to profile page
+
 })
 
 
