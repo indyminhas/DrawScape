@@ -16,10 +16,6 @@ router.get('/user', (req, res) => {
     include: [db.Room]
   }
   ).then(result => {
-<<<<<<< HEAD
-    console.log(result.Rooms[0].room_name)
-=======
->>>>>>> dev
     res.render('user', {user_name: result.user_name, email: result.email})
     // res.status(204).end();
   }).catch(err => {
