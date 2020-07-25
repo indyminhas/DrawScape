@@ -24,16 +24,7 @@ router.get('/', (req, res) => {
       res.status(500).end();
     })
   }
-<<<<<<< HEAD
   
-=======
-  ).then(result => {
-    res.render('user', {user_name: result.user_name, email: result.email})
-    // res.status(204).end();
-  }).catch(err => {
-    res.status(500).end();
-  })
->>>>>>> dev
   
 });
 
