@@ -17,6 +17,11 @@ router.get('/api/user', (req, res) => {
         res.status(500).end();
       })
 
+router.get('/logout',(req,res)=>{
+    req.session.destroy();
+    res.send('logged out!');
+});
+
 });
 router.get('/loggedinuser', (req, res) => {
     res.json(req.session.user)

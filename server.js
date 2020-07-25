@@ -6,6 +6,7 @@
 const express = require("express")
 const exphbs = require("express-handlebars");
 const session = require("express-session");
+const Sequelize = require('sequelize')
 
 // Express App Setup
 // =============================================================
@@ -73,7 +74,7 @@ db.sequelize.sync({ force: false}).then(function () {
       socket.join(room.room)
       console.log(socket.session)
       //tell the room that someone joined
-      io.to(room.room).emit('chat-message', room.user_name + " joined the room.room.")
+      io.to(room.room).emit('chat-message', room.user_name + " joined the room.")
       // Pushes room.user_name into user Array
       if(allUsers[room.room]){
         allUsers[room.room].push(room.user_name)
@@ -96,8 +97,8 @@ db.sequelize.sync({ force: false}).then(function () {
         gamePlayObj.users = allUsers[room.room]
         gamePlayObj.scores = scores[room.room]
         console.log("Looking for Word")
-        //TODO: Randomize the words
-        gamePlayObj.wordArr = await db.Word.findAll();
+        //Randomize the words
+        gamePlayObj.wordArr = await db.Word.findAll({order: Sequelize.literal('RAND()'), limit:3 });
         console.log("Done Looking for Word")
         gamePlayObj.drawingUser = gamePlayObj.rounds
         io.to(room.room).emit('game-start', gamePlayObj)

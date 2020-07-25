@@ -1,7 +1,6 @@
-const roomList = $("#roomList")
-
 // On connection, get data for user with that id
 $(function () {
+    const roomList = $("#roomList")
     $.get("/api/user", function (data, status) {
         console.log(data)
         data.Rooms.forEach(room => {
