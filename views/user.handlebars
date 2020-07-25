@@ -14,13 +14,14 @@
   </header>
   <br>
 
+  {{!-- Main content of page --}}
   <main>
     <div class="container">
+      
       <div class="row">
-
         {{!-- user details section card --}}
         <div class="col m6 l6">
-          <div class="card mt5">
+          <div class="card">
             <div class="card-content grey-text text-darken-3">
               <span class="card-title">User Details</span>
               <h5>Username: {{user_name}}</h5>
@@ -35,8 +36,9 @@
           </div>
         </div>
 
+        {{!-- Rooms you're in Section --}}
         <div class="col m6 l6">
-          <div class="card mt5">
+          <div class="card">
             <div class="card-content grey-text text-darken-3">
               <span class="card-title">Rooms You're In</span>
               <ul id = "roomList">
@@ -44,9 +46,30 @@
             </div>
           </div>
         </div>
-
-
       </div>
+
+      <div class="row">
+        {{!-- Update User Details section --}}
+        <div class="col m6 l6">
+          </div>
+
+        {{!-- Create A Room Section --}}
+        <div class="col m6 l6">
+          <div class="card">
+            <div class="card-content grey-text text-darken-3">
+              <span class="card-title">Create A Room</span>
+              <form id="sign-up-container">
+                <div class="input-field center">
+                  <input id="userInput" type="text">
+                  <label for="room_name">Room Name</label>
+                </div>
+                <button type= "submit" class="button" id="create-room-button">Create Room</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    
+
     </div>
   </main>
 

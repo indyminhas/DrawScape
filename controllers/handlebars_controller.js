@@ -40,6 +40,8 @@ router.get('/user', (req, res) => {
       res.status(500).end();
     })
   }
+  
+  
 });
 
 
