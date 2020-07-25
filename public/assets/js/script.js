@@ -5,6 +5,7 @@ const userInput = document.getElementById('userInput')
 const emailInput = document.getElementById('emailInput')
 const passInput = document.getElementById('passInput')
 const roomNumber = document.getElementById('room-number').value
+
 console.log(roomNumber)
 
 
@@ -27,6 +28,7 @@ signUpForm.addEventListener('submit', e => {
 const logInForm = document.getElementById("log-in-container")
 const emailLogInput = document.getElementById('emailLogInput')
 const passLogInput = document.getElementById('passLogInput')
+const passBox = document.getElementById('password-box')
 
 logInForm.addEventListener('submit', e => {
     e.preventDefault()
@@ -40,10 +42,9 @@ logInForm.addEventListener('submit', e => {
             window.location.href = "/"
         }else{
             window.location.href = `/room/${roomNumber}`
-        }
-        
+        }      
     }).catch(err=>{
-        alert(err)
+        passBox.textContent = "Username or Password Incorrect"
     })
     emailLogInput.value = ''
     passLogInput.value = ''
