@@ -17,7 +17,7 @@ router.get('/user', (req, res) => {
   }
   ).then(result => {
     console.log(result.Rooms[0].room_name)
-    res.render('user', {user_name: result.user_name, email: result.email, Rooms: result.Rooms[0]})
+    res.render('user', {user_name: result.user_name, email: result.email})
     // res.status(204).end();
   }).catch(err => {
     res.status(500).end();
