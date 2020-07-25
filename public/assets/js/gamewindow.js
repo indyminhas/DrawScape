@@ -3,6 +3,8 @@ var url = 'localhost:3000';
 var socket = io.connect(url);
 // Defining Variables
 var user;
+let color='#7fff00'
+let stroke = 5;
 var room = {}
 var canvas, stage;
 var drawing = true;
@@ -13,6 +15,11 @@ let gamePlayObj = {
     drawingUser: '',
     scores: {}
 }
+
+//TODO: color ans stroke choices
+//colordiv. on click check data attribute and set that as color var value
+//stroke div, on click check data attribute and set as stroke value
+
 
 //Start game button listener
 gameButton.on('click', e => {
