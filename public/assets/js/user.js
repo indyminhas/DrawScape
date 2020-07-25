@@ -1,10 +1,14 @@
-// when the user is passed through to their user page, GET request for that users data
-// need to also GET request for all the rooms that user is a part of, and admin of
+const roomList = $("#roomList")
 
 // On connection, get data for user with that id
 $(function () {
-    $.get('/api/user/:id', function (data) {
-        res.render("user", data)
+    $.get("/api/user", function (data, status) {
+        console.log(data)
+        data.Rooms.forEach(room => {
+            $(`<li class="collection-item">
+               <a href="/room/${room.id}" class="secondary-content"> ${room.room_name}</a>
+                </li>`).appendTo(roomList)
+        })
     })
 })
 

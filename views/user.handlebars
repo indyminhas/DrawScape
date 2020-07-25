@@ -1,3 +1,4 @@
+
 <body class="bodyUser">
 
   {{!-- navbar --}}
@@ -22,11 +23,9 @@
           <div class="card mt5">
             <div class="card-content grey-text text-darken-3">
               <span class="card-title">User Details</span>
-              {{#each userDetails}}
               <h5>Username: {{user_name}}</h5>
               <h5>email: {{email}}</h5>
-              <h5>password: {{password}}</h5>
-              {{/each}}
+              {{!-- <h5>password: {{password}}</h5> --}}
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-3">Card Title<i
@@ -40,12 +39,7 @@
           <div class="card mt5">
             <div class="card-content grey-text text-darken-3">
               <span class="card-title">Rooms You're In</span>
-              <ul>
-                {{#each rooms}}
-                <li class="collection-item">
-                  <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-                </li>
-                {{/each}}
+              <ul id = "roomList">
               </ul>
             </div>
           </div>
