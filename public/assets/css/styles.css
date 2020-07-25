@@ -1,4 +1,4 @@
-/* Set a style for welcome page buttons */
+/* Set a style for all buttons */
   .button {
     background-color: lightskyblue;
     color: black;
@@ -38,10 +38,10 @@
 
 /* CHAT BOX */
 
-hr {
+/* hr {
   border: 1px solid ;
   margin-bottom: 25px;
-}
+} */
 
 .testing{
 
@@ -49,10 +49,10 @@ hr {
   width:auto;
   height:400px;
   background-color:white;
+  color: black;
   overflow:scroll;
 
 }
-
 
 
 
