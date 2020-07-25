@@ -4,7 +4,7 @@
   <header>
     <nav>
       <div class="nav-wrapper blue lighten-2">
-        <a href="#home" class="brand-logo center white-text">User Profile</a>
+        <a href="#home" class="brand-logo center white-text header-title">User Profile</a>
         <ul class="left hide-on-med-and-down">
           <li><a href="#home"><i class="material-icons">home</i></a></li>
         </ul>
@@ -13,46 +13,47 @@
   </header>
   <br>
 
-<main>
-  <div class="row">
+  <main>
     <div class="container">
+      <div class="row">
 
-      {{!-- user details section card --}}
-      <div class="col m6 l6">
-        <div class="card mt5">
-          <div class="card-content grey-text text-darken-3">
-            <span class="card-title">User Details</span>
-            {{#each userDetails}}
-            <h5>Username: {{user_name}}</h5>
-            <h5>email: {{email}}</h5>
-            <h5>password: {{password}}</h5>
-            {{/each}}
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-3">Card Title<i class="material-icons right">close</i></span>
-            <h5>Update Details</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col m6 l6">
-        <div class="card mt5">
-          <div class="card-content grey-text text-darken-3">
-            <span class="card-title">Rooms You're In</span>
-            <ul>
-              {{#each rooms}}
-              <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-              </li>
+        {{!-- user details section card --}}
+        <div class="col m6 l6">
+          <div class="card mt5">
+            <div class="card-content grey-text text-darken-3">
+              <span class="card-title">User Details</span>
+              {{#each userDetails}}
+              <h5>Username: {{user_name}}</h5>
+              <h5>email: {{email}}</h5>
+              <h5>password: {{password}}</h5>
               {{/each}}
-            </ul>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-3">Card Title<i
+                  class="material-icons right">close</i></span>
+              <h5>Update Details</h5>
+            </div>
           </div>
         </div>
+
+        <div class="col m6 l6">
+          <div class="card mt5">
+            <div class="card-content grey-text text-darken-3">
+              <span class="card-title">Rooms You're In</span>
+              <ul>
+                {{#each rooms}}
+                <li class="collection-item">
+                  <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
       </div>
-
-
     </div>
-  </div>
   </main>
 
   <!--Footer-->

@@ -33,6 +33,10 @@ font-family: 'Rock Salt', cursive;
   flex-direction: column;
 }
 
+.indexCard {
+    opacity: .9;
+}
+
 /* Full-width inputs */
 .input[type="text"],
 input[type="password"] {

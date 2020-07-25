@@ -3,24 +3,17 @@ var url = 'localhost:3000';
 var socket = io.connect(url);
 // Defining Variables
 var user;
-//TODO: This is where we want to assign username and/or ID to user for all socket transmission action
-$(function(){
-    user = socket.id
-})
-var room = $("#room").val()
+var room = {}
 var canvas, stage;
 var drawing = true;
 const gameButton = $("#Game-Start-Button")
-
-//Puts user into correct Room
-socket.emit('roomchoice', room)
-
 let gamePlayObj = {
     game: false,
     word: '',
     drawingUser: '',
     scores: {}
 }
+
 //Start game button listener
 gameButton.on('click', e => {
     e.preventDefault()
@@ -40,24 +33,24 @@ socket.on('game-start', object => {
         $("#word").text("")
         gameButton.css("display", "none")
         // When you are the drawer, then drawing = true
-        if (gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length] === socket.id) {
+        if (gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length] === room.user_name) {
             drawing = true;
             $("#word").text(gamePlayObj.wordArr[gamePlayObj.rounds].word)
         }
-    }else{
+    } else {
         drawing = true
         gamePlayObj.game = false
         $("#word").text("")
-        gameButton.css("display","inline-block")
+        gameButton.css("display", "inline-block")
     }
     //update scores
     $("#scores").empty()
     $("<h5>").text("Scores:").appendTo("#scores")
-    for(let i in object.scores){
+    for (let i in object.scores) {
         console.log(i)
         $(`<p>`).text(`${i}: ${object.scores[i]}`).appendTo("#scores")
     }
-    
+
 
 })
 

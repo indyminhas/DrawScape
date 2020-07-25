@@ -70,21 +70,22 @@ db.sequelize.sync({ force: false}).then(function () {
     socket.on('roomchoice', function (room) {
       //TODO: When a user joins an in progress game, they have drawing capability
       // User joins specific room
-      socket.join(room)
+      socket.join(room.room)
+      console.log(socket.session)
       //tell the room that someone joined
-      io.to(room).emit('chat-message', socket.id + " joined the room.")
-      // Pushes socket.id into user Array
-      if(allUsers[room]){
-        allUsers[room].push(socket.id)
-        scores[room][socket.id] = 0
+      io.to(room.room).emit('chat-message', room.user_name + " joined the room.room.")
+      // Pushes room.user_name into user Array
+      if(allUsers[room.room]){
+        allUsers[room.room].push(room.user_name)
+        scores[room.room][room.user_name] = 0
         console.log(allUsers)
         
         
       }else{
-        allUsers[room] = []
-        scores[room] = {}
-        allUsers[room].push(socket.id)
-        scores[room][socket.id] = 0
+        allUsers[room.room] = []
+        scores[room.room] = {}
+        allUsers[room.room].push(room.user_name)
+        scores[room.room][room.user_name] = 0
         console.log(allUsers)
       }
 
@@ -92,22 +93,23 @@ db.sequelize.sync({ force: false}).then(function () {
       socket.on('game-start', async gamePlayObj => {
         // receives game=true 
         gamePlayObj.rounds = 0
-        gamePlayObj.users = allUsers[room]
-        gamePlayObj.scores = scores[room]
+        gamePlayObj.users = allUsers[room.room]
+        gamePlayObj.scores = scores[room.room]
         console.log("Looking for Word")
+        //TODO: Randomize the words
         gamePlayObj.wordArr = await db.Word.findAll();
         console.log("Done Looking for Word")
         gamePlayObj.drawingUser = gamePlayObj.rounds
-        io.to(room).emit('game-start', gamePlayObj)
+        io.to(room.room).emit('game-start', gamePlayObj)
       });
       // Listens for Drawing Function
       socket.on('mousemove', function (mouse) {
         //This line sends the event (broadcasts it) to everyone except the original client.
-        socket.to(room).broadcast.emit('moving', mouse);
+        socket.to(room.room).broadcast.emit('moving', mouse);
       });
       // start listening for chat messages
       socket.on('send-chat-message', data => {
-        //Listen to chat messages in room if the game is in play
+        //Listen to chat messages in room.room if the game is in play
         if (data.game) {
           //check chat messages if the correct answer is guessed
           if (data.message.trim() === data.wordArr[data.rounds].word) {
@@ -123,31 +125,32 @@ db.sequelize.sync({ force: false}).then(function () {
             data.message = `Gussed the word ${data.wordArr[data.rounds].word}`
             data.rounds++
             data.drawingUser = data.rounds
-            io.to(room).emit('chat-message', data.user + ": " + data.message)
+            io.to(room.room).emit('chat-message', data.user + ": " + data.message)
             //check if we have reached the end of the game
+            //TODO: have user set this variable
             if (data.rounds === 3) {
               data.game = false
               console.log("game is over")
-              io.to(room).emit('game-start', data)
+              io.to(room.room).emit('game-start', data)
             } else {
-              io.to(room).emit('game-start', data)
+              io.to(room.room).emit('game-start', data)
             }
           } else {
             //if the chat message was not the correct answer, emit as usual
-            io.to(room).emit('chat-message', data.user + ": " + data.message)
+            io.to(room.room).emit('chat-message', data.user + ": " + data.message)
           }
           
         } else {
           //if game play is not on, emit chat messages as usual
-          io.to(room).emit('chat-message', data.user + ": " + data.message)
+          io.to(room.room).emit('chat-message', data.user + ": " + data.message)
         }
       });
       //When user disconnects take user out of allUsers and scores 
       socket.on('disconnect', ()=>{
-        console.log(socket.id + " disconnected")
-        delete scores[room][socket.id]
-        allUsers[room]=allUsers[room].filter(element => element !== socket.id)
-        io.to(room).emit('chat-message', socket.id + " left the room.")
+        console.log(room.user_name + " disconnected")
+        delete scores[room.room][room.user_name]
+        allUsers[room.room]=allUsers[room.room].filter(element => element !== room.user_name)
+        io.to(room.room).emit('chat-message', room.user_name + " left the room.")
       })
     });
   });
