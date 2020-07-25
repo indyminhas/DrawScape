@@ -123,7 +123,7 @@ db.sequelize.sync({ force: false}).then(function () {
               data.scores[data.user] += 30
             }
             //Notify the players that a round has ended
-            data.message = `Gussed the word ${data.wordArr[data.rounds].word}`
+            data.message = `Guessed the word ${data.wordArr[data.rounds].word}`
             data.rounds++
             data.drawingUser = data.rounds
             io.to(room.room).emit('chat-message', data.user + ": " + data.message)

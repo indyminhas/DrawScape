@@ -27,6 +27,7 @@ $('.color-choice').on('click', function(event){
 //Start game button listener
 gameButton.on('click', e => {
     e.preventDefault()
+    console.log("you got here")
     //Object to send through for game play
     //Game boolean flag to true
     gamePlayObj.game = true

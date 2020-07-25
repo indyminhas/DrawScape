@@ -30,6 +30,7 @@ $(function () {
                 data.forEach(element => {
                     appendMessage(element.User.user_name + ": " + element.message)
                 })
+                messageContainer.scrollTop = messageContainer.scrollHeight;
             });
         
         })
@@ -56,6 +57,7 @@ $(function () {
         // Appends each new chat message to the page
         socket.on('chat-message', data => {
             appendMessage(data)
+            messageContainer.scrollTop = messageContainer.scrollHeight;
         })
     
         
