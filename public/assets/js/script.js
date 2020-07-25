@@ -4,6 +4,10 @@ const signUpForm = document.getElementById("sign-up-container")
 const userInput = document.getElementById('userInput')
 const emailInput = document.getElementById('emailInput')
 const passInput = document.getElementById('passInput')
+const roomNumber = document.getElementById('room-number').value
+console.log(roomNumber)
+
+
 
 signUpForm.addEventListener('submit', e => {
     e.preventDefault()
@@ -26,14 +30,18 @@ const passLogInput = document.getElementById('passLogInput')
 
 logInForm.addEventListener('submit', e => {
     e.preventDefault()
-    console.log("You got here")
     var user = {
         email: emailLogInput.value.trim(),
         password: passLogInput.value.trim(),
     }
     // This is the post request to the messages table
     $.post("/login", user).then(function(response){
-        window.location.href = "/"
+        if(roomNumber === ""){
+            window.location.href = "/"
+        }else{
+            window.location.href = `/room/${roomNumber}`
+        }
+        
     }).catch(err=>{
         alert(err)
     })
