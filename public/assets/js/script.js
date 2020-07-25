@@ -42,6 +42,13 @@ logInForm.addEventListener('submit', e => {
 
 
 
+// do get request from database to get specific user data based on username
+// and password
+// check to see if the username and password entered matched the data sent back
+
+// if username and password match, redirect user to user's profile page
+
+
 
 
 

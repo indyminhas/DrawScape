@@ -1,65 +1,72 @@
-<div class="header center blue lighten-2" id="myHeader">
-  <h2>DrawScape</h2>
-</div>
+<body class="bodyIndex">
 
-<br>
-<br>
-<br>
-<form id="log-in-container">
-  <div class="container">
-    <h4>Log In</h4>
-    <div class="row">
-      <div class="input-field col s6 center">
-        <input id="emailLogInput" type="text" class="validate">
-        <label for="first_name">Email</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6 center">
-        <input id="passLogInput" type="text" class="validate">
-        <label for="first_name">Password</label>
-      </div>
-    </div>
-    <button class="button" id="user-send-button">Go</button>
-  </div>
-</form>
-<br>
-<br>
-<br>
-{{!-- materialize sign up  --}}
-<div class="row">
-  
-  <br>
-  <br>
-  <form id="sign-up-container" class="col s12">
-    <div class="container">
-      <h4>Sign Up!</h4>
-      <div class="row">
-        <div class="input-field col s6 center">
-          <input id="userInput" type="text" class="validate">
-          <label for="first_name">Username</label>
+    <header>
+        <nav>
+            <div class="nav-wrapper blue lighten-2">
+                <a href="#home" class="brand-logo center white-text header-title">DrawScape</a>
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="#home"><i class="material-icons">home</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <br>
+
+        {{!-- login section --}}
+        <div class="container">
+            <div class="row">
+                <div class="col m3 l3"></div>
+                <div class="col s12 m6 l6">
+                    <div class="card indexCard">
+                        <div class="card-content grey-text text-darken-3">
+                            <span class="card-title">Log In</span>
+                            <form id="log-in-container">
+
+
+                                <div class="input-field center">
+                                    <input id="emailLogInput" type="text" class="validate">
+                                    <label for="first_name">Email</label>
+                                </div>
+                                <div class="input-field center">
+                                    <input id="passLogInput" type="text" class="validate">
+                                    <label for="first_name">Password</label>
+                                </div>
+                                <button class="button" id="user-send-button">Go</button>
+                            </form>
+                        </div>
+                    </div>
+                    {{!-- materialize sign up  --}}
+                    <div class="card indexCard">
+                        <div class="card-content grey-text text-darken-3">
+                            <span class="card-title">Sign Up</span>
+                            <form id="log-in-container">
+
+
+                                <div class="input-field center">
+                                    <input id="userInput" type="text" class="validate">
+                                    <label for="first_name">Username</label>
+                                </div>
+                                <div class="input-field center">
+                                    <input id="emailInput" type="email" class="validate">
+                                    <label for="email">Enter Email</label>
+                                </div>
+                                <div class="input-field center">
+                                    <input id="passInput" type="password" class="validate">
+                                    <label for="password">Create Password</label>
+                                </div>
+                                <button class="button" id="user-send-button">Go <i class="fa fa-pencil"
+                                        style="font-size:14px"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m3 l3"></div>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6 center">
-          <input id="emailInput" type="email" class="validate">
-          <label for="email">Enter Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6 center">
-          <input id="passInput" type="password" class="validate">
-          <label for="password">Create Password</label>
-        </div>
-      </div>
-      <button class="button" id="user-send-button">Go <i class="fa fa-pencil" style="font-size:14px"></i></button>
-    </div>
+    </main>
 
-  </form>
-</div>
-
-
-
-
+</body>
 
 <script src="/assets/js/script.js"></script>
