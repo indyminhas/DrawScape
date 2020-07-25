@@ -140,3 +140,43 @@ hr {
   opacity: 0.9;
   overflow: scroll;
 }
+
+/* stroke and color choice */
+div#color-stroke-bar{
+  margin-top: 1rem;
+  position:absolute;
+  /* border: 1px solid black;   */
+}
+
+button.color-choice {
+  margin: 3px 0;
+  border: 2px solid black !important;
+}
+#black-button {
+  background-color:black !important;
+}
+#blue-button {
+  background-color:blue !important;
+}
+#green-button {
+  background-color:green !important;
+}
+#yellow-button {
+  background-color:yellow !important;
+}
+button.stroke-choice {
+  background: none !important;
+  border: 2px solid black !important;
+  margin: 3px 0;
+}
+@media only screen and (max-width: 992px){
+  div#color-stroke-bar{
+    margin-top: 1rem;
+    align-self: flex-start;
+  }  
+
+
+  .color-choice, .stroke-choice {
+    display: inline-block;
+  }
+}
