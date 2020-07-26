@@ -100,7 +100,7 @@ button {
 .bodyGameWindow {
   margin: 0;
   padding: 0;
-  background-image: url(../images/orange-and-blue-abstract-painting-1532704.jpg);
+  background-image: linear-gradient(to right top, #486a9d, #006581, #005a5b, #264b38, #343b23);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;

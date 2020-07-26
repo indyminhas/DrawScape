@@ -21,10 +21,12 @@ $(document).ready(function(){
 const createRoomForm = document.getElementById("createRoomForm");
 const createRoomInput = document.getElementById("createRoomInput");
 
+
 createRoomForm.addEventListener('submit', e => {
     e.preventDefault()
+    console.log(createRoomInput.value)
     console.log("createRoom button working")
-    var room = { room_name: createRoomInput.value.trim()}
+    var room = {name: createRoomInput.value}
     // post request to the room table
     $.post('/api/rooms', room).then(function(){
         console.log("You created a room")

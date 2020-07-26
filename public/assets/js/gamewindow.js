@@ -46,7 +46,8 @@ socket.on('game-start', object => {
         // When you are the drawer, then drawing = true
         if (gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length] === room.user_name) {
             drawing = true;
-            $("#word").text(gamePlayObj.wordArr[gamePlayObj.rounds].word)
+            $("#word").text("")
+            $("<h5>").text("Word: " + gamePlayObj.wordArr[gamePlayObj.rounds].word).appendTo("#word")
         }
     } else {
         drawing = true

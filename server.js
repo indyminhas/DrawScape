@@ -67,7 +67,6 @@ db.sequelize.sync({ force: false}).then(function () {
   io.on('connection', function (socket) {
     console.log('Client connected...')
     // Listens for room choice
-    // socket.nickname = Math.random()
     socket.on('roomchoice', function (room) {
       //TODO: When a user joins an in progress game, they have drawing capability
       // User joins specific room
