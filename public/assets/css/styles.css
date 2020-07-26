@@ -131,6 +131,9 @@ hr {
   border: 1px solid;
   margin-bottom: 25px;
 }
+.chatWindow{
+  background-color: white
+}
 
 .messageContainer {
   display: block;
@@ -140,11 +143,15 @@ hr {
   opacity: 0.9;
   overflow: scroll;
   overflow-x: hidden;
+  text-align: center;
 }
 .messageContainer::-webkit-scrollbar {
   display: none;
   }
-
+#message-input{
+  outline: black;
+  border-radius: 10px;
+}
 /* stroke and color choice */
 div#color-stroke-bar{
   margin-top: 1rem;
