@@ -23,11 +23,9 @@ const createRoomInput = document.getElementById("createRoomInput");
 
 createRoomForm.addEventListener('submit', e => {
     e.preventDefault()
-    console.log("createRoom button working")
     var room = { room_name: createRoomInput.value.trim()}
     // post request to the room table
     $.post('/api/rooms', room).then(function(){
-        console.log("You created a room")
         location.reload()
     }).catch(err=>{
         alert(err)
