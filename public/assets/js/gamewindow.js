@@ -65,8 +65,15 @@ socket.on('game-start', object => {
 
 
 })
-
-
+// Function to Copy Url
+function Copy() 
+{      
+    var Url = document.getElementById("paste-box");
+    Url.value = window.location.href;
+    Url.focus();
+    Url.select();  
+    document.execCommand("Copy");
+}
 
 
 
