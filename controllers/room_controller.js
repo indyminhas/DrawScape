@@ -24,11 +24,10 @@ router.get('/api/rooms/:roomroute', (req, res) => {
 });
 
 router.post('/api/rooms', (req, res) => {
-    console.log(req.body.room_name)
     db.Room.create({
-        room_name: req.body.room_name,
+        room_name: req.body.name,
         UserId: req.session.user.id,
-        route_name: `${req.session.user.id}${req.body.room_name.trim().replace(/\s+/g, "")}`
+        route_name: `${req.session.user.id}${req.body.name.trim().replace(/\s+/g, "")}`
     }).then(result => res.json(result)).catch(err => res.status(500).end())
 });
 
