@@ -161,7 +161,7 @@ div#color-stroke-bar{
 
 button.color-choice {
   margin: 3px 0;
-  border: 2px solid black !important;
+  /* border: 2px solid black !important; */
 }
 #black-button {
   background-color:black !important;
