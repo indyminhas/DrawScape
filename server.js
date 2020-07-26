@@ -7,6 +7,7 @@ const express = require("express")
 const exphbs = require("express-handlebars");
 const session = require("express-session");
 const Sequelize = require('sequelize')
+const MemoryStore = require('memorystore')(session)
 
 // Express App Setup
 // =============================================================
@@ -30,7 +31,8 @@ app.use(session({
   saveUninitialized: true,
   cookie: {
       maxAge: 7200000
-  }
+  },
+  store: new MemoryStore({checkPeriod: 7200000})
 }))
 
 // configure handlebars as the view engine
@@ -71,7 +73,6 @@ db.sequelize.sync({ force: false}).then(function () {
       //TODO: When a user joins an in progress game, they have drawing capability
       // User joins specific room
       socket.join(room.room)
-      console.log(socket.session)
       //tell the room that someone joined
       io.to(room.room).emit('chat-message', room.user_name + " joined the room.")
       // Pushes room.user_name into user Array
@@ -85,7 +86,7 @@ db.sequelize.sync({ force: false}).then(function () {
         allUsers[room.room].push(room.user_name)
         scores[room.room][room.user_name] = 0
       }
-      console.log(allUsers[room.room])
+
       let counter;
       //server listens to game start socket.on 'game-start' 
       socket.on('game-start', async gamePlayObj => {
@@ -96,8 +97,6 @@ db.sequelize.sync({ force: false}).then(function () {
         counter =0
         
         let num = gamePlayObj.rounds * allUsers[room.room].length + 5
-        console.log(num)
-        console.log(allUsers[room.room].length)
         gamePlayObj.wordArr = await db.Word.findAll({order: Sequelize.literal('RAND()'), limit: num });
         gamePlayObj.drawingUser = counter
         io.to(room.room).emit('game-start', gamePlayObj)
