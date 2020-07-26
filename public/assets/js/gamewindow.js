@@ -3,6 +3,8 @@ var url = 'localhost:3000';
 var socket = io.connect(url);
 // Defining Variables
 var user;
+let color='#fa8072'
+let stroke = 5;
 var room = {}
 var canvas, stage;
 var drawing = true;
@@ -13,6 +15,14 @@ let gamePlayObj = {
     drawingUser: '',
     scores: {}
 }
+
+//color ans stroke choices
+$('.stroke-choice').on('click', function(event){
+    stroke= parseInt($(this).data('stroke'))
+})
+$('.color-choice').on('click', function(event){
+    color= $(this).data('color')
+})
 
 //Start game button listener
 gameButton.on('click', e => {

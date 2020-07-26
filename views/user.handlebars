@@ -1,4 +1,3 @@
-
 <body class="bodyUser">
 
   {{!-- navbar --}}
@@ -17,13 +16,13 @@
   {{!-- Main content of page --}}
   <main>
     <div class="container">
-      
+
       <div class="row">
         {{!-- user details section card --}}
         <div class="col m6 l6">
           <div class="card">
             <div class="card-content grey-text text-darken-3">
-              <span class="card-title">User Details</span>
+              <span class="card-title">Your User Details</span>
               <h5>Username: {{user_name}}</h5>
               <h5>email: {{email}}</h5>
               {{!-- <h5>password: {{password}}</h5> --}}
@@ -40,9 +39,15 @@
         <div class="col m6 l6">
           <div class="card">
             <div class="card-content grey-text text-darken-3">
-              <span class="card-title">Rooms You're In</span>
-              <ul id = "roomList">
+              <span class="card-title">Your Rooms</span>
+              <ul id="roomList">
               </ul>
+              <ul class="collapsible expandable">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">people_outline</i>Create A Room</div>
+              <div class="collapsible-body"></div>
+            </li>
+          </ul>
             </div>
           </div>
         </div>
@@ -51,26 +56,30 @@
       <div class="row">
         {{!-- Update User Details section --}}
         <div class="col m6 l6">
-          </div>
+          
+        </div>
 
         {{!-- Create A Room Section --}}
         <div class="col m6 l6">
-          <div class="card">
-            <div class="card-content grey-text text-darken-3">
-              <span class="card-title">Create A Room</span>
-              <form id="sign-up-container">
+          <ul class="collapsible">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">people_outline</i>Create A Room</div>
+              <div class="collapsible-body">
+                <span class="card-title">Create A Room</span>
+              <form id="createRoomForm">
                 <div class="input-field center">
-                  <input id="userInput" type="text">
+                  <input id="createRoomInput" type="text">
                   <label for="room_name">Room Name</label>
                 </div>
-                <button type= "submit" class="button" id="create-room-button">Create Room</button>
+                <button type="submit" class="button" id="create-room-button">Create Room</button>
               </form>
-            </div>
-          </div>
+              </div>
+            </li>
+          </ul>
         </div>
-    
 
-    </div>
+
+      </div>
   </main>
 
   <!--Footer-->

@@ -32,6 +32,14 @@ router.post('/api/rooms', (req, res) => {
 });
 
 //owner can delete so need destroy to delete room
+router.delete('/api/rooms/:id', (req,res)=>{
+    db.Room.destroy({
+        // needs completing
+    })
+})
+
+
+
 //how do we add users to rooms or rooms to users
 //create room needs a router.create
 
