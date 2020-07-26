@@ -23,10 +23,20 @@
 
 <div class="row">
   <div class="col s12">
-    <div class="row">
+    <div class="row valign-wrapper">
       <div class="input-field col m9">
-        <div id="cursors"></div>
-        <canvas id="paper" width="960" height="500"></canvas>
+          <div class="center col m12 l1" id="color-stroke-bar">
+                <button class="btn-floating color-choice" data-color='#000000' id='black-button' style="background-color: black;"></button>
+                <button class="btn-floating color-choice red" data-color='#FF0000' id='red-button' ></button>
+                <button class="btn-floating color-choice" data-color='#0000ff' id='blue-button' ></button>
+                <button class="btn-floating color-choice" data-color='#00ff00' id='green-button' ></button>
+                <button class="btn-floating color-choice" data-color='#ffff00' id='yellow-button' ></button>
+             
+                <button class="btn-floating stroke-choice btn-large" data-stroke='30' ></button>
+                <button class="btn-floating stroke-choice " data-stroke='15' ></button>
+                <button class="btn-floating stroke-choice btn-small" data-stroke='5' ></button>
+          </div>
+        <canvas class="right" id="paper" width="960" height="500"></canvas>
       </div>
       {{!-- chat box --}}
       
@@ -40,11 +50,11 @@
           <button type="submit" class="btn" id="send-button button">Send <i class="fa fa-pencil" style="font-size:14px"></i></button>
         </form>
         <br>
-        <button id="Game-Start-Button button" class = "btn">Start Game</button>
+        <button id="Game-Start-Button" class = "btn">Start Game</button>
       </div>
     </div>
   </div>
-  
+ 
   <div class="row">
     <div class="col m12 blue lighten-2">
       <h5>Current Drawer</h5>
