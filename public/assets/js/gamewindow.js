@@ -49,7 +49,7 @@ socket.on('game-start', object => {
             drawing = true;
 
             $("#word").text("")
-            $("<h5>").text("Word: " + gamePlayObj.wordArr[gamePlayObj.rounds].word).appendTo("#word")
+            $("<h5>").text("Word: " + gamePlayObj.wordArr[gamePlayObj.drawingUser].word).appendTo("#word")
         }
     } else {
         drawing = true
