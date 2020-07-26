@@ -7,10 +7,10 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
             }
         },
-        owner_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
+        route_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     });
 
     Room.associate = function(models) {
@@ -23,6 +23,12 @@ module.exports = function(sequelize, DataTypes) {
         // Room has many-to-many relationship with User - junction table holds foreign keys
         Room.belongsToMany(models.User, { 
             through: 'junctionTable'})
+
+        Room.belongsTo(models.User, {
+            foreignKey:{
+                allowNull:false
+            }
+        })
     };
     return Room;
 };
