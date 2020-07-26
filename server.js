@@ -79,8 +79,7 @@ db.sequelize.sync({ force: false}).then(function () {
         allUsers[room.room].push(room.user_name)
         scores[room.room][room.user_name] = 0
         console.log(allUsers)
-        
-        
+
       }else{
         allUsers[room.room] = []
         scores[room.room] = {}
