@@ -32,7 +32,7 @@ font-family: 'Oleo Script', cursive; */
   flex-direction: column;
 }
 
-.indexCard {
+.cardOpacity {
   opacity: 0.9;
 }
 
@@ -92,6 +92,24 @@ button {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+}
+
+.delete-button {
+  background-color: red !important;
+  color: white;
+  padding: 14px 20px;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+#modal1 {
+  z-index: 5 !important;
+}
+
+.yourRooms {
+  z-index: 10 !important;
 }
 
 /* GAMEWINDOW TEMPLATE */

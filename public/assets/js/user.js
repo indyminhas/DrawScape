@@ -12,9 +12,14 @@ $(function () {
     })
 })
 
-// initialization for according element
+// initialization for accordian element
 $(document).ready(function(){
     $('.collapsible').collapsible();
+  });
+
+//   modal initialization for delete account
+  $(document).ready(function(){
+    $('.modal').modal();
   });
 
 // Create Room functionality
@@ -37,7 +42,38 @@ createRoomForm.addEventListener('submit', e => {
     createRoomForm.value = ''
 });
 
+
+// Update Details functionality
+const updateDetailsForm = document.getElementById("updateDetailsForm");
+const updateUserInput = document.getElementById("updateUserInput");
+const updateEmailInput = document.getElementById("updateEmailInput");
+const updatePassInput = document.getElementById("updatePassInput");
+
+updateDetailsForm.addEventListener('submit', e => {
+    e.preventDefault();
+    console.log("you attempted to updated a user")
+    var updatedUser = {
+        user_name: updateUserInput.value,
+        email: updateEmailInput.value,
+        password: updatePassInput.value
+    }
+    // update request to the user table
+    $.put('/api/user/:id', updatedUser => {
+        console.log("you updated a user");
+        location.reload();
+    }).catch(err => {
+        alert(err)
+    })
+    updateDetailsForm.value = ''
+});
+
 // Delete Room functionality
+const deleteUser = document.getElementById("finalDeleteButton");
+
+deleteUser.addEventListener('click', e => {
+    e.preventDefault();
+    console.log("you clicked final delete")
+})
 
 
 
