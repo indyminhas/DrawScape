@@ -1,42 +1,49 @@
 $(function () {
-  
+
     //=======================================================================================
     //chat
-        // Grabbing HTML Elements
-        const messageContainer = document.getElementById('message-container')
-        const messageForm = $('#send-container')
-        const messageInput = document.getElementById('message-input')
-        
-        function appendMessage(message) {
-            const messageElement = document.createElement('p')
-            messageElement.innerText = message
-            messageContainer.append(messageElement)
-        }
+    // Grabbing HTML Elements
+    const messageContainer = document.getElementById('message-container')
+    const messageForm = $('#send-container')
+    const messageInput = document.getElementById('message-input')
+    const roomRoute = $("#room").val()
+
+
+    function appendMessage(message) {
+        const messageElement = document.createElement('p')
+        messageElement.innerText = message
+        messageContainer.append(messageElement)
+    }
+    $.get(`/api/rooms/${roomRoute}`, function (data, status) {
+        const roomNumber = data[0].id
+
+
+
         //TODO: This is where we want to assign username and/or ID to user for all socket transmission action
         $.get("/loggedinuser", function (data, status) {
             user = data.user_name
             console.log(data)
             console.log(data.id)
+            //Creates Room Object
             room = {
-                room: $("#room").val(),
+                room: roomRoute,
                 user_name: user
-        
             }
             //Puts user into correct Room
             socket.emit('roomchoice', room)
             // On connection it appends all previous messages to the chat room
-            $.get(`/api/messages/${room.room}`, function (data) {
+            $.get(`/api/messages/${roomNumber}`, function (data) {
                 console.log(data)
                 data.forEach(element => {
                     appendMessage(element.User.user_name + ": " + element.message)
                 })
                 messageContainer.scrollTop = messageContainer.scrollHeight;
             });
-        
+
         })
 
-    
-    
+
+
         messageForm.on('submit', e => {
             e.preventDefault()
             //Sends chat value to server
@@ -45,9 +52,10 @@ $(function () {
             gamePlayObj.user = user
             socket.emit('send-chat-message', gamePlayObj)
             // RoomId and UserId are placeholder values for now.
+            //TODO: room.room is the routename but we don't want that to be the room id
             var postMessage = {
                 message: message,
-                roomId: room.room
+                roomId: roomNumber
             }
             console.log(postMessage)
             // This is the post request to the messages table
@@ -59,6 +67,6 @@ $(function () {
             appendMessage(data)
             messageContainer.scrollTop = messageContainer.scrollHeight;
         })
-    
-        
+
     })
+})

@@ -3,7 +3,7 @@
 <nav>
   {{!-- need to insert the specific room name here --}}
     <div class="nav-wrapper blue lighten-2">
-      <a href="#home" class="brand-logo center white-text header-title"> {{roomnumber}}</a>
+      <a href="#home" class="brand-logo center white-text header-title"> {{routename}}</a>
       <ul class="left hide-on-med-and-down">
           <li><a href="#home"><i class="material-icons">home</i></a></li>
      </ul> 
@@ -11,7 +11,8 @@
   </nav>
 
 {{!-- this part is the drawing box with the cursor divs --}}
-<input type="hidden" value={{roomnumber}} id = "room">
+<input type="hidden" value={{routename}} id = "room">
+
 <div class="row">
   <div class="col m9 blue lighten-2">
     <h5>Word: <span id = "word"></span></h5>

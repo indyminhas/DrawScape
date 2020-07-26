@@ -46,17 +46,17 @@ router.get('/user', (req, res) => {
 
 
 // Renders the room page with specific room data
-router.get('/room/:roomnumber', (req, res) => {
+router.get('/room/:routename', (req, res) => {
   if (!req.session.user) {
-    res.redirect('/login/' + req.params.roomnumber)
+    res.redirect('/login/' + req.params.routename)
   } else {
-    res.render('gamewindow', { roomnumber: req.params.roomnumber})
-  }
-});
+    res.render('gamewindow', {routename: req.params.routename })
+}});
+
 
 //renders login
-router.get('/login/:roomnumber', (req, res) => {
-  res.render('index', {roomnumber: req.params.roomnumber})
+router.get('/login/:routename', (req, res) => {
+  res.render('index', {routename:req.params.routename})
 });
 
 
