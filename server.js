@@ -99,7 +99,6 @@ db.sequelize.sync({ force: false}).then(function () {
         console.log(num)
         console.log(allUsers[room.room].length)
         gamePlayObj.wordArr = await db.Word.findAll({order: Sequelize.literal('RAND()'), limit: num });
-        console.log( gamePlayObj.wordArr)
         gamePlayObj.drawingUser = counter
         io.to(room.room).emit('game-start', gamePlayObj)
       });
@@ -112,6 +111,9 @@ db.sequelize.sync({ force: false}).then(function () {
       socket.on('send-chat-message', data => {
         //Listen to chat messages in room.room if the game is in play
         if (data.game) {
+          console.log(data.wordArr)
+          console.log(data.wordArr[counter])
+          console.log(counter)
           //check chat messages if the correct answer is guessed
           if (data.message.trim() === data.wordArr[counter].word) {
             //if drawer guesses their own word, PUNISH, everyone else gets 30 pnts
