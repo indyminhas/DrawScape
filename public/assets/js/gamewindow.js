@@ -27,9 +27,10 @@ $('.color-choice').on('click', function(event){
 //Start game button listener
 gameButton.on('click', e => {
     e.preventDefault()
-    console.log("you got here")
+    console.log($('#roundsinput'))
     //Object to send through for game play
     //Game boolean flag to true
+    gamePlayObj.rounds = parseInt($('#roundsinput').val())
     gamePlayObj.game = true
     //Socket.emit gamePlayObj
     socket.emit('game-start', gamePlayObj)
