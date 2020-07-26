@@ -45,6 +45,7 @@ socket.on('game-start', object => {
         $("#word").text("")
         $('#roundsdiv').addClass('hide')
         $('#startbtndiv').addClass('hide')
+        $('#worddiv').removeClass('hide')
         // When you are the drawer, then drawing = true
         if (gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length] === room.user_name) {
             drawing = true;
@@ -60,6 +61,7 @@ socket.on('game-start', object => {
         $("#word").text("")
         $('#roundsdiv').removeClass('hide')
         $('#startbtndiv').removeClass('hide')
+        $('#worddiv').addClass('hide')
     }
     $("#current-drawer").text("")
     $("<h5>").text(gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length] + ' is drawing...').appendTo("#current-drawer")
