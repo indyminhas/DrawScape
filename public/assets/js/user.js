@@ -34,7 +34,6 @@ createRoomForm.addEventListener('submit', e => {
     var room = {name: createRoomInput.value}
     // post request to the room table
     $.post('/api/rooms', room).then(function(){
-        console.log("You created a room")
         location.reload()
     }).catch(err=>{
         alert(err)
