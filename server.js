@@ -87,18 +87,16 @@ db.sequelize.sync({ force: false}).then(function () {
         scores[room.room][room.user_name] = 0
       }
 
-      let counter;
       //server listens to game start socket.on 'game-start' 
       socket.on('game-start', async gamePlayObj => {
         // receives game=true 
         gamePlayObj.users = allUsers[room.room]
         gamePlayObj.scores = scores[room.room]
         //Randomize the words
-        counter =0
         
         let num = gamePlayObj.rounds * allUsers[room.room].length + 5
         gamePlayObj.wordArr = await db.Word.findAll({order: Sequelize.literal('RAND()'), limit: num });
-        gamePlayObj.drawingUser = counter
+        gamePlayObj.drawingUser = 0
         io.to(room.room).emit('game-start', gamePlayObj)
       });
       // Listens for Drawing Function
@@ -111,10 +109,10 @@ db.sequelize.sync({ force: false}).then(function () {
         //Listen to chat messages in room.room if the game is in play
         if (data.game) {
           console.log(data.wordArr)
-          console.log(data.wordArr[counter])
-          console.log(counter)
+          console.log(data.wordArr[data.drawingUser])
+          console.log(data.drawingUser)
           //check chat messages if the correct answer is guessed
-          if (data.message.trim() === data.wordArr[counter].word) {
+          if (data.message.trim() === data.wordArr[data.drawingUser].word) {
             //if drawer guesses their own word, PUNISH, everyone else gets 30 pnts
             if(data.users[data.drawingUser % data.users.length] === data.user){
               for (let player in data.scores){
@@ -124,12 +122,11 @@ db.sequelize.sync({ force: false}).then(function () {
               data.scores[data.user] += 30
             }
             //Notify the players that a round has ended
-            data.message = `Guessed the word ${data.wordArr[counter].word}`
-            counter++
-            data.drawingUser = counter
+            data.message = `Guessed the word ${data.wordArr[data.drawingUser].word}`
+            data.drawingUser++
             io.to(room.room).emit('chat-message', data.user + ": " + data.message)
             //check if we have reached the end of the game
-            if (counter === data.rounds * allUsers[room.room].length) {
+            if (data.drawingUser === data.rounds * allUsers[room.room].length) {
               data.game = false
               io.to(room.room).emit('game-start', data)
             } else {
