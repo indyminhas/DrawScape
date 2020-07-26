@@ -87,17 +87,16 @@ db.sequelize.sync({ force: false}).then(function () {
         scores[room.room][room.user_name] = 0
         console.log(allUsers)
       }
-
+      let counter;
       //server listens to game start socket.on 'game-start' 
       socket.on('game-start', async gamePlayObj => {
         // receives game=true 
-        gamePlayObj.rounds = 0
         gamePlayObj.users = allUsers[room.room]
         gamePlayObj.scores = scores[room.room]
-        console.log("Looking for Word")
         //Randomize the words
-        gamePlayObj.wordArr = await db.Word.findAll({order: Sequelize.literal('RAND()'), limit:3 });
-        console.log("Done Looking for Word")
+        counter =0
+        let num = gamePlayObj.rounds * allUsers[room.room].length + 5
+        gamePlayObj.wordArr = await db.Word.findAll({order: Sequelize.literal('RAND()'), limit: num });
         gamePlayObj.drawingUser = gamePlayObj.rounds
         io.to(room.room).emit('game-start', gamePlayObj)
       });
@@ -122,14 +121,12 @@ db.sequelize.sync({ force: false}).then(function () {
             }
             //Notify the players that a round has ended
             data.message = `Guessed the word ${data.wordArr[data.rounds].word}`
-            data.rounds++
-            data.drawingUser = data.rounds
+            counter++
+            data.drawingUser = counter
             io.to(room.room).emit('chat-message', data.user + ": " + data.message)
             //check if we have reached the end of the game
-            //TODO: have user set this variable
-            if (data.rounds === 3) {
+            if (counter === data.rounds * allUsers[room.room].length) {
               data.game = false
-              console.log("game is over")
               io.to(room.room).emit('game-start', data)
             } else {
               io.to(room.room).emit('game-start', data)

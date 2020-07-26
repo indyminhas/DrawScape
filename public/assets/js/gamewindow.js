@@ -27,9 +27,10 @@ $('.color-choice').on('click', function(event){
 //Start game button listener
 gameButton.on('click', e => {
     e.preventDefault()
-    console.log("you got here")
+    console.log($('#roundsinput'))
     //Object to send through for game play
     //Game boolean flag to true
+    gamePlayObj.rounds = parseInt($('#roundsinput').val())
     gamePlayObj.game = true
     //Socket.emit gamePlayObj
     socket.emit('game-start', gamePlayObj)
@@ -78,25 +79,7 @@ function Copy()
 }
 
 
-
-
-//Object to send through for game play
-// let gamePlayObj= {
-//     game: true,
-//     word: '',
-//     drawingUser: '',
-//     scores: {'user1': 100, 'user2': 50}
-// }
-
-//TODO: start game button listener
-//TODO: game boolean flag to true + socket.emit gamePlayObj that + drawing = false
-
-//TODO: when you are the drawer, then drawing = true
-//TODO: when new round drawing = false + stage.clear + update scores on page
-//TODO: when game over then drawing = true again
-//TODO: when game over display scores
-
-
-
-
-
+$(function(){
+    //for modal trigger
+    $('.modal').modal();
+})
