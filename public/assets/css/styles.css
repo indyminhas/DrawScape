@@ -156,12 +156,10 @@ hr {
 div#color-stroke-bar{
   margin-top: 1rem;
   position:absolute;
-  /* border: 1px solid black;   */
 }
 
 button.color-choice {
   margin: 3px 0;
-  border: 2px solid black !important;
 }
 #black-button {
   background-color:black !important;
@@ -188,10 +186,20 @@ button.stroke-choice {
     margin-top: 1rem;
     align-self: flex-start;
     position: relative;
-    background-color: lightskyblue;
+    background-color: white;
   }  
 
   .color-choice, .stroke-choice {
     display: inline-block;
   }
+}
+
+/* game start and score area */
+#roundsdiv {
+  margin-left:0;
+}
+
+#gameArea {
+  background-color: white;
+  opacity: 0.9;
 }
