@@ -39,47 +39,46 @@
         <div class="col m6 l6">
           <div class="card">
             <div class="card-content grey-text text-darken-3">
-              <span class="card-title">Your Rooms</span>
-              <ul id="roomList">
-              </ul>
+
               <ul class="collapsible expandable">
-            <li>
-              <div class="collapsible-header"><i class="material-icons">people_outline</i>Create A Room</div>
-              <div class="collapsible-body"></div>
-            </li>
-          </ul>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">people_outline</i>Your Rooms</div>
+                  <div class="collapsible-body">
+                    <span class="card-title">Your Rooms</span>
+                    <ul id="roomList">
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              {{!-- Create A Room Section --}}
+              <ul class="collapsible">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">people_outline</i>Create A Room</div>
+                  <div class="collapsible-body">
+                    <span class="card-title">Create A Room</span>
+                    <form id="createRoomForm">
+                      <div class="input-field center">
+                        <input id="createRoomInput" type="text">
+                        <label for="room_name">Room Name</label>
+                      </div>
+                      <button type="submit" class="button" id="create-room-button">Create Room</button>
+                    </form>
+                  </div>
+                </li>
+              </ul>
             </div>
+
           </div>
+
         </div>
       </div>
 
-      <div class="row">
-        {{!-- Update User Details section --}}
-        <div class="col m6 l6">
-          
-        </div>
-
-        {{!-- Create A Room Section --}}
-        <div class="col m6 l6">
-          <ul class="collapsible">
-            <li>
-              <div class="collapsible-header"><i class="material-icons">people_outline</i>Create A Room</div>
-              <div class="collapsible-body">
-                <span class="card-title">Create A Room</span>
-              <form id="createRoomForm">
-                <div class="input-field center">
-                  <input id="createRoomInput" type="text">
-                  <label for="room_name">Room Name</label>
-                </div>
-                <button type="submit" class="button" id="create-room-button">Create Room</button>
-              </form>
-              </div>
-            </li>
-          </ul>
-        </div>
 
 
-      </div>
+
+
+
+
   </main>
 
   <!--Footer-->
