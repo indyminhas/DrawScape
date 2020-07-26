@@ -47,6 +47,7 @@ socket.on('game-start', object => {
         // When you are the drawer, then drawing = true
         if (gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length] === room.user_name) {
             drawing = true;
+
             $("#word").text("")
             $("<h5>").text("Word: " + gamePlayObj.wordArr[gamePlayObj.drawingUser].word).appendTo("#word")
         }
@@ -56,11 +57,12 @@ socket.on('game-start', object => {
         $("#word").text("")
         gameButton.css("display", "inline-block")
     }
+    $("#current-drawer").text("")
+    $("<h5>").text("Current Drawer: " + gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length]).appendTo("#current-drawer")
     //update scores
     $("#scores").empty()
     $("<h5>").text("Scores:").appendTo("#scores")
     for (let i in object.scores) {
-        console.log(i)
         $(`<p>`).text(`${i}: ${object.scores[i]}`).appendTo("#scores")
     }
 

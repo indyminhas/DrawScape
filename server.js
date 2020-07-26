@@ -79,8 +79,7 @@ db.sequelize.sync({ force: false}).then(function () {
         allUsers[room.room].push(room.user_name)
         scores[room.room][room.user_name] = 0
         console.log(allUsers)
-        
-        
+
       }else{
         allUsers[room.room] = []
         scores[room.room] = {}
@@ -98,7 +97,7 @@ db.sequelize.sync({ force: false}).then(function () {
         counter =0
         let num = gamePlayObj.rounds * allUsers[room.room].length + 5
         gamePlayObj.wordArr = await db.Word.findAll({order: Sequelize.literal('RAND()'), limit: num });
-        gamePlayObj.drawingUser = gamePlayObj.rounds
+        gamePlayObj.drawingUser = counter
         io.to(room.room).emit('game-start', gamePlayObj)
       });
       // Listens for Drawing Function

@@ -15,7 +15,9 @@ $(function () {
         messageContainer.append(messageElement)
     }
     $.get(`/api/rooms/${roomRoute}`, function (data, status) {
+        console.log(data[0])
         const roomNumber = data[0].id
+        $("#room-heading").text(`${data[0].room_name}`)
 
 
 
