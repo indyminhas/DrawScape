@@ -78,15 +78,14 @@ db.sequelize.sync({ force: false}).then(function () {
       if(allUsers[room.room]){
         allUsers[room.room].push(room.user_name)
         scores[room.room][room.user_name] = 0
-        console.log(allUsers)
 
       }else{
         allUsers[room.room] = []
         scores[room.room] = {}
         allUsers[room.room].push(room.user_name)
         scores[room.room][room.user_name] = 0
-        console.log(allUsers)
       }
+      console.log(allUsers[room.room])
       let counter;
       //server listens to game start socket.on 'game-start' 
       socket.on('game-start', async gamePlayObj => {
@@ -95,8 +94,12 @@ db.sequelize.sync({ force: false}).then(function () {
         gamePlayObj.scores = scores[room.room]
         //Randomize the words
         counter =0
+        
         let num = gamePlayObj.rounds * allUsers[room.room].length + 5
+        console.log(num)
+        console.log(allUsers[room.room].length)
         gamePlayObj.wordArr = await db.Word.findAll({order: Sequelize.literal('RAND()'), limit: num });
+        console.log( gamePlayObj.wordArr)
         gamePlayObj.drawingUser = counter
         io.to(room.room).emit('game-start', gamePlayObj)
       });
