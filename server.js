@@ -110,7 +110,7 @@ db.sequelize.sync({ force: false}).then(function () {
         //Listen to chat messages in room.room if the game is in play
         if (data.game) {
           //check chat messages if the correct answer is guessed
-          if (data.message.trim() === data.wordArr[data.rounds].word) {
+          if (data.message.trim() === data.wordArr[counter].word) {
             //if drawer guesses their own word, PUNISH, everyone else gets 30 pnts
             if(data.users[data.drawingUser % data.users.length] === data.user){
               for (let player in data.scores){
@@ -120,7 +120,7 @@ db.sequelize.sync({ force: false}).then(function () {
               data.scores[data.user] += 30
             }
             //Notify the players that a round has ended
-            data.message = `Guessed the word ${data.wordArr[data.rounds].word}`
+            data.message = `Guessed the word ${data.wordArr[counter].word}`
             counter++
             data.drawingUser = counter
             io.to(room.room).emit('chat-message', data.user + ": " + data.message)
