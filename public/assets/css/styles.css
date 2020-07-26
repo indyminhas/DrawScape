@@ -175,6 +175,9 @@ button.color-choice {
 #yellow-button {
   background-color:yellow !important;
 }
+#white-button {
+  background-color:white !important;
+}
 button.stroke-choice {
   background: none !important;
   border: 2px solid black !important;
@@ -184,8 +187,9 @@ button.stroke-choice {
   div#color-stroke-bar{
     margin-top: 1rem;
     align-self: flex-start;
+    position: relative;
+    background-color: lightskyblue;
   }  
-
 
   .color-choice, .stroke-choice {
     display: inline-block;
