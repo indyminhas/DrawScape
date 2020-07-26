@@ -10,7 +10,7 @@
     </div>
   </nav>
 
-{{!-- this part is the drawing box with the cursor divs --}}
+
 <input type="hidden" value={{routename}} id = "room">
 
 <div class="row">
@@ -21,7 +21,7 @@
     <h5>Chat Room</h5>
   </div>
 </div>
-
+{{!-- color and stroke chooser --}}
 <div class="row">
   <div class="col s12">
     <div class="row valign-wrapper">
@@ -37,12 +37,11 @@
                 <button class="btn-floating stroke-choice " data-stroke='15' ></button>
                 <button class="btn-floating stroke-choice btn-small" data-stroke='5' ></button>
           </div>
+          {{!-- drawing canvas --}}
         <canvas class="right" id="paper" width="960" height="500"></canvas>
       </div>
       {{!-- chat box --}}
       
-      {{!-- <h4>Chat</h4> --}}
-         {{!-- <hr> --}}
       <div class="input-field col m3 center" >
         <div id="message-container" class = "testing">
         </div>
@@ -51,10 +50,19 @@
           <button type="submit" class="btn" id="send-button button">Send <i class="fa fa-pencil" style="font-size:14px"></i></button>
         </form>
         <br>
-        <button id="Game-Start-Button" class = "btn">Start Game</button>
+        <button id="Game-Start-Button" data-target="modal1" class = "btn">Start Game</button>
       </div>
     </div>
   </div>
+  {{!-- modal for asking nr of rounds =============== --}}
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>How many rounds would you like to play?</h4>
+      <input type="number" name="rounds" id="roundsinput">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">PLAY!</a>
+    </div>
+  </div>
+  {{!-- modal end ============================= --}}
  
   <div class="row">
     <div class="col m12 blue lighten-2">
