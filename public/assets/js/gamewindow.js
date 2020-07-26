@@ -43,22 +43,26 @@ socket.on('game-start', object => {
         gamePlayObj = object
         stage.clear()
         $("#word").text("")
-        gameButton.css("display", "none")
+        $('#roundsdiv').addClass('hide')
+        $('#startbtndiv').addClass('hide')
         // When you are the drawer, then drawing = true
         if (gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length] === room.user_name) {
             drawing = true;
 
             $("#word").text("")
             $("<h5>").text("Word: " + gamePlayObj.wordArr[gamePlayObj.drawingUser].word).appendTo("#word")
+        } else {
+            $("#word").text("")
         }
     } else {
         drawing = true
         gamePlayObj.game = false
         $("#word").text("")
-        gameButton.css("display", "inline-block")
+        $('#roundsdiv').removeClass('hide')
+        $('#startbtndiv').removeClass('hide')
     }
     $("#current-drawer").text("")
-    $("<h5>").text("Current Drawer: " + gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length]).appendTo("#current-drawer")
+    $("<h5>").text(gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length] + ' is drawing...').appendTo("#current-drawer")
     //update scores
     $("#scores").empty()
     $("<h5>").text("Scores:").appendTo("#scores")

@@ -3,26 +3,15 @@
   <nav>
     {{!-- need to insert the specific room name here --}}
     <div class="nav-wrapper blue lighten-2">
-      <a href="#home" id= "room-heading" class="brand-logo center white-text header-title"></a>
+      <a href="#home" id="room-heading" class="brand-logo center white-text header-title"></a>
       <ul class="left hide-on-med-and-down">
         <li><a href="#home"><i class="material-icons">home</i></a></li>
       </ul>
       <ul class="right hide-on-med-and-down">
-          <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
+        <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
       </ul>
     </div>
   </nav>
-
-
-  {{!-- modal for asking nr of rounds =============== --}}
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>How many rounds would you like to play?</h4>
-      <input type="number" name="rounds" id="roundsinput">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat"  id="Game-Start-Button">PLAY!</a>
-    </div>
-  </div>
-  {{!-- modal end ============================= --}}
 
   {{!-- this part is the drawing box with the cursor divs --}}
   <input type="hidden" value={{routename}} id="room">
@@ -65,14 +54,26 @@
         </div>
 
         {{!-- game button and copy link --}}
-        <div class="row">
-          <div class="col s12">
-            <button data-target="modal1" class="btn modal-trigger">Start Game</button>
+        <div class="row valign-wrapper" id="gameArea">
+          <div class="col s12 m3 l2 right-align" id="startbtndiv">
+            <button id="Game-Start-Button" class="btn">Start Game</button>
           </div>
-          <div class="input-field col s8 m4">
-            <span id="current-drawer"></span>
-            <span id="word"></span>
-            <span id="scores"></span>
+          <div class="col s12 m3 l2 left-align" id="roundsdiv">
+            <p>Nr of rounds</p>
+            <input type="number" name="rounds" id="roundsinput" value="3" min="1" max="10">
+          </div>
+          <div class="input-field col s8 m6 pull-s2 pull-m4">
+            <div class="row">
+              <div class="col s12 m6">
+
+                <span id="word"></span>
+                <span id="current-drawer"></span>
+              </div>
+              <div class="col s12 m6">
+
+                <span id="scores"></span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
