@@ -108,11 +108,11 @@ db.sequelize.sync({ force: false}).then(function () {
       socket.on('send-chat-message', data => {
         //Listen to chat messages in room.room if the game is in play
         if (data.game) {
-          console.log(data.wordArr)
-          console.log(data.wordArr[data.drawingUser])
-          console.log(data.drawingUser)
+
           //check chat messages if the correct answer is guessed
-          if (data.message.trim() === data.wordArr[data.drawingUser].word) {
+          if (data.message.trim().toLowerCase() === data.wordArr[data.drawingUser].word.toLowerCase()) {
+            console.log(data.wordArr[data.drawingUser].word.toLowerCase())
+            console.log(data.message.trim().toLowerCase())
             //if drawer guesses their own word, PUNISH, everyone else gets 30 pnts
             if(data.users[data.drawingUser % data.users.length] === data.user){
               for (let player in data.scores){
