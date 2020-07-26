@@ -5,7 +5,7 @@ $(function () {
         console.log(data)
         data.Rooms.forEach(room => {
             $(`<button>
-               <a href="/room/${room.id}" class="secondary-content"> ${room.room_name}</a>
+               <a href="/room/${room.route_name}" class="secondary-content"> ${room.room_name}</a>
                 </button>
                 <br>`).appendTo(roomList)
         })
