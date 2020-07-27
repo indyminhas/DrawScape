@@ -4,8 +4,22 @@ $(function () {
     $.get("/api/user", function (data, status) {
         console.log(data)
         data.Rooms.forEach(room => {
-            $(`<li class="collection-item"><div>${room.room_name}<a href="/room/${room.route_name}" class="secondary-content"><i class="material-icons red-text">delete</i></a><a href="/room/${room.route_name}" class="secondary-content"><i class="material-icons">launch</i></a></div></li>`).appendTo(roomList)
+            $(`<li class="collection-item"><div> ${room.room_name}<btn class="deleteRoomButton secondary-content" data-id="${room.id}"><i class="material-icons grey-text text-darken-3">delete_outline</i></btn><a href="/room/${room.route_name}" class="secondary-content"><i class="material-icons grey-text text-darken-3">launch</i></a></div></li>`).appendTo(roomList)
         })
+        // Delete rooms by data-id function
+        $('.deleteRoomButton').on('click', function(e) {
+            e.preventDefault();
+            console.log("delete button clicked")
+            roomIdToDelete = $(this).attr('data-id')
+            console.log("delete button for room"+ roomIdToDelete);
+            // console.log(this)
+            $.ajax({
+                method: "DELETE",
+                url: '/api/rooms/' + roomIdToDelete
+            }).then(function () {
+                location.reload()
+            });
+        });
     })
 })
 
@@ -32,7 +46,7 @@ updateUsernameForm.addEventListener('submit', e => {
     })
 })
 
-// Delete Room functionality
+// Delete User Account functionality
 const deleteUser = document.getElementById("finalDeleteButton");
 
 deleteUser.addEventListener('click', e => {
@@ -64,3 +78,5 @@ createRoomForm.addEventListener('submit', e => {
     })
     createRoomForm.value = ''
 });
+
+

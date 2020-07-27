@@ -35,7 +35,14 @@ router.post('/api/rooms', (req, res) => {
 //owner can delete so need destroy to delete room
 router.delete('/api/rooms/:id', (req,res)=>{
     db.Room.destroy({
-        // needs completing
+        where: {
+            id: req.params.id
+        }
+    }).then(function (dbroomdelete) {
+        res.json(dbroomdelete);
+        res.status(204).end();
+    }).catch(function (err) {
+        res.status(500).end();
     })
 })
 
