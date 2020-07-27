@@ -20,11 +20,6 @@ router.get('/login', (req, res) => {
   res.render('index')
 });
 
-// renders the room page 
-// router.get('/room', (req, res) => {
-//   res.render('gamewindow')
-// });
-
 // If not signed in, send to log in otherwise render user page
 router.get('/user', (req, res) => {
   if (!req.session.user) {
