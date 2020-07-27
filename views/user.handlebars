@@ -21,60 +21,94 @@
     <div class="container">
 
       <div class="row">
-        {{!-- user details section card --}}
+        {{!-- user details section --}}
         <div class="col m6 l6">
-          <div class="card">
+          <div class="card cardOpacity">
             <div class="card-content grey-text text-darken-3">
               <span class="card-title">Your User Details</span>
               <h5>Username: {{user_name}}</h5>
               <h5>email: {{email}}</h5>
               {{!-- <h5>password: {{password}}</h5> --}}
             </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-3">Card Title<i
-                  class="material-icons right">close</i></span>
-              <h5>Update Details</h5>
-            </div>
+            {{!-- Update Details --}}
+            <ul class="collapsible">
+              <li>
+                <div class="collapsible-header"><i class="material-icons">person_outline</i>Update Details</div>
+                <div class="collapsible-body">
+                  <span class="card-title">Input Your New Details</span>
+                  <form id="updateDetailsForm">
+                    <div class="input-field center">
+                      <input id="updateUserInput" type="text" class="validate">
+                      <label for="first_name">Username</label>
+                    </div>
+                    <div class="input-field center">
+                      <input id="updateEmailInput" type="email" class="validate">
+                      <label for="email">Enter Email</label>
+                    </div>
+                    <div class="input-field center">
+                      <input id="updatePassInput" type="password" class="validate">
+                      <label for="password">Create Password</label>
+                    </div>
+                    <button type="submit" class="button" id="update-details-button">Update</button>
+                  </form>
+                </div>
+              </li>
+              {{!-- Delete Account --}}
+              <li>
+                <div class="collapsible-header"><i class="material-icons">delete_outline</i>Delete Account</div>
+                <div class="collapsible-body">
+                  <!-- Modal Trigger -->
+                  <button data-target="modal1" class="delete-button button modal-trigger"
+                    id="delete-account-button">Delete
+                    Account</button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {{!-- Rooms you're in Section --}}
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Delete Account?</h4>
+            <p>Are you sure you want to delete your account? This action cannot be reversed.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="delete-button button" id="finalDeleteButton">Final Delete</button>
+          </div>
+        </div>
+
+        {{!-- Your Rooms Section --}}
         <div class="col m6 l6">
-          <div class="card">
+          <div class="card cardOpacity yourRooms">
             <div class="card-content grey-text text-darken-3">
-
-              <ul class="collapsible expandable">
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">people_outline</i>Your Rooms</div>
-                  <div class="collapsible-body">
-                    <span class="card-title">Your Rooms</span>
-                    <ul id="roomList">
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-              {{!-- Create A Room Section --}}
-              <ul class="collapsible">
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">people_outline</i>Create A Room</div>
-                  <div class="collapsible-body">
-                    <span class="card-title">Create A Room</span>
-                    <form id="createRoomForm">
-                      <div class="input-field center">
-                        <input id="createRoomInput" type="text">
-                        <label for="room_name">Room Name</label>
-                      </div>
-                      <button type="submit" class="button" id="create-room-button">Create Room</button>
-                    </form>
-                  </div>
-                </li>
+              <span class="card-title">Your Rooms</span>
+              <ul id="roomList">
               </ul>
             </div>
 
+            {{!-- Create A Room Section --}}
+            <ul class="collapsible">
+              <li>
+                <div class="collapsible-header"><i class="material-icons">people_outline</i>Create A Room</div>
+                <div class="collapsible-body">
+                  <span class="card-title">Create A Room</span>
+                  <form id="createRoomForm">
+                    <div class="input-field center">
+                      <input id="createRoomInput" type="text">
+                      <label for="room_name">Room Name</label>
+                    </div>
+                    <button type="submit" class="button" id="create-room-button">Create Room</button>
+                  </form>
+                </div>
+              </li>
+            </ul>
           </div>
 
         </div>
+
       </div>
+    </div>
 
 
 

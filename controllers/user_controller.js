@@ -16,7 +16,7 @@ router.get('/api/user', (req, res) => {
       }).catch(err => {
         res.status(500).end();
       })
-
+// get request to log user out
 router.get('/logout',(req,res)=>{
     req.session.destroy();
     res.redirect('/login')
@@ -64,7 +64,7 @@ router.post('/login', (req, res) => {
 
 //put request for updating user info on user page
 // (have to think about what the user is allowed to/can update and adjust accordingly)
-router.put('/api/user/:id', (req, res) => {
+router.put('/api/user', (req, res) => {
     db.User.update({
         user_name: req.body.user_name,
         email: req.body.email,
@@ -83,10 +83,10 @@ router.put('/api/user/:id', (req, res) => {
 })
 
 //delete request to shut down user's profile
-router.delete('/api/user/:id', (req, res) => {
+router.delete('/api/user', (req, res) => {
     db.User.destroy({
         where: {
-            id: req.params.id
+            id: req.session.user.id 
         }
     }).then(function (dbPost) {
         res.json(dbPost);
