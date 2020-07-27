@@ -89,6 +89,7 @@ router.delete('/api/user', (req, res) => {
         res.json(dbPost);
         res.status(204).end();
     }).catch(function (err) {
+        console.log(err)
         res.status(500).end();
     })
 
