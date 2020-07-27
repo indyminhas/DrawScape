@@ -8,23 +8,24 @@ const { route } = require("./handlebars_controller");
 router.get('/api/user', (req, res) => {
     db.User.findOne({
         where: { id: req.session.user.id },
-        include: [db.Room]
-      }
-      ).then(result => {
-        var rooms = result.getRooms()
-        res.json({user: result,
-        rooms: rooms})
+        include: [ db.Room, {model: db.Room, as: 'playroom'}]
+    }
+    ).then(result => {
+        res.json(result)
         // res.status(204).end();
-      }).catch(err => {
+    }).catch(err => {
+        console.log(err)
         res.status(500).end();
-      })
-// get request to log user out
-router.get('/logout',(req,res)=>{
+    })
+    // get request to log user out
+
+});
+
+router.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/login')
 });
 
-});
 router.get('/loggedinuser', (req, res) => {
     res.json(req.session.user)
 })
@@ -85,7 +86,7 @@ router.put('/api/user/username', (req, res) => {
 router.delete('/api/user', (req, res) => {
     db.User.destroy({
         where: {
-            id: req.session.user.id 
+            id: req.session.user.id
         }
     }).then(function (dbPost) {
         res.json(dbPost);

@@ -39,8 +39,10 @@ module.exports = function(sequelize, DataTypes) {
         });
         // User has many-to-many relationship with Room - junction table holds foreign keys
         User.belongsToMany(models.Room, { 
+            as: 'playroom',
             onDelete: 'CASCADE' ,
             through: 'junctionTable'})
+            
         User.hasMany(models.Room,{
             onDelete: 'CASCADE' ,
             hooks: true,

@@ -17,7 +17,7 @@ router.get('/api/junctiontable/:roomId', (req, res) => {
 router.post('/api/junctiontable/:roomId', async (req,res)=>{
     
     let room = await db.Room.findOne({where:{id:req.params.roomId}});
-    room.addUser(req.session.user.id);
+    room.addPlayroom(req.session.user.id);
     res.json(room)
 });
 
