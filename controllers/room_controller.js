@@ -9,6 +9,7 @@ router.get('/api/rooms', (req, res) => {
     //find all where this user belongs
     db.Room.findAll()
 });
+
 router.get('/api/rooms/:roomroute', (req, res) => {
     //find all where this user belongs
     db.Room.findAll({

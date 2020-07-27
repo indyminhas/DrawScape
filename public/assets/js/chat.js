@@ -21,11 +21,9 @@ $(function () {
 
 
 
-        //TODO: This is where we want to assign username and/or ID to user for all socket transmission action
+        //This is where we want to assign username and/or ID to user for all socket transmission action
         $.get("/loggedinuser", function (data, status) {
             user = data.user_name
-            console.log(data)
-            console.log(data.id)
             //Creates Room Object
             room = {
                 room: roomRoute,
@@ -35,12 +33,14 @@ $(function () {
             socket.emit('roomchoice', room)
             // On connection it appends all previous messages to the chat room
             $.get(`/api/messages/${roomNumber}`, function (data) {
-                console.log(data)
                 data.forEach(element => {
                     appendMessage(element.User.user_name + ": " + element.message)
                 })
                 messageContainer.scrollTop = messageContainer.scrollHeight;
             });
+            $.post('/api/junction/'+roomNumber, () => {
+                console.log('done')
+            })
 
         })
 
@@ -59,7 +59,6 @@ $(function () {
                 message: message,
                 roomId: roomNumber
             }
-            console.log(postMessage)
             // This is the post request to the messages table
             $.post("/api/messages/", postMessage);
             messageInput.value = ''
