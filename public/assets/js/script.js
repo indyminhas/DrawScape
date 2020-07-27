@@ -5,6 +5,7 @@ const userInput = document.getElementById('userInput')
 const emailInput = document.getElementById('emailInput')
 const passInput = document.getElementById('passInput')
 const roomNumber = document.getElementById('room-number').value
+const signUpErr = document.getElementById('signup-error')
 
 console.log(roomNumber)
 
@@ -18,7 +19,11 @@ signUpForm.addEventListener('submit', e => {
         password: passInput.value.trim(),
     }
     // This is the post request to the messages table
-    $.post("/signup", user);
+    $.post("/signup", user).then(response=>{
+        signUpErr.textContent = "Sign Up Success"
+    }).catch(err=>{
+        signUpErr.textContent = "Sign Up Failed"
+    });
     userInput.value = ''
     emailInput.value = ''
     passInput.value = ''
