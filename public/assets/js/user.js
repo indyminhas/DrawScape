@@ -4,10 +4,7 @@ $(function () {
     $.get("/api/user", function (data, status) {
         console.log(data)
         data.Rooms.forEach(room => {
-            $(`<button>
-               <a href="/room/${room.route_name}" class="secondary-content"> ${room.room_name}</a>
-                </button>
-                <br>`).appendTo(roomList)
+            $(`<li class="collection-item"><div>${room.room_name}<a href="/room/${room.route_name}" class="secondary-content"><i class="material-icons red-text">delete</i></a><a href="/room/${room.route_name}" class="secondary-content"><i class="material-icons">launch</i></a></div></li>`).appendTo(roomList)
         })
     })
 })
@@ -30,7 +27,7 @@ updateUsernameForm.addEventListener('submit', e => {
         method: "PUT",
         url: "/api/user/username",
         data: newUsername
-    }).then(function() {
+    }).then(function () {
         location.reload()
     })
 })
@@ -44,7 +41,7 @@ deleteUser.addEventListener('click', e => {
     $.ajax({
         method: "DELETE",
         url: '/api/user'
-    }).then (function() {
+    }).then(function () {
         window.location.href = "/logout"
     });
 });
