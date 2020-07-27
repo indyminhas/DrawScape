@@ -18,48 +18,22 @@ $(document).ready(function () {
     $('.modal').modal();
 });
 
-
-
-// Create Room functionality
-const createRoomForm = document.getElementById("createRoomForm");
-const createRoomInput = document.getElementById("createRoomInput");
-
-
-createRoomForm.addEventListener('submit', e => {
-    e.preventDefault()
-
-    var room = { name: createRoomInput.value }
-    // post request to the room table
-    $.post('/api/rooms', room).then(function () {
-        location.reload()
-    }).catch(err => err )
-    createRoomForm.value = ''
-});
-
-
 // Update Details functionality
-const updateDetailsForm = document.getElementById("updateDetailsForm");
-const updateUserInput = document.getElementById("updateUserInput");
-const updateEmailInput = document.getElementById("updateEmailInput");
-const updatePassInput = document.getElementById("updatePassInput");
+const updateUsernameForm = document.getElementById("updateUsernameForm");
+const updateUsernameInput = document.getElementById("updateUsernameInput");
 
-updateDetailsForm.addEventListener('submit', e => {
-    e.preventDefault();
-    console.log("you attempted to updated a user")
-    var updatedUser = {
-        user_name: updateUserInput.value,
-        email: updateEmailInput.value,
-        password: updatePassInput.value
-    }
-    // update request to the user table
-    $.put('/api/user/:id', updatedUser => {
-        console.log("you updated a user");
-        location.reload();
-    }).catch(err => {
-        alert(err)
+updateUsernameForm.addEventListener('submit', e => {
+    e.preventDefault()
+    console.log("update username button clicked")
+    var newUsername = { user_name: updateUsernameInput.value }
+    $.ajax({
+        method: "PUT",
+        url: "/api/user/username",
+        data: newUsername
+    }).then(function() {
+        location.reload()
     })
-    updateDetailsForm.value = ''
-});
+})
 
 // Delete Room functionality
 const deleteUser = document.getElementById("finalDeleteButton");
@@ -75,3 +49,21 @@ deleteUser.addEventListener('click', e => {
     });
 });
 
+// Create Room functionality
+const createRoomForm = document.getElementById("createRoomForm");
+const createRoomInput = document.getElementById("createRoomInput");
+
+
+createRoomForm.addEventListener('submit', e => {
+    e.preventDefault()
+    console.log(createRoomInput.value)
+    console.log("createRoom button working")
+    var room = { name: createRoomInput.value }
+    // post request to the room table
+    $.post('/api/rooms', room).then(function () {
+        location.reload()
+    }).catch(err => {
+        alert(err)
+    })
+    createRoomForm.value = ''
+});
