@@ -12,15 +12,13 @@ $(function () {
     })
 })
 
-// initialization for accordian element
+// initialization for accordian element and modal
 $(document).ready(function () {
     $('.collapsible').collapsible();
-});
-
-//   modal initialization for delete account
-$(document).ready(function () {
     $('.modal').modal();
 });
+
+
 
 // Create Room functionality
 const createRoomForm = document.getElementById("createRoomForm");
