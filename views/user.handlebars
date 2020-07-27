@@ -33,27 +33,26 @@
             {{!-- Update Details --}}
             <ul class="collapsible">
               <li>
-                <div class="collapsible-header"><i class="material-icons">person_outline</i>Update Details</div>
+                <div class="collapsible-header"><i class="material-icons">person_outline</i>Update Username</div>
                 <div class="collapsible-body">
-                  <span class="card-title">Input Your New Details</span>
-                  <form id="updateDetailsForm">
-                    <div class="input-field center">
-                      <input id="updateUserInput" type="text" class="validate">
-                      <label for="first_name">Username</label>
+                  <span class="card-title">Input Your New Username</span>
+                  <form id="updateUsernameForm">
+                    {{!-- username update input --}}
+                    <div class="row update-button-row">
+                      <div class="col s10 m10 l10">
+                        <div class="input-field center">
+                          <input id="updateUsernameInput" type="text" class="validate">
+                          <label for="first_name">Username</label>
+                        </div>
+                      </div>
+                      <div class="col s2 m2 l2">
+                        <div>
+                          <button class="btn-floating btn-small update-button" id="updateUsernameButton" type="submit">
+                            <i class="large material-icons">mode_edit</i>
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <div class="input-field center">
-                      <input id="updateEmailInput" type="email" class="validate">
-                      <label for="email">Enter Email</label>
-                    </div>
-                    <div class="input-field center">
-                      <input id="updatePassInput" type="password" class="validate">
-                      <label for="password">Create Password</label>
-                    </div>
-                    <div class="input-field center">
-                      <input id="updatePassInput" type="password" class="validate">
-                      <label for="password">Create Password</label>
-                    </div>
-                    <button type="submit" class="button" id="update-details-button">Update</button>
                   </form>
                 </div>
               </li>

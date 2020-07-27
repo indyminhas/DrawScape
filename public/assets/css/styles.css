@@ -94,6 +94,15 @@ button {
   flex-direction: column;
 }
 
+.update-button-row {
+  display: flex;
+  align-items: center;
+}
+
+.update-button {
+  background-color: lightskyblue !important;
+}
+
 .delete-button {
   background-color: red !important;
   color: white;
