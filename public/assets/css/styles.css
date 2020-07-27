@@ -116,6 +116,19 @@ button {
   width: auto;
 }
 
+.collection {
+  border: none !important;
+}
+
+.collection-item {
+  padding: 10px 0px !important;
+  border: none !important;
+}
+
+/* .deleteIcon {
+  color: red;
+} */
+
 /* GAMEWINDOW TEMPLATE */
 
 /* body of gamewindow */

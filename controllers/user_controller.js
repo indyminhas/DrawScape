@@ -11,7 +11,9 @@ router.get('/api/user', (req, res) => {
         include: [db.Room]
       }
       ).then(result => {
-        res.json(result)
+        var rooms = result.getRooms()
+        res.json({user: result,
+        rooms: rooms})
         // res.status(204).end();
       }).catch(err => {
         res.status(500).end();
