@@ -77,7 +77,8 @@ createRoomForm.addEventListener('submit', e => {
     $.post('/api/rooms', room).then(function () {
         location.reload()
     }).catch(err => {
-        alert(err)
+        console.log(err)
+        $('#createRoomError').text('Insert a unique name!')
     })
     createRoomForm.value = ''
 });
