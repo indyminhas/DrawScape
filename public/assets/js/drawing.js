@@ -45,6 +45,7 @@ function handleMouseDown(event) {
         stage.clear();
         stage.removeChild(title);
     }
+
     oldPt = new createjs.Point(stage.mouseX, stage.mouseY);
     oldMidPt = oldPt.clone();
     if (drawing) stage.addEventListener("stagemousemove", handleMouseMove);
@@ -52,8 +53,8 @@ function handleMouseDown(event) {
 
 function handleMouseMove(event) {
     if (!event.primary) { return; }
-    var midPt = new createjs.Point(oldPt.x + stage.mouseX >> 1, oldPt.y + stage.mouseY >> 1);
 
+    var midPt = new createjs.Point(oldPt.x + stage.mouseX >> 1, oldPt.y + stage.mouseY >> 1);
     //draw your line
     drawingCanvas.graphics.clear().setStrokeStyle(stroke, 'round', 'round').beginStroke(color).moveTo(midPt.x, midPt.y).curveTo(oldPt.x, oldPt.y, oldMidPt.x, oldMidPt.y);
     //send data
