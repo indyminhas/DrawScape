@@ -33,7 +33,7 @@ font-family: 'Oleo Script', cursive; */
   flex-direction: column;
 }
 
-.indexCard {
+.cardOpacity {
   opacity: 0.9;
 }
 
@@ -106,6 +106,28 @@ button:focus {
   flex-direction: column;
 }
 
+.update-button-row {
+  display: flex;
+  align-items: center;
+}
+
+.update-button {
+  background-color: lightskyblue !important;
+}
+
+#modal-activator{
+  display: none;
+}
+.delete-button {
+  background-color: red !important;
+  color: white;
+  padding: 14px 20px;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
 /* GAMEWINDOW TEMPLATE */
 
 /* body of gamewindow */
@@ -144,15 +166,13 @@ hr {
   border: 1px solid;
   margin-bottom: 25px;
 }
-.chatWindow{
-  background-color: white
-}
 
 .messageContainer {
   display: block;
   width: 300px;
   height: 300px;
   background-color: white;
+  border-radius: 10px 10px 0px 0px ;
   opacity: 0.9;
   overflow: scroll;
   overflow-x: hidden;
@@ -162,8 +182,13 @@ hr {
   display: none;
   }
 #message-input{
+  background-color: white;
+  border-top: solid;
+  opacity: 0.9;
   outline: black;
-  border-radius: 10px;
+  border-radius: 0px 0px 10px 10px ;
+  padding-left: 10px;
+  width: 290px;
 }
 /* stroke and color choice */
 div#color-stroke-bar{
@@ -400,6 +425,7 @@ button.stroke-choice {
   margin: 3px 0;
 }
 @media only screen and (max-width: 992px){
+
   div#color-stroke-bar{
     margin-top: 1rem;
     align-self: flex-start;
@@ -410,7 +436,55 @@ button.stroke-choice {
   .color-choice, .stroke-choice {
     display: inline-block;
   }
+
+  .container{
+    width: 100% !important;
+  }
 }
+@media only screen and (max-width: 600px){
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+    }
+  .chatWindow{
+    width: 100%;
+    height: 100%;
+  }
+  .messageContainer {
+    border-top: solid;
+    border-radius: 0px 0px 0px 0px ;
+    width: 100%;
+    height: 30vh;
+  }
+  #message-input{
+    border-radius: 0px 0px 0px 0px ;
+    width: 100%;
+  }
+  #paste-box{
+    display: none;
+  }
+  #copy-button{
+    width:100%;
+    height:100%;
+  }
+  .modal{
+    margin-left: 10% !important;
+  }
+  .gameFooter{
+    display: none;
+  }
+  #room-heading{
+    width: 100%;
+  }
+  .gameView{
+    width: 100%;
+  }
+  #color-stroke-bar{
+    border-top: solid;
+    background: grey !important;
+  }
+}
+
 
 /* game start and score area */
 #roundsdiv {
