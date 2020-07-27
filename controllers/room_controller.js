@@ -28,6 +28,7 @@ router.post('/api/rooms', (req, res) => {
     db.Room.create({
         room_name: req.body.name,
         UserId: req.session.user.id,
+        //TODO: this is not great, cos strictly speaking allows duplicates. WE would really like the route name to be room id + room name
         route_name: `${req.session.user.id}${req.body.name.trim().replace(/\s+/g, "")}`
     }).then(result => res.json(result)).catch(err => res.status(500).end())
 });
