@@ -1,11 +1,11 @@
 main {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 /* SIGN/LOG IN */
 
 .header-title {
-/* font-family: 'Audiowide', cursive;
+  /* font-family: 'Audiowide', cursive;
 font-family: 'Beth Ellen', cursive;
 font-family: 'Galada', cursive;
 font-family: 'Gloria Hallelujah', cursive;
@@ -13,10 +13,10 @@ font-family: 'Gugi', cursive;
 font-family: 'Lobster', cursive;
 font-family: 'Lobster Two', cursive;
 font-family: 'Oleo Script', cursive; */
-font-family: 'Rock Salt', cursive;
-/* font-family: 'Sarina', cursive; */
-/* font-family: 'Shrikhand', cursive;  */
-/* font-family: 'Sonsie One', cursive; */
+  font-family: "Rock Salt", cursive;
+  /* font-family: 'Sarina', cursive; */
+  /* font-family: 'Shrikhand', cursive;  */
+  /* font-family: 'Sonsie One', cursive; */
 }
 
 /* body of Index page*/
@@ -34,20 +34,30 @@ font-family: 'Rock Salt', cursive;
 }
 
 .indexCard {
-    opacity: .9;
+  opacity: 0.9;
+}
+
+/* search input underline color */
+.input-field input:focus {
+  border-bottom: 1px solid lightskyblue !important;
+  box-shadow: 0 1px 0 0 lightskyblue !important;
+}
+
+/* trying to get the placeholder text to not be green. not working yet */
+.input-field input[for]:focus {
+  color: lightskyblue !important;
 }
 
 /* Full-width inputs */
-
-.input[type="text"],
+/* .input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; */
+/* } */
 
 /* Set a style for all buttons */
 button {
@@ -103,6 +113,7 @@ button:focus {
   margin: 0;
   padding: 0;
   background-image: url(../images/clouds.jpg);
+  background-image: linear-gradient(to right top, #486a9d, #006581, #005a5b, #264b38, #343b23);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -132,14 +143,36 @@ body {
 hr {
   border: 1px solid;
   margin-bottom: 25px;
-} 
+}
+.chatWindow{
+  background-color: white
+}
 
-.testing {
-  display: flex ;
-  width: auto;
-  height: 400px;
-  background-color: transparent
+.messageContainer {
+  display: block;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  opacity: 0.9;
   overflow: scroll;
+  overflow-x: hidden;
+  text-align: center;
+}
+.messageContainer::-webkit-scrollbar {
+  display: none;
+  }
+#message-input{
+  outline: black;
+  border-radius: 10px;
+}
+/* stroke and color choice */
+div#color-stroke-bar{
+  margin-top: 1rem;
+  position:absolute;
+}
+
+button.color-choice {
+  margin: 3px 0;
 }
 
 
@@ -346,4 +379,45 @@ input {
 .pcontainer{
   font-family: 'Rock Salt', cursive;
 
+#black-button {
+  background-color:black !important;
+}
+#blue-button {
+  background-color:blue !important;
+}
+#green-button {
+  background-color:green !important;
+}
+#yellow-button {
+  background-color:yellow !important;
+}
+#white-button {
+  background-color:white !important;
+}
+button.stroke-choice {
+  background: none !important;
+  border: 2px solid black !important;
+  margin: 3px 0;
+}
+@media only screen and (max-width: 992px){
+  div#color-stroke-bar{
+    margin-top: 1rem;
+    align-self: flex-start;
+    position: relative;
+    background-color: white;
+  }  
+
+  .color-choice, .stroke-choice {
+    display: inline-block;
+  }
+}
+
+/* game start and score area */
+#roundsdiv {
+  margin-left:0;
+}
+
+#gameArea {
+  background-color: white;
+  opacity: 0.9;
 }

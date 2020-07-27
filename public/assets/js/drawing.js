@@ -3,20 +3,17 @@ var drawingCanvas;
 var oldPt;
 var oldMidPt;
 var title;
-var color;
-var stroke;
 var colors;
 var index;
 var lastEmit = $.now();
 //generate unique id for the new user
-var id = Math.round($.now() * Math.random());
 
 $(function () {
     //===================================================================
     //drawing with socket
     canvas = document.getElementById("paper");
     index = 0;
-    colors = ["#828b20", "#b0ac31", "#cbc53d", "#fad779", "#f9e4ad", "#faf2db", "#563512", "#9b4a0b", "#d36600", "#fe8a00", "#f9a71f"];
+    //colors = ["#828b20", "#b0ac31", "#cbc53d", "#fad779", "#f9e4ad", "#faf2db", "#563512", "#9b4a0b", "#d36600", "#fe8a00", "#f9a71f"];
 
     //check to see if we are running in a browser with touch support
     stage = new createjs.Stage(canvas);
@@ -48,8 +45,6 @@ function handleMouseDown(event) {
         stage.clear();
         stage.removeChild(title);
     }
-    color = colors[(index++) % colors.length];
-    stroke = Math.random() * 30 + 10 | 0;
     oldPt = new createjs.Point(stage.mouseX, stage.mouseY);
     oldMidPt = oldPt.clone();
     if (drawing) stage.addEventListener("stagemousemove", handleMouseMove);
@@ -71,8 +66,7 @@ function handleMouseMove(event) {
             'oldMidx': oldMidPt.x,
             'oldMidy': oldMidPt.y,
             'color': color,
-            'stroke': stroke,
-            'id': id
+            'stroke': stroke
         });
         lastEmit = $.now();
     }

@@ -6,11 +6,11 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
+        },
+        route_name: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
-        // owner_id: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        // },
     });
 
     Room.associate = function(models) {
