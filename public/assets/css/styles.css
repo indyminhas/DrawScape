@@ -220,6 +220,7 @@ button.stroke-choice {
   margin: 3px 0;
 }
 @media only screen and (max-width: 992px){
+
   div#color-stroke-bar{
     margin-top: 1rem;
     align-self: flex-start;
@@ -230,23 +231,55 @@ button.stroke-choice {
   .color-choice, .stroke-choice {
     display: inline-block;
   }
+
+  .container{
+    width: 100% !important;
+  }
+}
+@media only screen and (max-width: 600px){
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+    }
   .chatWindow{
     width: 100%;
     height: 100%;
   }
   .messageContainer {
+    border-top: solid;
+    border-radius: 0px 0px 0px 0px ;
     width: 100%;
-    height: 75px;
+    height: 30vh;
   }
   #message-input{
-    padding-left: 2%;
-    width: 98%;
+    border-radius: 0px 0px 0px 0px ;
+    width: 100%;
   }
-  .gameview{
-    margin: 0 0;
-    padding: 0 ;
+  #paste-box{
+    display: none;
+  }
+  #copy-button{
+    width:100%;
+    height:100%;
+  }
+  .modal{
+    margin-left: 10% !important;
+  }
+  .gameFooter{
+    display: none;
+  }
+  #room-heading{
+    width: 100%;
+  }
+  .gameView{
+    width: 100%;
+  }
+  #color-stroke-bar{
+    border-top: solid;
+    background: grey !important;
   }
 }
+
 
 /* game start and score area */
 #roundsdiv {
