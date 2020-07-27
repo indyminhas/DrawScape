@@ -13,14 +13,14 @@ $(function () {
 })
 
 // initialization for accordian element
-$(document).ready(function(){
+$(document).ready(function () {
     $('.collapsible').collapsible();
-  });
+});
 
 //   modal initialization for delete account
-  $(document).ready(function(){
+$(document).ready(function () {
     $('.modal').modal();
-  });
+});
 
 // Create Room functionality
 const createRoomForm = document.getElementById("createRoomForm");
@@ -31,11 +31,11 @@ createRoomForm.addEventListener('submit', e => {
     e.preventDefault()
     console.log(createRoomInput.value)
     console.log("createRoom button working")
-    var room = {name: createRoomInput.value}
+    var room = { name: createRoomInput.value }
     // post request to the room table
-    $.post('/api/rooms', room).then(function(){
+    $.post('/api/rooms', room).then(function () {
         location.reload()
-    }).catch(err=>{
+    }).catch(err => {
         alert(err)
     })
     createRoomForm.value = ''
@@ -71,8 +71,12 @@ const deleteUser = document.getElementById("finalDeleteButton");
 
 deleteUser.addEventListener('click', e => {
     e.preventDefault();
-    console.log("you clicked final delete")
-})
-
-
+    console.log("delete")
+    $.ajax({
+        method: "DELETE",
+        url: '/api/user'
+    }).then (function() {
+        window.location.href = "/logout"
+    });
+});
 

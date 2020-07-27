@@ -104,14 +104,6 @@ button {
   width: auto;
 }
 
-#modal1 {
-  z-index: 5 !important;
-}
-
-.yourRooms {
-  z-index: 10 !important;
-}
-
 /* GAMEWINDOW TEMPLATE */
 
 /* body of gamewindow */
