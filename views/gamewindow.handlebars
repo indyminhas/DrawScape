@@ -1,4 +1,4 @@
-<body class="bodyGameWindow">
+<body class="bodyGameWindow" id="body1">
 
   <nav>
     {{!-- need to insert the specific room name here --}}
@@ -19,13 +19,15 @@
   {{!-- game button and copy link --}}
 
 
-  <main class="container gameview">
-    <div class="row valign-wrapper gameview" id="gameArea">
-      <div class="col s12 m3 l2 right-align" id="startbtndiv">
+  <main class="container">
+    <div class="row valign-wrapper gameView" id="gameArea">
+      <div class="col s4 m3 l2" id="startbtndiv">
         <button id="Game-Start-Button" class="btn">Start Game</button>
       </div>
-      <div class="col s12 m3 l2 left-align" id="roundsdiv">
+      <div class="col s4 m3 l2 left-align" id="roundsdiv">
         <p>Nr of rounds</p>
+      </div>
+      <div class="col s4 m3 l2 left-align" id="roundsdiv2">
         <input type="number" name="rounds" id="roundsinput" value="3" min="1" max="10">
       </div>
       <div class="input-field col s8 m6">
@@ -45,9 +47,9 @@
       <div class="col s12">
         {{!-- Game Info is hidden while the game is not running --}}
         <div class="row">
-          <div class="col m9 gameview">
-            <div class="row align-wrapper gameview">
-              <div class="input-field col s12 gameview">
+          <div class="col m9">
+            <div class="row align-wrapper">
+              <div class="input-field col s12">
                 <canvas class="right" id="paper" width="960" height="500"></canvas>
                 <div class="center col s12 m12 l12" id="color-stroke-bar">
                   <button class="btn-floating color-choice btn-small" data-color='#000000' id='black-button'></button>
@@ -60,7 +62,7 @@
                   <button class="btn-floating stroke-choice " data-stroke='15'></button>
                   <button class="btn-floating stroke-choice btn-small" data-stroke='5'></button>
                 </div>
-                
+
               </div>
             </div>
           </div>
@@ -79,9 +81,9 @@
 
 
         {{!-- Shareable link copy paste --}}
-        <div class="col s12">
-          <input type="button" class="btn" value="Copy Url" onclick="Copy();" />
-          <textarea id="paste-box" rows="1" cols="30"></textarea>
+        <div class="row">
+          <input type="button" class="btn" id="copy-button" value="Copy Url" onclick="Copy();" />
+          <textarea id="paste-box" rows="1"></textarea>
         </div>
       </div>
     </div>
@@ -92,16 +94,14 @@
   <a id="modal-activator" class="waves-effect waves-light btn modal-trigger modal-close" href="#modal2">Modal</a>
 
   {{!-- Modal for Game Win --}}
-  <div id="modal2" class="modal modal-close">
+  <div id="modal2" class="modal">
     <div class="modal-content">
       <span class="scores"></span>
-    </div>
-    <div class="modal-footer">
     </div>
   </div>
 
   <!--Footer-->
-  <footer class="page-footer blue lighten-2">
+  <footer class="page-footer blue lighten-2 gameFooter">
     <div class="container">
       <div class="row">
         <div class="col l5 s12">

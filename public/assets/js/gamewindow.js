@@ -15,6 +15,12 @@ let gamePlayObj = {
     drawingUser: '',
     scores: {}
 }
+// Updates if Game is in Progress when Joining
+socket.on('update-game', value => {
+    if (value) {
+        drawing = false
+    }
+})
 // Modal Ready
 $(document).ready(function () {
     $('.modal').modal();
@@ -49,6 +55,7 @@ socket.on('game-start', object => {
         stage.clear()
         $("#word").text("")
         $('#roundsdiv').addClass('hide')
+        $('#roundsdiv2').addClass('hide')
         $('#startbtndiv').addClass('hide')
         $('#worddiv').removeClass('hide')
         $("#current-drawer").text("")
@@ -73,6 +80,7 @@ socket.on('game-start', object => {
         gamePlayObj.game = false
         $("#word").text("")
         $('#roundsdiv').removeClass('hide')
+        $('#roundsdiv2').removeClass('hide')
         $('#startbtndiv').removeClass('hide')
         $('#worddiv').addClass('hide')
         console.log(object.scores)

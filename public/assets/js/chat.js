@@ -7,6 +7,7 @@ $(function () {
     const messageForm = $('#send-container')
     const messageInput = document.getElementById('message-input')
     const roomRoute = $("#room").val()
+  
 
 
     function appendMessage(message) {
@@ -16,6 +17,9 @@ $(function () {
     }
     $.get(`/api/rooms/${roomRoute}`, function (data, status) {
         console.log(data[0])
+        if(!data[0]){
+            window.location.href = "/user"
+        }
         const roomNumber = data[0].id
         $("#room-heading").text(`${data[0].room_name}`)
 
@@ -35,7 +39,6 @@ $(function () {
             socket.emit('roomchoice', room)
             // On connection it appends all previous messages to the chat room
             $.get(`/api/messages/${roomNumber}`, function (data) {
-                console.log(data)
                 data.forEach(element => {
                     appendMessage(element.User.user_name + ": " + element.message)
                 })
