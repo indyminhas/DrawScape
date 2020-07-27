@@ -28,7 +28,7 @@
                   <label for="first_name">Email</label>
                 </div>
                 <div class="input-field center">
-                  <input id="passLogInput" type="text" class="validate">
+                  <input id="passLogInput" type="password" class="validate">
                   <label for="first_name">Password</label>
                 </div>
                 <div>
@@ -39,7 +39,7 @@
             </div>
           </div>
           {{!-- materialize sign up  --}}
-          <div class="card indexCard">
+          <div class="card cardOpacity">
             <div class="card-content grey-text text-darken-3">
               <span class="card-title">Sign Up</span>
               <form id="sign-up-container">
@@ -56,6 +56,9 @@
                 <div class="input-field center">
                   <input id="passInput" type="password" class="validate">
                   <label for="password">Create Password</label>
+                </div>
+                <div>
+                  <p id = "signup-error"></p>
                 </div>
                 <button type= "submit" class="button" id="user-send-button">Go <i class="fa fa-pencil"
                     style="font-size:14px"></i></button>
