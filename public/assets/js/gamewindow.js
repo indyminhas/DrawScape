@@ -68,7 +68,7 @@ socket.on('game-start', object => {
         }
     } 
     //When the Game Stops
-    else {
+    else {      
         drawing = true
         gamePlayObj.game = false
         $("#word").text("")
@@ -76,6 +76,18 @@ socket.on('game-start', object => {
         $('#startbtndiv').removeClass('hide')
         $('#worddiv').addClass('hide')
         console.log(object.scores)
+        $(".scores").empty()
+        var scoreArr = []
+        for (let i in object.scores) {
+           scoreArr.push([i, object.scores[i]])
+        }
+        scoreArr.sort(function(a, b) {
+            return a[1] - b[1];
+        });
+        scoreArr.forEach(element => {
+            $(".scores").text(element[0] + ": " + element[1])
+        })
+        $("<h5>").text("Scores:").prependTo(".scores")
         $("<h5>").text("GAME OVER").prependTo(".scores")
         $("#modal-activator")[0].click()
     }
