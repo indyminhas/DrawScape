@@ -1,5 +1,5 @@
 <body class="bodyIndex">
-   <input type="hidden" id="room-number" name="room-number" value={{routename}}>
+  <input type="hidden" id="room-number" name="room-number" value={{routename}}>
   <header>
     <nav>
       <div class="nav-wrapper blue lighten-2">
@@ -14,68 +14,62 @@
   <main>
     <br>
 
-    {{!-- login section --}}
-    <div class="container">
-      <div class="row">
-        <div class="col m3 l3"></div>
-        <div class="col s12 m6 l6">
-          <div class="card indexCard">
-            <div class="card-content grey-text text-darken-3">
-              <span class="card-title">Log In</span>
-              <form id="log-in-container">
-                <div class="input-field center">
-                  <input id="emailLogInput" type="text" class="validate">
-                  <label for="first_name">Email</label>
-                </div>
-                <div class="input-field center">
-                  <input id="passLogInput" type="password" class="validate">
-                  <label for="first_name">Password</label>
-                </div>
-                <div>
-                  <p id = "password-box"></p>
-                </div>
-                <button type= "submit" class="button" id="user-send-button">Go</button>
-              </form>
-            </div>
+
+
+    {{!-- layover code --}}
+
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        <!-- SIGN UP form code goes here -->
+        <form action="#" class= "pform" id="sign-up-container">
+          <h4>Create Account</h4>
+          <input id="userInput" type="text" class="validate">
+          <label for="first_name">Username</label>
+          <input id="emailInput" type="email" class="validate">
+          <label for="email">Enter Email</label>
+          <input id="passInput" type="password" class="validate">
+          <label for="password">Create Password</label>
+          <div>
+            <p id="signup-error"></p>
           </div>
-          {{!-- materialize sign up  --}}
-          <div class="card cardOpacity">
-            <div class="card-content grey-text text-darken-3">
-              <span class="card-title">Sign Up</span>
-              <form id="sign-up-container">
-
-
-                <div class="input-field center">
-                  <input id="userInput" type="text" class="validate">
-                  <label for="first_name">Username</label>
-                </div>
-                <div class="input-field center">
-                  <input id="emailInput" type="email" class="validate">
-                  <label for="email">Enter Email</label>
-                </div>
-                <div class="input-field center">
-                  <input id="passInput" type="password" class="validate">
-                  <label for="password">Create Password</label>
-                </div>
-                <div>
-                  <p id = "signup-error"></p>
-                </div>
-                <button type= "submit" class="button" id="user-send-button">Go <i class="fa fa-pencil"
-                    style="font-size:14px"></i></button>
-              </form>
-            </div>
+          <br>
+          <button type="submit" class="ghost blue lighten-2" id="user-send-button">Go <i class="fa fa-pencil"
+              style="font-size:14px"></i></button>
+        </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <!-- SIGN IN form code goes here -->
+        <form action="#" class= "pform" id="log-in-container">
+          <h4>Sign in</h4>
+          <input id="emailLogInput" type="text" class="validate">
+          <label for="first_name">Email</label>
+          <input id="passLogInput" type="text" class="validate">
+          <label for="first_name">Password</label>
+          <br>
+          <p id="password-box"></p>
+          <button type="submit" class="ghost blue lighten-2" id="user-send-button">Go <i class="fa fa-pencil"
+              style="font-size:14px"></i></button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <!-- The overlay code goes here -->
+        <div class="overlay">
+          <div class="overlay-panel blue lighten-2 overlay-left">
+            <h1>Welcome Back!</h1>
+            <button class="ghost white" id="signIn">Sign In</button>
+          </div>
+          <div class="overlay-panel blue lighten-2 overlay-right">
+            <h1>Welcome, Drawer!</h1>
+            <button class="ghost white" id="signUp">Sign Up</button>
           </div>
         </div>
+      </div>
     </div>
-    </div>
-</div>
-   
   </main>
-  <footer id="sticky-footer" class="py-4">
-      <section class="pcontainer">
-        <medium class="col-12 white-text center">© 2020 DrawScape</medium>
-      </section>
-    </footer>
-<script src="/assets/js/script.js"></script>
+  <pfooter id="sticky-footer" class="py-4">
+    <section class="pcontainer">
+      <medium class="col-12 black-text center">© 2020 DrawScape</medium>
+    </section>
+  </pfooter>
+  <script src="/assets/js/script.js"></script>
 </body>
-

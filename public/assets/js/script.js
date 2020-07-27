@@ -13,6 +13,7 @@ console.log(roomNumber)
 
 signUpForm.addEventListener('submit', e => {
     e.preventDefault()
+    console.log("this button works")
     var user = {
         user_name: userInput.value.trim(),
         email: emailInput.value.trim(),
@@ -55,7 +56,7 @@ logInForm.addEventListener('submit', e => {
     passLogInput.value = ''
     //TODO: Redirect to profile page
 
-// })
+})
 
 
 
@@ -74,13 +75,11 @@ const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 
 signUpButton.addEventListener('click', () => {
+    console.log ("you click this")
     container.classList.add('right-panel-active');
 });
 
 signInButton.addEventListener('click', () => {
     container.classList.remove('right-panel-active');
 });
-
-
-
 
