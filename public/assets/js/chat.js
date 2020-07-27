@@ -42,7 +42,7 @@ $(function () {
                 })
                 messageContainer.scrollTop = messageContainer.scrollHeight;
             });
-            $.post('/api/junction/'+roomNumber, () => {
+            $.post('/api/junctiontable/'+roomNumber, () => {
                 console.log('done')
             })
 

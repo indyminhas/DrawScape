@@ -16,8 +16,10 @@ module.exports = function(sequelize, DataTypes) {
     Room.associate = function(models) {
         // Room has one-to-many relationship with Message - foreign key in Message
         Room.hasMany(models.Message, {
+            onDelete: 'CASCADE' ,
+            hooks: true,
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
         // Room has many-to-many relationship with User - junction table holds foreign keys
@@ -25,8 +27,9 @@ module.exports = function(sequelize, DataTypes) {
             through: 'junctionTable'})
 
         Room.belongsTo(models.User, {
+            onDelete: 'CASCADE' ,
             foreignKey:{
-                allowNull:false
+                allowNull:true
             }
         })
     };

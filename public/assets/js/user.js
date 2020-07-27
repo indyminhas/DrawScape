@@ -3,7 +3,7 @@ $(function () {
     const roomList = $("#roomList")
     $.get("/api/user", function (data, status) {
         console.log(data)
-        data.Rooms.forEach(room => {
+        data.user.Rooms.forEach(room => {
             $(`<li class="collection-item"><div> ${room.room_name}<btn class="deleteRoomButton secondary-content" data-id="${room.id}"><i class="material-icons grey-text text-darken-3">delete_outline</i></btn><a href="/room/${room.route_name}" class="secondary-content"><i class="material-icons grey-text text-darken-3">launch</i></a></div></li>`).appendTo(roomList)
         })
         // Delete rooms by data-id function
