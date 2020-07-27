@@ -62,19 +62,16 @@ router.post('/login', (req, res) => {
     });
 })
 
-//put request for updating user info on user page
-// (have to think about what the user is allowed to/can update and adjust accordingly)
-router.put('/api/user', (req, res) => {
+//put request for updating username
+router.put('/api/user/username', (req, res) => {
     db.User.update({
-        user_name: req.body.user_name,
-        email: req.body.email,
-        password: req.body.password
+        user_name: req.body.user_name
     }, {
         where: {
-            id: req.params.id
+            id: req.session.user.id
         }
-    }).then(dbUpdateUser => {
-        res.json(dbUpdateUser)
+    }).then(dbUpdateUsername => {
+        res.json(dbUpdateUsername)
         res.status(204).end();
     }).catch(err => {
         res.status(500).end();

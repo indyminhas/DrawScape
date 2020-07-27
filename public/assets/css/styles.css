@@ -93,6 +93,16 @@ button {
   min-height: 100vh;
   flex-direction: column;
 }
+
+.update-button-row {
+  display: flex;
+  align-items: center;
+}
+
+.update-button {
+  background-color: lightskyblue !important;
+}
+
 #modal-activator{
   display: none;
 }
