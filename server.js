@@ -47,12 +47,14 @@ var messageRoute = require("./controllers/message_controller.js");
 var roomRoute = require("./controllers/room_controller.js");
 var userRoute = require("./controllers/user_controller.js");
 var wordRoute = require("./controllers/word_controller.js");
+var junctionRoute = require("./controllers/junction_controller.js");
 
 app.use(handlebarRoute);
 app.use(messageRoute);
 app.use(roomRoute);
 app.use(userRoute);
 app.use(wordRoute);
+app.use(junctionRoute);
 
 // Syncing our sequelize models and then starting our Express and socket.io app
 // =============================================================
@@ -117,8 +119,6 @@ db.sequelize.sync({ force: false}).then(function () {
 
           //check chat messages if the correct answer is guessed
           if (data.message.trim().toLowerCase() === data.wordArr[data.drawingUser].word.toLowerCase()) {
-            console.log(data.wordArr[data.drawingUser].word.toLowerCase())
-            console.log(data.message.trim().toLowerCase())
             //if drawer guesses their own word, PUNISH, everyone else gets 30 pnts
             if(data.users[data.drawingUser % data.users.length] === data.user){
               for (let player in data.scores){
