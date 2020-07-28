@@ -17,9 +17,7 @@ let gamePlayObj = {
 }
 // Updates if Game is in Progress when Joining
 socket.on('update-game', value => {
-    if (value) {
-        drawing = false
-    }
+   drawing = false
 })
 // materialize initialization for modal and tooltips
 $(document).ready(function () {
