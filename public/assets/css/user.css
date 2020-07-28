@@ -44,7 +44,18 @@
   /* .deleteIcon {
     color: red;
   } */
- 
+  .heightFixing{
+    min-height: 24.4vh !important;
+    max-height: 24.4vh !important;
+  }
+ .heightFixing1{
+   min-height: 30vh !important;
+   max-height: 30vh !important;
+   overflow: scroll;
+ }
+ .heightFixing1::-webkit-scrollbar {
+  display: none;
+  }
   @media only screen and (max-width: 992px){
     .container {
       width: 100%;

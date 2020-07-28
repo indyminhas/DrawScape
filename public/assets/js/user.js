@@ -31,7 +31,7 @@ $(function () {
         })
         $('.modal').modal();
         junctionArr.forEach(room => {
-            $(`<li class="collection-item"><div><a href="/room/${room.route_name}"> ${room.room_name}</a></div></li>`).appendTo(roomList)
+            $(`<li class="collection-item"><div><a class ="grey-text text-darken-2" href="/room/${room.route_name}"> ${room.room_name}</a></div></li>`).appendTo(roomList)
         })
 
         // Delete rooms by data-id function
