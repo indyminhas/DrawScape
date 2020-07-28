@@ -29,6 +29,7 @@ $(document).ready(function () {
 //color and stroke choices
 $('.stroke-choice').on('click', function (event) {
     stroke = parseInt($(this).data('stroke'))
+    $(this).css("background-color","black")
 })
 $('.color-choice').on('click', function (event) {
     color = $(this).data('color')
