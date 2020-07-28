@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         route_name: {
             type: DataTypes.STRING,
+            unique:true,
             allowNull: false
         }
     });
