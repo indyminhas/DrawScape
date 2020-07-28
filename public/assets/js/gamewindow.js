@@ -19,9 +19,10 @@ let gamePlayObj = {
 socket.on('update-game', value => {
    drawing = false
 })
-// Modal Ready
+// materialize initialization for modal and tooltips
 $(document).ready(function () {
     $('.modal').modal();
+    $('.tooltipped').tooltip();
 });
 //color and stroke choices
 $('.stroke-choice').on('click', function (event) {
