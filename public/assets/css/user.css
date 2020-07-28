@@ -1,0 +1,46 @@
+/* USER PROFILE TEMPLATE */
+
+/* body of user profile page */
+.bodyUser {
+    margin: 0;
+    padding: 0;
+    background-image: url(../images/clouds.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .update-button-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .update-button {
+    background-color: lightskyblue !important;
+  }
+  
+  .delete-button {
+    background-color: red !important;
+    color: white;
+    padding: 14px 20px;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    width: auto;
+  }
+  
+  .collection {
+    border: none !important;
+  }
+  
+  .collection-item {
+    padding: 10px 0px !important;
+    border: none !important;
+  }
+  
+  /* .deleteIcon {
+    color: red;
+  } */

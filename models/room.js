@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         route_name: {
             type: DataTypes.STRING,
+            unique:true,
             allowNull: false
         }
     });
@@ -16,17 +17,22 @@ module.exports = function(sequelize, DataTypes) {
     Room.associate = function(models) {
         // Room has one-to-many relationship with Message - foreign key in Message
         Room.hasMany(models.Message, {
+            onDelete: 'CASCADE' ,
+            hooks: true,
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
         // Room has many-to-many relationship with User - junction table holds foreign keys
         Room.belongsToMany(models.User, { 
+            as: 'playroom',
+            onDelete: 'CASCADE' ,
             through: 'junctionTable'})
 
         Room.belongsTo(models.User, {
+            onDelete: 'CASCADE' ,
             foreignKey:{
-                allowNull:false
+                allowNull:true
             }
         })
     };

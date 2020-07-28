@@ -31,17 +31,22 @@ module.exports = function(sequelize, DataTypes) {
     User.associate = function(models) {
         // User has one-to-many relationship with Message - foreign key in Message
         User.hasMany(models.Message, {
+            onDelete: 'CASCADE',
+            hooks: true,
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
         // User has many-to-many relationship with Room - junction table holds foreign keys
         User.belongsToMany(models.Room, { 
+            as: 'playroom',
+            onDelete: 'CASCADE' ,
             through: 'junctionTable'})
+            
         User.hasMany(models.Room,{
-            foreignKey:{
-                allowNull:false
-            }
+            onDelete: 'CASCADE' ,
+            hooks: true,
+            foreignKey:{allowNull:true}
         })
     };
     return User;
