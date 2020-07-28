@@ -7,10 +7,10 @@ $(function () {
             // append rooms to user.handlebars, including modal trigger
             $(`<li class="collection-item">
             <div>
-                <a href="/room/${room.route_name}" class="grey-text text-darken-3">${room.room_name}</a
+                <a href="/room/${room.route_name}" class="grey-text text-darken-2">${room.room_name}</a
                 >
                 <a href="#modal${room.id}" data-target="modal${room.id}" class="modal-trigger deleteRoomTrigger secondary-content" id="deleteRooms${room.id}">
-                  <i class="material-icons grey-text text-darken-3"
+                  <i class="material-icons grey-text text-darken-2"
                     >delete_outline</i>
                 </a>
               </div>
@@ -51,11 +51,13 @@ $(function () {
     })
 })
 
-// initialization for accordian element and modal
+// Materialize initialization for accordian element, modal, and tooltips
 $(document).ready(function () {
+    $('.tooltipped').tooltip();
     $('.collapsible').collapsible();
     $('.modal').modal();
 });
+
 
 // Update Details functionality
 const updateUsernameForm = document.getElementById("updateUsernameForm");
