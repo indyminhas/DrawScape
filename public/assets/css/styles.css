@@ -1,8 +1,8 @@
 main {
-  flex: 1 0 auto;
+  flex: 10 auto;
 }
 
-/* SIGN/LOG IN */
+
 
 .header-title {
   /* font-family: 'Audiowide', cursive;
@@ -19,54 +19,17 @@ font-family: 'Oleo Script', cursive; */
   /* font-family: 'Sonsie One', cursive; */
 }
 
-/* body of Index page*/
-.bodyIndex {
-  margin: 0;
-  padding: 0;
-  background-image: url(../images/abstract-art-artistic-background-459799.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.cardOpacity {
-  opacity: 0.9;
-}
-
-/* search input underline color */
-.input-field input:focus {
-  border-bottom: 1px solid lightskyblue !important;
-  box-shadow: 0 1px 0 0 lightskyblue !important;
-}
-
-/* trying to get the placeholder text to not be green. not working yet */
-.input-field input[for]:focus {
-  color: lightskyblue !important;
-}
-
-/* Full-width inputs */
-/* .input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box; */
-/* } */
 
 /* Set a style for all buttons */
-button {
+.btn{
+  font-family: "Rock Salt", cursive;
   background-color: lightskyblue !important;
-  color: white;
+  color: black;
   padding: 14px 20px;
   margin: 0;
   border: none;
   cursor: pointer;
-  width: auto;
+  width: 100%;
 }
 
 /* Add a hover effect for buttons */
@@ -79,214 +42,9 @@ button {
   padding: 16px;
 }
 
-/* USER PROFILE TEMPLATE */
 
-/* body of user profile page */
-.bodyUser {
-  margin: 0;
-  padding: 0;
-  background-image: url(../images/closeup-photo-of-multi-color-stick-226589.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
+/* FOOTER */
 
-.update-button-row {
-  display: flex;
-  align-items: center;
-}
-
-.update-button {
-  background-color: lightskyblue !important;
-}
-
-#modal-activator{
-  display: none;
-}
-.delete-button {
-  background-color: red !important;
-  color: white;
-  padding: 14px 20px;
-  margin: 0;
-  border: none;
-  cursor: pointer;
-  width: auto;
-}
-
-.collection {
-  border: none !important;
-}
-
-.collection-item {
-  padding: 10px 0px !important;
-  border: none !important;
-}
-
-/* .deleteIcon {
-  color: red;
-} */
-
-/* GAMEWINDOW TEMPLATE */
-
-/* body of gamewindow */
-.bodyGameWindow {
-  margin: 0;
-  padding: 0;
-  background-image: linear-gradient(to right top, #486a9d, #006581, #005a5b, #264b38, #343b23);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.html,
-body {
-  width: auto;
-  height: auto;
-  margin: 0;
-}
-
-#paper {
-  background: white;
-  border: black;
-  padding: 0;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-  width: 100%;
-  display: block;
-}
-
-/* CHAT BOX */
-hr {
-  border: 1px solid;
-  margin-bottom: 25px;
-}
-
-.messageContainer {
-  display: block;
-  width: 300px;
-  height: 300px;
-  background-color: white;
-  border-radius: 10px 10px 0px 0px ;
-  opacity: 0.9;
-  overflow: scroll;
-  overflow-x: hidden;
-  text-align: center;
-}
-.messageContainer::-webkit-scrollbar {
-  display: none;
+.pcontainer{
+  font-family: 'Rock Salt', cursive;
   }
-#message-input{
-  background-color: white;
-  border-top: solid;
-  opacity: 0.9;
-  outline: black;
-  border-radius: 0px 0px 10px 10px ;
-  padding-left: 10px;
-  width: 290px;
-}
-/* stroke and color choice */
-div#color-stroke-bar{
-  margin-top: 1rem;
-  position:absolute;
-}
-
-button.color-choice {
-  margin: 3px 0;
-}
-#black-button {
-  background-color:black !important;
-}
-#blue-button {
-  background-color:blue !important;
-}
-#green-button {
-  background-color:green !important;
-}
-#yellow-button {
-  background-color:yellow !important;
-}
-#white-button {
-  background-color:white !important;
-}
-button.stroke-choice {
-  background: none !important;
-  border: 2px solid black !important;
-  margin: 3px 0;
-}
-@media only screen and (max-width: 992px){
-
-  div#color-stroke-bar{
-    margin-top: 1rem;
-    align-self: flex-start;
-    position: relative;
-    background-color: white;
-  }  
-
-  .color-choice, .stroke-choice {
-    display: inline-block;
-  }
-
-  .container{
-    width: 100% !important;
-  }
-}
-@media only screen and (max-width: 600px){
-  * {
-    margin: 0 !important;
-    padding: 0 !important;
-    }
-  .chatWindow{
-    width: 100%;
-    height: 100%;
-  }
-  .messageContainer {
-    border-top: solid;
-    border-radius: 0px 0px 0px 0px ;
-    width: 100%;
-    height: 30vh;
-  }
-  #message-input{
-    border-radius: 0px 0px 0px 0px ;
-    width: 100%;
-  }
-  #paste-box{
-    display: none;
-  }
-  #copy-button{
-    width:100%;
-    height:100%;
-  }
-  .modal{
-    margin-left: 10% !important;
-  }
-  .gameFooter{
-    display: none;
-  }
-  #room-heading{
-    width: 100%;
-  }
-  .gameView{
-    width: 100%;
-  }
-  #color-stroke-bar{
-    border-top: solid;
-    background: grey !important;
-  }
-}
-
-
-/* game start and score area */
-#roundsdiv {
-  margin-left:0;
-}
-
-#gameArea {
-  background-color: white;
-  opacity: 0.9;
-}

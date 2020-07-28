@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/assets/css/gamewindow.css">
+
 <body class="bodyGameWindow" id="body1">
 
   <nav>
@@ -20,36 +22,37 @@
 
 
   <main class="container">
-    <div class="row valign-wrapper gameView" id="gameArea">
-      <div class="col s4 m3 l2" id="startbtndiv">
-        <button id="Game-Start-Button" class="btn">Start Game</button>
-      </div>
-      <div class="col s4 m3 l2 left-align" id="roundsdiv">
-        <p>Nr of rounds</p>
-      </div>
-      <div class="col s4 m3 l2 left-align" id="roundsdiv2">
-        <input type="number" name="rounds" id="roundsinput" value="3" min="1" max="10">
-      </div>
-      <div class="input-field col s8 m6">
-        <div class="row">
-          <div class="col s12 m6 hide pull-m4" id="worddiv">
 
-            <span id="word"></span>
-            <span id="current-drawer"></span>
-            <span class="scores"></span>
-          </div>
-          <div class="col s12 m6">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12">
+
+
+
+
+
+    <div class="row topStuff">
+      <div class="col s12 topStuff">
         {{!-- Game Info is hidden while the game is not running --}}
-        <div class="row">
-          <div class="col m9">
-            <div class="row align-wrapper">
-              <div class="input-field col s12">
+        <div class="row topStuff">
+          <div class="col m9 topStuff blah">
+            <div class="row valign-wrapper gameView" id="gameArea">
+              <div class="col m4 borderblue" id="startbtndiv">
+                <button id="Game-Start-Button" class="btn black-text borderblue">Play</button>
+              </div>
+              <div class="col m4 borderblue" id="roundsdiv">
+                <input type="number" name="rounds" id="roundsinput" value="3" min="1" max="10">
+              </div>
+              <div class="col m4 borderblue" id="roundsdiv2">
+                <p> rounds</p>
+              </div>
+              <div class="col m4" id="current-drawer">
+              </div>
+              <div class="col m8" id="word">
+              </div>
+              <div class="col m4">
+              </div>
+
+            </div>
+            <div class="row align-wrapper topStuff">
+              <div class="input-field col s12 topStuff">
                 <canvas class="right" id="paper" width="960" height="500"></canvas>
                 <div class="center col s12 m12 l12" id="color-stroke-bar">
                   <button class="btn-floating color-choice btn-small" data-color='#000000' id='black-button'></button>
@@ -69,6 +72,11 @@
 
           {{!-- chat box --}}
           <div class="input-field col m3 center chatWindow">
+            <div class="scores">
+              <h5 class="scoreHeading">To Play Game</h5>
+              <h5 class="scoreHeading"> Select Total Rounds</h5>
+              <h5 class="scoreHeading">Hit Start Button!</h5>
+            </div>
             <div id="message-container" class="messageContainer">
             </div>
             <form id="send-container">
@@ -81,8 +89,8 @@
 
 
         {{!-- Shareable link copy paste --}}
-        <div class="row">
-          <input type="button" class="btn" id="copy-button" value="Copy Url" onclick="Copy();" />
+        <div class="row copyContainer">
+          <input type="button" class="btn black-text" id="copy-button" value="Copy Url" onclick="Copy();" />
           <textarea id="paste-box" rows="1"></textarea>
         </div>
       </div>
@@ -91,36 +99,38 @@
   </main>
 
   <!-- Modal Trigger -->
-  <a id="modal-activator" class="waves-effect waves-light btn modal-trigger modal-close" href="#modal2">Modal</a>
+  <a id="modal-activator" class="waves-effect waves-light btn modal-trigger modal-close black-text"
+    href="#modal2">Modal</a>
+
+  <br>
 
   {{!-- Modal for Game Win --}}
   <div id="modal2" class="modal">
     <div class="modal-content">
-      <span class="scores"></span>
+      <span class="scores1"></span>
     </div>
   </div>
 
   <!--Footer-->
   <footer class="page-footer blue lighten-2 gameFooter">
-    <div class="container">
+    <div class="pcontainer">
       <div class="row">
         <div class="col l5 s12">
-          <h5 class="white-text">DrawScape <i class="fa fa-pencil" style="font-size:24px"></i></h5>
-          <p class="grey-text text-lighten-4">Draw away with your friends!</p>
+          <h5 class="black-text">DrawScape <i class="fa fa-pencil" style="font-size:24px"></i></h5>
+          <p class="white-text">Draw away with your friends!</p>
         </div>
         <div class="col l5 offset-14 s12">
-          <h6 class="white-text">Built With:</h6>
+          <h6 class="black-text">Built With:</h6>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://materializecss.com/" target="_blank">Materialize</a>
             </li>
             <li><a class="grey-text text-lighten-3" href="https://socket.io/" target="_blank">Socket</a></li>
             <li><a class="grey-text text-lighten-3" href="https://github.com/indyminhas/project2" target="_blank"><i
                   class="fa fa-github" style="font-size:24px"></i></a></li>
-
           </ul>
         </div>
         <div class="col l2 s12">
-          <h6 class="white-text">Created by:</h6>
+          <h6 class="black-text">Created by:</h6>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://github.com/domjparker" target="_blank">Dominic
                 Parker</i></a></li>
@@ -128,24 +138,22 @@
                 Helbling</i></a></li>
             <li><a class="grey-text text-lighten-3" href="https://github.com/MegaGrega" target="_blank">Matthew
                 Grega</i></a></li>
-            <li><a class="grey-text text-lighten-3" href="https://github.com/indyminhas" target="_blank">Indy</i></a>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/indyminhas" target="_blank">Indy
+                Minhas</i></a>
             </li>
           </ul>
         </div>
       </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-        © Copyright 2020 DrawScape
+      <div class="footer-copyright black-text">
+        <div class="pcontainer">
+          © Copyright 2020 DrawScape
+        </div>
       </div>
-    </div>
   </footer>
 
+
+
+  <script src="/assets/js/gamewindow.js"></script>
+  <script src="/assets/js/chat.js"></script>
+  <script src="/assets/js/drawing.js"></script>
 </body>
-
-
-
-
-<script src="/assets/js/gamewindow.js"></script>
-<script src="/assets/js/chat.js"></script>
-<script src="/assets/js/drawing.js"></script>

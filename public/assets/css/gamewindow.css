@@ -1,0 +1,217 @@
+/* GAMEWINDOW TEMPLATE */
+
+/* body of gamewindow */
+.bodyGameWindow {
+    margin: 0;
+    padding: 0;
+    background-image: url(../images/clouds.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .html,
+  body {
+    width: auto;
+    height: auto;
+    margin: 0;
+  }
+  
+  #paper {
+
+    background: white;
+    border: black;
+    padding: 0;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    width: 100%;
+    display: block;
+  }
+  
+  /* CHAT BOX */
+  
+  hr {
+    border: 1px solid;
+    margin-bottom: 25px;
+  }
+  
+  .messageContainer {
+    display: block;
+    width: 40vh;
+    height: 30vh;
+    background-color: white;
+    border-radius: 10px 10px 0px 0px ;
+    opacity: 0.9;
+    overflow: scroll;
+    overflow-x: hidden;
+    text-align: center;
+  }
+  .messageContainer::-webkit-scrollbar {
+    display: none;
+    }
+  #message-input{
+    background-color: white;
+    border-top: solid;
+    opacity: 0.9;
+    outline: black;
+    border-radius: 0px 0px 10px 10px ;
+    padding-left: 1vh;
+    width: 39vh;
+  }
+  /* stroke and color choice */
+  div#color-stroke-bar{
+    margin-top: 1rem;
+    position:absolute;
+  }
+  
+  button.color-choice {
+    margin: 3px 0;
+  }
+  #black-button {
+    background-color:black !important;
+  }
+  #blue-button {
+    background-color:blue !important;
+  }
+  #green-button {
+    background-color:green !important;
+  }
+  #yellow-button {
+    background-color:yellow !important;
+  }
+  #white-button {
+    background-color:white !important;
+  }
+  button.stroke-choice {
+    background: none !important;
+    border: 2px solid black !important;
+    margin: 3px 0;
+  }
+  .copyContainer {
+    width: 140vh;
+    margin: 0;
+    padding: 0;
+  }
+  .input-field {
+    margin: 0;
+  }
+  #gameArea {
+    margin: 0 !important;
+    height: 100%;
+    background: white;
+    border-bottom: solid;
+    border-color: #64B5F6;
+  }
+  .topStuff{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .borderblue{
+    background: white;
+  }
+
+  #scores-container{
+    width:25%
+  }
+  #current-drawer{
+    float: right;
+  }
+  .scores{
+    background: white;
+    opacity: 0.9;
+    margin: 0;
+    width: 40vh;
+    min-height: 19.2vh;
+    max-height: 19.2vh;
+    border-radius: 10px 10px 10px 10px ;
+    margin-bottom: 2vh;
+  }
+  .scoreHeading{
+    margin: 0;
+    padding: 5px;
+  }
+
+  @media only screen and (max-width: 992px){
+  
+    div#color-stroke-bar{
+      margin-top: 1rem;
+      align-self: flex-start;
+      position: relative;
+      background-color: white;
+    }  
+  
+    .color-choice, .stroke-choice {
+      display: inline-block;
+    }
+  
+    .container{
+      width: 100% !important;
+    }
+  }
+  @media only screen and (max-width: 600px){
+    * {
+      margin: 0 !important;
+      padding: 0 !important;
+      }
+    .chatWindow{
+      width: 100%;
+      height: 100%;
+    }
+    .messageContainer {
+      border-top: solid;
+      border-radius: 0px 0px 0px 0px ;
+      width: 100%;
+      height: 30vh;
+    }
+    #message-input{
+      border-radius: 0px 0px 0px 0px ;
+      width: 100%;
+    }
+    #paste-box{
+      display: none;
+    }
+    #copy-button{
+      width:100%;
+      height:100%;
+    }
+    .modal{
+      margin-left: 10% !important;
+    }
+    .gameFooter{
+      display: none;
+    }
+    #room-heading{
+      width: 100%;
+    }
+    .gameView{
+      width: 100%;
+    }
+    #color-stroke-bar{
+      border-top: solid;
+      background: grey !important;
+    }
+    .copyContainer {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .scores{
+      width: 100%;
+      border-radius: 0px 0px 0px 0;
+      min-height: 5vh;
+      height: 10vh;
+    }
+    .gameFooter {
+      display: none;
+    }
+  }
+  
+  #modal-activator{
+    display: none;
+  }
+  
+  
+  /* game start and score area */
