@@ -90,6 +90,50 @@
     border: 2px solid black !important;
     margin: 3px 0;
   }
+  .copyContainer {
+    width: 140vh;
+    margin: 0;
+    padding: 0;
+  }
+  .input-field {
+    margin: 0;
+  }
+  #gameArea {
+    margin: 0 !important;
+    height: 100%;
+    background: white;
+    border-bottom: solid;
+    border-color: #64B5F6;
+  }
+  .topStuff{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .borderblue{
+    background: white;
+  }
+
+  #scores-container{
+    width:25%
+  }
+  #current-drawer{
+    float: right;
+  }
+  .scores{
+    background: white;
+    opacity: 0.9;
+    margin: 0;
+    width: 40vh;
+    min-height: 19.2vh;
+    max-height: 19.2vh;
+    border-radius: 10px 10px 10px 10px ;
+    margin-bottom: 2vh;
+  }
+  .scoreHeading{
+    margin: 0;
+    padding: 5px;
+  }
+
   @media only screen and (max-width: 992px){
   
     div#color-stroke-bar{
@@ -149,6 +193,20 @@
       border-top: solid;
       background: grey !important;
     }
+    .copyContainer {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .scores{
+      width: 100%;
+      border-radius: 0px 0px 0px 0;
+      min-height: 5vh;
+      height: 10vh;
+    }
+    .gameFooter {
+      display: none;
+    }
   }
   
   #modal-activator{
@@ -157,25 +215,3 @@
   
   
   /* game start and score area */
-  
-  #gameArea {
-    margin: 0 !important;
-    height: 100%;
-    background: white;
-    border-bottom: solid;
-    border-color: #64B5F6;
-  }
-  .topStuff{
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .borderblue{
-    background: white;
-  }
-
-  #scores-container{
-    width:25%
-  }
-  #current-drawer{
-    float: right;
-  }
