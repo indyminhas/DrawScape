@@ -98,7 +98,7 @@ socket.on('game-start', object => {
             return a[1] - b[1];
         });
         scoreArr.forEach(element => {
-            $(".scores1").text(element[0] + ": " + element[1])
+            $("<p>").text(element[0] + ": " + element[1]).appendTo(".scores1")
         })
         $("<h5>").text("Scores:").prependTo(".scores1")
         $("<h5>").text("GAME OVER").prependTo(".scores1")
