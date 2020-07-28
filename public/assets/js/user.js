@@ -2,12 +2,13 @@
 $(function () {
     const roomList = $("#roomList")
     $.get("/api/user", function (data, status) {
-        console.log(data)
+        let junctionArr=data.playroom
         data.Rooms.forEach(room => {
-            $(`<li class="collection-item"><div> ${room.room_name}<a class="deleteRoomButton secondary-content" data-id="${room.id}"><i class="material-icons grey-text text-darken-3">delete_outline</i></a><a href="/room/${room.route_name}" class="secondary-content"><i class="material-icons grey-text text-darken-3">launch</i></a></div></li>`).appendTo(roomList)
+            $(`<li class="collection-item"><div><a href="/room/${room.route_name}">${room.room_name}</a><a href="#" class="deleteRoomButton secondary-content" data-id="${room.id}"><i class="material-icons grey-text text-darken-3">delete_outline</i></a></div></li>`).appendTo(roomList)
+            junctionArr=junctionArr.filter(element=> element.id !== room.id)
         })
-        data.playroom.forEach(room => {
-            $(`<li class="collection-item"><div> ${room.room_name}<a href="/room/${room.route_name}" class="secondary-content"><i class="material-icons grey-text text-darken-3">launch</i></a></div></li>`).appendTo(roomList)
+        junctionArr.forEach(room => {
+            $(`<li class="collection-item"><div><a href="/room/${room.route_name}"> ${room.room_name}</a></div></li>`).appendTo(roomList)
         })
         // Delete rooms by data-id function
         $('.deleteRoomButton').on('click', function(e) {
