@@ -17,17 +17,17 @@ let gamePlayObj = {
 }
 // Updates if Game is in Progress when Joining
 socket.on('update-game', value => {
-    if (value) {
-        drawing = false
-    }
+   drawing = false
 })
-// Modal Ready
+// materialize initialization for modal and tooltips
 $(document).ready(function () {
     $('.modal').modal();
+    $('.tooltipped').tooltip();
 });
 //color and stroke choices
 $('.stroke-choice').on('click', function (event) {
     stroke = parseInt($(this).data('stroke'))
+    $(this).css("background-color","black")
 })
 $('.color-choice').on('click', function (event) {
     color = $(this).data('color')
