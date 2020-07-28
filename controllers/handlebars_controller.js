@@ -29,7 +29,7 @@ router.get('/user', (req, res) => {
       where: { id: req.session.user.id },
     }
     ).then(result => {
-      res.render('user', {user_name: result.user_name, email: result.email})
+      res.render('user', { user_name: result.user_name, email: result.email })
       // res.status(204).end();
     }).catch(err => {
       res.status(500).end();
