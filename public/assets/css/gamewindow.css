@@ -21,6 +21,7 @@
   }
   
   #paper {
+
     background: white;
     border: black;
     padding: 0;
@@ -39,8 +40,8 @@
   
   .messageContainer {
     display: block;
-    width: 300px;
-    height: 300px;
+    width: 40vh;
+    height: 30vh;
     background-color: white;
     border-radius: 10px 10px 0px 0px ;
     opacity: 0.9;
@@ -57,8 +58,8 @@
     opacity: 0.9;
     outline: black;
     border-radius: 0px 0px 10px 10px ;
-    padding-left: 10px;
-    width: 290px;
+    padding-left: 1vh;
+    width: 39vh;
   }
   /* stroke and color choice */
   div#color-stroke-bar{
@@ -156,12 +157,25 @@
   
   
   /* game start and score area */
-  #roundsdiv {
-    margin-left:0;
-  }
   
   #gameArea {
-    background-color: white;
-    opacity: 0.9;
+    margin: 0 !important;
+    height: 100%;
+    background: white;
+    border-bottom: solid;
+    border-color: #64B5F6;
   }
-  
+  .topStuff{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .borderblue{
+    background: white;
+  }
+
+  #scores-container{
+    width:25%
+  }
+  #current-drawer{
+    float: right;
+  }
