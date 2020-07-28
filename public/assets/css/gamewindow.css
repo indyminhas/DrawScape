@@ -55,8 +55,8 @@
   #message-input{
     background-color: white;
     border-top: solid;
+    border-color: #64b5f6;
     opacity: 0.9;
-    outline: black;
     border-radius: 0px 0px 10px 10px ;
     padding-left: 1vh;
     width: 39vh;
@@ -103,7 +103,7 @@
     height: 100%;
     background: white;
     border-bottom: solid;
-    border-color: #64B5F6;
+    border-color: #64b5f6
   }
   .topStuff{
     margin: 0 !important;
@@ -181,15 +181,18 @@
       margin: 0 !important;
       padding: 0 !important;
       }
+
     .chatWindow{
       width: 100%;
       height: 100%;
     }
     .messageContainer {
       border-top: solid;
+      border-color: #64b5f6;
       border-radius: 0px 0px 0px 0px ;
       width: 100%;
-      height: 30vh;
+      height: 20vh;
+      padding: 5px !important;
     }
     #message-input{
       border-radius: 0px 0px 0px 0px ;
@@ -211,26 +214,55 @@
     .gameView{
       width: 100%;
     }
+    #gameArea{
+      margin-top: 2vh !important;
+      padding-left: 5px !important;
+    }
     #color-stroke-bar{
-      border-top: solid;
-      background: grey !important;
+      background:#64b5f6 !important;
     }
     .copyContainer {
+      margin-top: 2vh !important;
+      margin-bottom: 2vh !important;
       width: 100%;
       margin: 0;
       padding: 0;
     }
     .scores{
+      margin-top: 2vh !important;
       width: 100%;
       border-radius: 0px 0px 0px 0;
       min-height: 5vh;
       height: 10vh;
     }
-    /* .gameFooter {
-      display: none;
-    } */
+    .scoreHeading{
+      font-size: 100%;
+    }
+
     #send-container{
       width: 100%;
+    }
+    .material-icons{
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+    }
+    .blahblahblah{
+      margin-left: 9% !important;
+      width: 20vh;
+      padding-right: 10px !important;
+    }
+    .borderblue{
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+    .pcontainer{
+      padding: 1rem !important;
+    }
+    .pcontainer div {
+      padding: .5rem !important;
+    }
+    #color-stroke-bar {
+      padding: .5rem .5rem !important;
     }
   }
   
