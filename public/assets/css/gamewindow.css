@@ -40,7 +40,7 @@
   
   .messageContainer {
     display: block;
-    width: 40vh;
+    width: 16vw;
     height: 30vh;
     background-color: white;
     border-radius: 10px 10px 0px 0px ;
@@ -58,8 +58,9 @@
     border-color: #64b5f6;
     opacity: 0.9;
     border-radius: 0px 0px 10px 10px ;
-    padding-left: 1vh;
-    width: 39vh;
+    padding-left: 1vw;
+    width: 15vw;
+    text-align: left !important;
   }
   /* stroke and color choice */
   div#color-stroke-bar{
@@ -91,7 +92,7 @@
     margin: 3px 0;
   }
   .copyContainer {
-    width: 140vh;
+    width: vw;
     margin: 0;
     padding: 0;
   }
@@ -123,18 +124,22 @@
     background: white;
     opacity: 0.9;
     margin: 0;
-    width: 40vh;
+    width: 16vw;
     min-height: 19.2vh;
     max-height: 19.2vh;
     border-radius: 10px 10px 10px 10px ;
     margin-bottom: 2vh;
+    overflow: scroll;
   }
+  .scores::-webkit-scrollbar {
+    display: none;
+    }
   .scoreHeading{
     margin: 0;
     padding: 5px;
   }
 
-  @media only screen and (max-width:1024px){
+  /* @media only screen and (max-width:1024px){
   
     div#color-stroke-bar{
       margin-top: 1rem;
@@ -155,14 +160,14 @@
       height:35vh;
     }
     #message-input {
-      width: 33vh;
+      width: 33vw;
       padding-left: 1vh;
     }
     .scores {
-      width: 34vh;
+      width: 34vw;
     }
     #copy-button {
-      width: 20vh;
+      width: 20vw;
     }
     #paste-box{
       width: 20vh;
@@ -173,9 +178,9 @@
     #send-container{
       margin: 0;
       width: 17vh;
-    }
+    } */
       
-  }
+  /* } */
   @media only screen and (max-width: 600px){
     * {
       margin: 0 !important;
@@ -260,6 +265,9 @@
     }
     #color-stroke-bar {
       padding: .5rem .5rem !important;
+    }
+    main{
+      width: 100% !important;
     }
   }
   
