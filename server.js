@@ -76,8 +76,10 @@ db.sequelize.sync({ force: false}).then(function () {
       //TODO: When a user joins an in progress game, they have drawing capability
       // User joins specific room
       socket.join(room.room)
+
+      //If game is in progress when joining - update game to true
       if(gameStatus[room.room]){
-        io.to(socket).emit('update-game', true)
+        io.to(socket).emit('update-game')
       }
 
       //tell the room that someone joined
@@ -116,7 +118,6 @@ db.sequelize.sync({ force: false}).then(function () {
       socket.on('send-chat-message', data => {
         //Listen to chat messages in room.room if the game is in play
         if (data.game) {
-
           //check chat messages if the correct answer is guessed
           if (data.message.trim().toLowerCase() === data.wordArr[data.drawingUser].word.toLowerCase()) {
             //if drawer guesses their own word, PUNISH, everyone else gets 30 pnts
@@ -155,6 +156,7 @@ db.sequelize.sync({ force: false}).then(function () {
         delete scores[room.room][room.user_name]
         allUsers[room.room]=allUsers[room.room].filter(element => element !== room.user_name)
         io.to(room.room).emit('chat-message', room.user_name + " left the room.")
+        //If all users leave, set game status to false
         if(allUsers[room.room].length === 0)gameStatus[room.room] = false
       })
     });
