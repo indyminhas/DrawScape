@@ -7,10 +7,10 @@
     <div class="nav-wrapper blue lighten-2">
       <a href="#home" id="room-heading" class="brand-logo center white-text header-title hide-on-med-and-down"></a>
       <ul class="left">
-        <li><a href="/user"><i class="material-icons">person_outline</i></a></li>
+        <li><a href="/user"><i class="tooltipped material-icons" data-position="right" data-tooltip="Profile Page">person_outline</i></a></li>
       </ul>
       <ul class="right">
-        <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
+        <li><a href="/logout"><i class="tooltipped material-icons" data-position="left" data-tooltip="Logout">exit_to_app</i></a></li>
       </ul>
     </div>
   </nav>
@@ -26,7 +26,7 @@
           <div class="col m9 topStuff blah">
             <div class="row valign-wrapper gameView" id="gameArea">
               <div class="col m8 borderblue blahblahblah" id="startbtndiv">
-                <button id="Game-Start-Button" class="btn black-text">Play</button>
+                <button id="Game-Start-Button" class="btn grey-text text-darken-2">Play</button>
               </div>
               <div class="col m8 borderblue" id="roundsdiv">
                 <input type="number" name="rounds" id="roundsinput" value="3" min="1" max="10">
@@ -81,7 +81,7 @@
 
         {{!-- Shareable link copy paste --}}
         <div class="row copyContainer">
-          <input type="button" class="btn black-text" id="copy-button" value="Copy Url" onclick="Copy();" />
+          <input type="button" class="btn grey-text text-darken-2" id="copy-button" value="Copy Url" onclick="Copy();" />
           <textarea id="paste-box" rows="1"></textarea>
         </div>
       </div>
@@ -101,25 +101,26 @@
   </div>
 
   <!--Footer-->
- <footer class="page-footer blue lighten-2">
+  <footer class="page-footer blue lighten-2">
     <div class="pcontainer">
       <div class="row">
-        <div class="col s12 m6 l6 center">
-          <h5 class="black-text">DrawScape <i class="fa fa-pencil" style="font-size:24px"></i></h5>
+        <div class="col s12 m4 l4 center">
+          <h5 class="grey-text text-darken-2">DrawScape <i class="fa fa-pencil" style="font-size:24px"></i></h5>
           <p class="white-text">Draw away with your friends!</p>
         </div>
-        <div class="col s6 m3 l3 offset-14 center">
-          <h6 class="black-text">Built With:</h6>
+        <div class="col s6 m4 l4 offset-14 center">
+          <h6 class="grey-text text-darken-2">Built With:</h6>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://materializecss.com/" target="_blank">Materialize</a>
             </li>
-            <li><a class="grey-text text-lighten-3" href="https://socket.io/" target="_blank">Socket</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://socket.io/" target="_blank">Socket.io</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://createjs.com/" target="_blank">Create.js</a></li>
             <li><a class="grey-text text-lighten-3" href="https://github.com/indyminhas/project2" target="_blank"><i
                   class="fa fa-github" style="font-size:24px"></i></a></li>
           </ul>
         </div>
-        <div class="col s6 m3 l3 center">
-          <h6 class="black-text">Created by:</h6>
+        <div class="col s6 m4 l4 center">
+          <h6 class="grey-text text-darken-2">Created by:</h6>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://github.com/domjparker" target="_blank">Dominic
                 Parker</i></a></li>
@@ -133,9 +134,9 @@
           </ul>
         </div>
       </div>
-      <div class="footer-copyright black-text">
+      <div class="footer-copyright grey-text text-darken-2">
         <div class="pcontainer">
-          © Copyright 2020 DrawScape
+          <div class="copyright">© Copyright 2020 DrawScape</div>
         </div>
       </div>
   </footer>

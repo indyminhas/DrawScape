@@ -18,7 +18,7 @@ font-family: 'Oleo Script', cursive; */
 }
 
 /* Set a style for all buttons */
-.btn{
+.btn {
   font-family: "Rock Salt", cursive;
   background-color: lightskyblue !important;
   color: black;
@@ -39,11 +39,18 @@ font-family: 'Oleo Script', cursive; */
   padding: 16px;
 }
 
-
 /* FOOTER */
 
+<<<<<<< HEAD
 .pcontainer{
   font-family: 'Rock Salt', cursive;
   padding: .5rem;
+=======
+.pcontainer {
+  font-family: "Rock Salt", cursive;
+>>>>>>> dev
 }
 
+.copyright {
+  padding-left: 0.5rem;
+}
