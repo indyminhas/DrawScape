@@ -21,6 +21,7 @@
   }
   
   #paper {
+
     background: white;
     border: black;
     padding: 0;
@@ -39,8 +40,8 @@
   
   .messageContainer {
     display: block;
-    width: 300px;
-    height: 300px;
+    width: 40vh;
+    height: 30vh;
     background-color: white;
     border-radius: 10px 10px 0px 0px ;
     opacity: 0.9;
@@ -54,11 +55,11 @@
   #message-input{
     background-color: white;
     border-top: solid;
+    border-color: #64b5f6;
     opacity: 0.9;
-    outline: black;
     border-radius: 0px 0px 10px 10px ;
-    padding-left: 10px;
-    width: 290px;
+    padding-left: 1vh;
+    width: 39vh;
   }
   /* stroke and color choice */
   div#color-stroke-bar{
@@ -89,7 +90,51 @@
     border: 2px solid black !important;
     margin: 3px 0;
   }
-  @media only screen and (max-width: 992px){
+  .copyContainer {
+    width: 140vh;
+    margin: 0;
+    padding: 0;
+  }
+  .input-field {
+    margin: 0;
+  }
+  #gameArea {
+    margin: 0 !important;
+    height: 100%;
+    background: white;
+    border-bottom: solid;
+    border-color: #64b5f6
+  }
+  .topStuff{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .borderblue{
+    background: white;
+  }
+
+  #scores-container{
+    width:25%
+  }
+  #current-drawer{
+    float: right;
+  }
+  .scores{
+    background: white;
+    opacity: 0.9;
+    margin: 0;
+    width: 40vh;
+    min-height: 19.2vh;
+    max-height: 19.2vh;
+    border-radius: 10px 10px 10px 10px ;
+    margin-bottom: 2vh;
+  }
+  .scoreHeading{
+    margin: 0;
+    padding: 5px;
+  }
+
+  @media only screen and (max-width:1024px){
   
     div#color-stroke-bar{
       margin-top: 1rem;
@@ -101,25 +146,53 @@
     .color-choice, .stroke-choice {
       display: inline-block;
     }
-  
+
     .container{
       width: 100% !important;
     }
+    .messageContainer {
+      width:34vh;
+      height:35vh;
+    }
+    #message-input {
+      width: 33vh;
+      padding-left: 1vh;
+    }
+    .scores {
+      width: 34vh;
+    }
+    #copy-button {
+      width: 20vh;
+    }
+    #paste-box{
+      width: 20vh;
+    }
+    .chatWindow{
+      width: 17vh;
+    }
+    #send-container{
+      margin: 0;
+      width: 17vh;
+    }
+      
   }
   @media only screen and (max-width: 600px){
     * {
       margin: 0 !important;
       padding: 0 !important;
       }
+
     .chatWindow{
       width: 100%;
       height: 100%;
     }
     .messageContainer {
       border-top: solid;
+      border-color: #64b5f6;
       border-radius: 0px 0px 0px 0px ;
       width: 100%;
-      height: 30vh;
+      height: 20vh;
+      padding: 5px !important;
     }
     #message-input{
       border-radius: 0px 0px 0px 0px ;
@@ -135,18 +208,61 @@
     .modal{
       margin-left: 10% !important;
     }
-    .gameFooter{
-      display: none;
-    }
     #room-heading{
       width: 100%;
     }
     .gameView{
       width: 100%;
     }
+    #gameArea{
+      margin-top: 2vh !important;
+      padding-left: 5px !important;
+    }
     #color-stroke-bar{
-      border-top: solid;
-      background: grey !important;
+      background:#64b5f6 !important;
+    }
+    .copyContainer {
+      margin-top: 2vh !important;
+      margin-bottom: 2vh !important;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .scores{
+      margin-top: 2vh !important;
+      width: 100%;
+      border-radius: 0px 0px 0px 0;
+      min-height: 5vh;
+      height: 10vh;
+    }
+    .scoreHeading{
+      font-size: 100%;
+    }
+
+    #send-container{
+      width: 100%;
+    }
+    .material-icons{
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+    }
+    .blahblahblah{
+      margin-left: 9% !important;
+      width: 20vh;
+      padding-right: 10px !important;
+    }
+    .borderblue{
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+    .pcontainer{
+      padding: 1rem !important;
+    }
+    .pcontainer div {
+      padding: .5rem !important;
+    }
+    #color-stroke-bar {
+      padding: .5rem .5rem !important;
     }
   }
   
@@ -156,12 +272,3 @@
   
   
   /* game start and score area */
-  #roundsdiv {
-    margin-left:0;
-  }
-  
-  #gameArea {
-    background-color: white;
-    opacity: 0.9;
-  }
-  

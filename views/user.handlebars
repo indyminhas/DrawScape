@@ -7,11 +7,11 @@
   <header>
     <nav>
       <div class="nav-wrapper blue lighten-2">
-        <a href="/user" class="brand-logo center white-text header-title">User Profile</a>
-        <ul class="left hide-on-med-and-down">
+        <a href="/user" class="brand-logo center white-text header-title hide-on-med-and-down">User Profile</a>
+        <ul class="left">
           <li><a href="/user"><i class="material-icons">person_outline</i></a></li>
         </ul>
-        <ul class="right hide-on-med-and-down">
+        <ul class="right">
           <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
         </ul>
       </div>
@@ -25,7 +25,7 @@
 
       <div class="row">
         {{!-- user details section --}}
-        <div class="col m6 l6">
+        <div class="col s12 m6 l6">
           <div class="card cardOpacity">
             <div class="card-content grey-text text-darken-3">
               <span class="card-title">Your User Details</span>
@@ -63,7 +63,7 @@
                 <div class="collapsible-header"><i class="material-icons">delete_outline</i>Delete Account</div>
                 <div class="collapsible-body">
                   <!-- Modal Trigger -->
-                  <button data-target="modal1" class="delete-button button modal-trigger"
+                  <button data-target="modalDeleteAccount" class="delete-button button modal-trigger"
                     id="delete-account-button">Delete
                     Account</button>
                 </div>
@@ -73,7 +73,7 @@
         </div>
 
         <!-- Modal Structure -->
-        <div id="modal1" class="modal">
+        <div id="modalDeleteAccount" class="modal">
           <div class="modal-content">
             <h4>Delete Account?</h4>
             <p>Are you sure you want to delete your account? This action cannot be reversed.</p>
@@ -84,21 +84,24 @@
         </div>
 
         {{!-- Your Rooms Section --}}
-        <div class="col m6 l6">
-          <div class="card cardOpacity yourRooms">
-            <div class="card-content grey-text text-darken-3">
+        <div class="col s12 m6 l6">
+          <div class="card cardOpacity yourRooms ">
+            <div class="card-content grey-text text-darken-3 ">
               <span class="card-title">Your Rooms</span>
-              <ul class="collection" id="roomList">
-              </ul>
-              {{!-- <ul class="collection">
-                {{#each room}}
-                <li class="collection-item">
-                  <div>{{room.room_name}}<a href="/room/{{room.route_name}}" class="secondary-content"><i
-                        class="material-icons">delete</i></a></div>
-                </li>
-                {{/each}} --}}
+              <ul class="collection " id="roomList">
               </ul>
             </div>
+
+            <!-- modal structure for Delete Room modal-->
+              {{!-- <div id="deleteRoomModal" class="modal"></div>
+                <div class="modal-content">
+                  <h4>Delete This Room?</h4>
+                  <p>Are you sure you want to delete this room? This action cannot be reversed. All message content will be erased.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="deleteRoomButton button" data-id="${room.id}" id="finalDeleteButton">Final Delete Room</button>
+                </div>
+              </div> --}}
 
             {{!-- Create A Room Section --}}
             <ul class="collapsible">
@@ -112,7 +115,7 @@
                       <label for="room_name">Room Name</label>
                     </div>
                     <p id="createRoomError"></p>
-                    <button type="submit" class="button" id="create-room-button">Create Room</button>
+                    <button type="submit" class="btn" id="create-room-button">Create Room</button>
                   </form>
                 </div>
               </li>
@@ -131,11 +134,11 @@
   <footer class="page-footer blue lighten-2">
     <div class="pcontainer">
       <div class="row">
-        <div class="col l5 s12">
+        <div class="col s12 m6 l6 center">
           <h5 class="black-text">DrawScape <i class="fa fa-pencil" style="font-size:24px"></i></h5>
           <p class="white-text">Draw away with your friends!</p>
         </div>
-        <div class="col l5 offset-14 s12">
+        <div class="col s6 m3 l3 offset-14 center">
           <h6 class="black-text">Built With:</h6>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://materializecss.com/" target="_blank">Materialize</a>
@@ -145,7 +148,7 @@
                   class="fa fa-github" style="font-size:24px"></i></a></li>
           </ul>
         </div>
-        <div class="col l2 s12">
+        <div class="col s6 m3 l3 center">
           <h6 class="black-text">Created by:</h6>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://github.com/domjparker" target="_blank">Dominic

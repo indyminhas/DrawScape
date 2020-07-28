@@ -2,19 +2,44 @@
 $(function () {
     const roomList = $("#roomList")
     $.get("/api/user", function (data, status) {
-        console.log(data)
+        let junctionArr=data.playroom
         data.Rooms.forEach(room => {
-            $(`<li class="collection-item"><div> ${room.room_name}<a class="deleteRoomButton secondary-content" data-id="${room.id}"><i class="material-icons grey-text text-darken-3">delete_outline</i></a><a href="/room/${room.route_name}" class="secondary-content"><i class="material-icons grey-text text-darken-3">launch</i></a></div></li>`).appendTo(roomList)
+            // append rooms to user.handlebars, including modal trigger
+            $(`<li class="collection-item">
+            <div>
+                <a href="/room/${room.route_name}" class="grey-text text-darken-3">${room.room_name}</a
+                >
+                <a href="#modal${room.id}" data-target="modal${room.id}" class="modal-trigger deleteRoomTrigger secondary-content" id="deleteRooms${room.id}">
+                  <i class="material-icons grey-text text-darken-3"
+                    >delete_outline</i>
+                </a>
+              </div>
+            </li>`).appendTo(roomList);
+            // append modal for each room to user.handlebars
+            $(`<div id="modal${room.id}" class="modal">
+            <div class="modal-content">
+              <h4>Delete This Room?</h4>
+              <p>Are you sure you want to delete this room? This action cannot be reversed. All message content in this room will be erased.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="deleteRoomButton delete-button button" data-id="${room.id}" id="finalDeleteButton">Final Delete Room</button>
+            </div>
+          </div>`).appendTo("body");
+            
+            // $(`<li class="collection-item"><div><a href="/room/${room.route_name}">${room.room_name}</a><a href="#" class="deleteRoomButton secondary-content" data-id="${room.id}"><i class="material-icons grey-text text-darken-3">delete_outline</i></a></div></li>`).appendTo(roomList)
+            junctionArr=junctionArr.filter(element=> element.id !== room.id)
         })
-        data.playroom.forEach(room => {
-            $(`<li class="collection-item"><div> ${room.room_name}<a href="/room/${room.route_name}" class="secondary-content"><i class="material-icons grey-text text-darken-3">launch</i></a></div></li>`).appendTo(roomList)
+        $('.modal').modal();
+        junctionArr.forEach(room => {
+            $(`<li class="collection-item"><div><a href="/room/${room.route_name}"> ${room.room_name}</a></div></li>`).appendTo(roomList)
         })
+
         // Delete rooms by data-id function
-        $('.deleteRoomButton').on('click', function(e) {
+        $('.deleteRoomButton').on('click', function (e) {
             e.preventDefault();
             console.log("delete button clicked")
             roomIdToDelete = $(this).attr('data-id')
-            console.log("delete button for room"+ roomIdToDelete);
+            console.log("delete button for room" + roomIdToDelete);
             // console.log(this)
             $.ajax({
                 method: "DELETE",
