@@ -5,29 +5,20 @@
   <nav>
     {{!-- need to insert the specific room name here --}}
     <div class="nav-wrapper blue lighten-2">
-      <a href="#home" id="room-heading" class="brand-logo center white-text header-title"></a>
-      <ul class="left hide-on-med-and-down">
+      <a href="#home" id="room-heading" class="brand-logo center white-text header-title hide-on-med-and-down"></a>
+      <ul class="left">
         <li><a href="/user"><i class="material-icons">person_outline</i></a></li>
       </ul>
-      <ul class="right hide-on-med-and-down">
+      <ul class="right">
         <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
       </ul>
     </div>
   </nav>
 
-  {{!-- this part is the drawing box with the cursor divs --}}
   <input type="hidden" value={{routename}} id="room">
-
-  {{!-- game button and copy link --}}
 
 
   <main class="container">
-
-
-
-
-
-
     <div class="row topStuff">
       <div class="col s12 topStuff">
         {{!-- Game Info is hidden while the game is not running --}}
@@ -43,7 +34,7 @@
               <div class="col m4 borderblue" id="roundsdiv2">
                 <p> rounds</p>
               </div>
-              <div class="col m4" id="current-drawer">
+              <div class="col m8" id="current-drawer">
               </div>
               <div class="col m8" id="word">
               </div>
@@ -102,8 +93,6 @@
   <a id="modal-activator" class="waves-effect waves-light btn modal-trigger modal-close black-text"
     href="#modal2">Modal</a>
 
-  <br>
-
   {{!-- Modal for Game Win --}}
   <div id="modal2" class="modal">
     <div class="modal-content">
@@ -112,14 +101,14 @@
   </div>
 
   <!--Footer-->
-  <footer class="page-footer blue lighten-2 gameFooter">
+ <footer class="page-footer blue lighten-2">
     <div class="pcontainer">
       <div class="row">
-        <div class="col l5 s12">
+        <div class="col s12 m6 l6 center">
           <h5 class="black-text">DrawScape <i class="fa fa-pencil" style="font-size:24px"></i></h5>
           <p class="white-text">Draw away with your friends!</p>
         </div>
-        <div class="col l5 offset-14 s12">
+        <div class="col s6 m3 l3 offset-14 center">
           <h6 class="black-text">Built With:</h6>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://materializecss.com/" target="_blank">Materialize</a>
@@ -129,7 +118,7 @@
                   class="fa fa-github" style="font-size:24px"></i></a></li>
           </ul>
         </div>
-        <div class="col l2 s12">
+        <div class="col s6 m3 l3 center">
           <h6 class="black-text">Created by:</h6>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://github.com/domjparker" target="_blank">Dominic

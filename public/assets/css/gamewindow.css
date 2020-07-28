@@ -134,7 +134,7 @@
     padding: 5px;
   }
 
-  @media only screen and (max-width: 992px){
+  @media only screen and (max-width:1024px){
   
     div#color-stroke-bar{
       margin-top: 1rem;
@@ -146,10 +146,35 @@
     .color-choice, .stroke-choice {
       display: inline-block;
     }
-  
+
     .container{
       width: 100% !important;
     }
+    .messageContainer {
+      width:34vh;
+      height:35vh;
+    }
+    #message-input {
+      width: 33vh;
+      padding-left: 1vh;
+    }
+    .scores {
+      width: 34vh;
+    }
+    #copy-button {
+      width: 20vh;
+    }
+    #paste-box{
+      width: 20vh;
+    }
+    .chatWindow{
+      width: 17vh;
+    }
+    #send-container{
+      margin: 0;
+      width: 17vh;
+    }
+      
   }
   @media only screen and (max-width: 600px){
     * {
@@ -180,9 +205,6 @@
     .modal{
       margin-left: 10% !important;
     }
-    .gameFooter{
-      display: none;
-    }
     #room-heading{
       width: 100%;
     }
@@ -204,8 +226,11 @@
       min-height: 5vh;
       height: 10vh;
     }
-    .gameFooter {
+    /* .gameFooter {
       display: none;
+    } */
+    #send-container{
+      width: 100%;
     }
   }
   
