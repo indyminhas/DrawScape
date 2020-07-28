@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/assets/css/index.css">
 <body class="bodyIndex">
   <input type="hidden" id="room-number" name="room-number" value={{routename}}>
   <header>
@@ -13,8 +14,6 @@
 
   <main>
     <br>
-
-
 
     {{!-- layover code --}}
 
@@ -55,21 +54,37 @@
         <!-- The overlay code goes here -->
         <div class="overlay">
           <div class="overlay-panel blue lighten-2 overlay-left">
-            <h1>Welcome Back!</h1>
-            <button class="ghost white" id="signIn">Sign In</button>
+            <h2>Welcome Back!</h2>
+            <br>
+            <button class="ghost white" id="signIn"> Sign In</button>
           </div>
           <div class="overlay-panel blue lighten-2 overlay-right">
-            <h1>Welcome, Drawer!</h1>
-            <button class="ghost white" id="signUp">Sign Up</button>
+            <h2>Welcome Drawer!</h2>
+            <br>
+            <button class="ghost white" id="signUp"> Sign Up</button>
           </div>
         </div>
       </div>
     </div>
   </main>
-  <pfooter id="sticky-footer" class="py-4">
+  <br>
+  <br>
+  <br>
+
+  {{!-- <pfooter id="sticky-footer" class="py-4">
     <section class="pcontainer">
       <medium class="col-12 black-text center">© 2020 DrawScape</medium>
     </section>
-  </pfooter>
+  </pfooter> --}}
+
+  <footer class="page-footer blue lighten-2">
+    <div class="pcontainer">
+      <div class="row">
+        <div class="col-12">
+          <medium class="col-12 black-text center">© 2020 DrawScape <i class="fa fa-pencil" style="font-size:24px"></i>
+          </medium>
+  </footer>
+
+
   <script src="/assets/js/script.js"></script>
 </body>

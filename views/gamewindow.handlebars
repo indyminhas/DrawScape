@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/assets/css/gamewindow.css">
+
 <body class="bodyGameWindow" id="body1">
 
   <nav>
@@ -7,6 +9,7 @@
       <ul class="left hide-on-med-and-down">
         <li><a href="/user"><i class="material-icons">person_outline</i></a></li>
       </ul>
+      <a href="#home" class="brand-logo center white-text header-title">DrawBoarding</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
       </ul>
@@ -22,7 +25,7 @@
   <main class="container">
     <div class="row valign-wrapper gameView" id="gameArea">
       <div class="col s4 m3 l2" id="startbtndiv">
-        <button id="Game-Start-Button" class="btn">Start Game</button>
+        <button id="Game-Start-Button" class="btn black-text">Start Game</button>
       </div>
       <div class="col s4 m3 l2 left-align" id="roundsdiv">
         <p># of rounds</p>
@@ -82,7 +85,7 @@
 
         {{!-- Shareable link copy paste --}}
         <div class="row">
-          <input type="button" class="btn" id="copy-button" value="Copy Url" onclick="Copy();" />
+          <input type="button" class="btn black-text" id="copy-button" value="Copy Url" onclick="Copy();" />
           <textarea id="paste-box" rows="1"></textarea>
         </div>
       </div>
@@ -91,7 +94,9 @@
   </main>
 
   <!-- Modal Trigger -->
-  <a id="modal-activator" class="waves-effect waves-light btn modal-trigger modal-close" href="#modal2">Modal</a>
+  <a id="modal-activator" class="waves-effect waves-light btn modal-trigger modal-close black-text" href="#modal2">Modal</a>
+
+  <br>
 
   {{!-- Modal for Game Win --}}
   <div id="modal2" class="modal">
@@ -101,22 +106,25 @@
   </div>
 
   <!--Footer-->
-  <footer class="page-footer blue lighten-2 gameFooter">
+ <footer class="page-footer blue lighten-2">
     <div class="pcontainer">
-      <div class="row"></div>
+      <div class="row">
+        <div class="col l5 s12">
+          <h5 class="black-text">DrawScape <i class="fa fa-pencil" style="font-size:24px"></i></h5>
+          <p class="white-text">Draw away with your friends!</p>
+        </div>
         <div class="col l5 offset-14 s12">
-          <h6 class="white-text">Built With:</h6>
+          <h6 class="black-text">Built With:</h6>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://materializecss.com/" target="_blank">Materialize</a>
             </li>
             <li><a class="grey-text text-lighten-3" href="https://socket.io/" target="_blank">Socket</a></li>
             <li><a class="grey-text text-lighten-3" href="https://github.com/indyminhas/project2" target="_blank"><i
                   class="fa fa-github" style="font-size:24px"></i></a></li>
-
           </ul>
         </div>
         <div class="col l2 s12">
-          <h6 class="white-text">Created by:</h6>
+          <h6 class="black-text">Created by:</h6>
           <ul>
             <li><a class="grey-text text-lighten-3" href="https://github.com/domjparker" target="_blank">Dominic
                 Parker</i></a></li>
@@ -124,18 +132,21 @@
                 Helbling</i></a></li>
             <li><a class="grey-text text-lighten-3" href="https://github.com/MegaGrega" target="_blank">Matthew
                 Grega</i></a></li>
-            <li><a class="grey-text text-lighten-3" href="https://github.com/indyminhas" target="_blank">Indy</i></a>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/indyminhas" target="_blank">Indy
+                Minhas</i></a>
             </li>
           </ul>
         </div>
       </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="pcontainer">
-        © Copyright 2020 DrawScape
+      <div class="footer-copyright black-text">
+        <div class="pcontainer">
+          © Copyright 2020 DrawScape
+        </div>
       </div>
-    </div>
   </footer>
+
+
+
 <script src="/assets/js/gamewindow.js"></script>
 <script src="/assets/js/chat.js"></script>
 <script src="/assets/js/drawing.js"></script>
