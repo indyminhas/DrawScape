@@ -1,19 +1,22 @@
 /* WELCOME PAGE */
 
-h2 {
+  h4 {
     font-family: "Rock Salt", cursive;
     font-weight: bold;
     margin: 0;
   }
-  
+
+   
   p {
+    color: white;
     font-size: 14px;
     font-weight: 100;
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
+    vertical-align: middle;
   }
-  
+
   span {
     font-size: 12px;
   }
@@ -22,7 +25,7 @@ h2 {
     color: #333;
     font-size: 14px;
     text-decoration: none;
-    margin: 15px 0;
+    margin: 0;
   }
   
   button {
@@ -61,14 +64,14 @@ h2 {
     height: 100%;
     text-align: center;
   }
-  /* 
+  
   input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
-  } */
+  }
   
   #container {
     background-color: #ffffff;
@@ -77,6 +80,7 @@ h2 {
     position: relative;
     overflow: hidden;
     width: 768px;
+    min-width: 50vw;
     max-width: 100%;
     min-height: 480px;
   }  
@@ -192,15 +196,16 @@ h2 {
 
 
 /* body of Index page*/
+
 .bodyIndex {
+    background: #e3f2fdff    ;
     margin: 0;
-    padding: 0;
-    /* background-image: url(../images/abstract-art-artistic-background-459799.jpg); */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     display: flex;
     min-height: 100vh;
+    min-width: 50vw;
     flex-direction: column;
   }
   
@@ -217,4 +222,9 @@ h2 {
   /* trying to get the placeholder text to not be green. not working yet */
   .input-field input[for]:focus {
     color: lightskyblue !important;
+  }
+
+  .pcontainer{
+    font-family: 'Rock Salt', cursive;
+    padding: .5rem;
   }

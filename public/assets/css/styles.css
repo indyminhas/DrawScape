@@ -2,8 +2,6 @@ main {
   flex: 10 auto;
 }
 
-
-
 .header-title {
   /* font-family: 'Audiowide', cursive;
 font-family: 'Beth Ellen', cursive;
@@ -18,7 +16,6 @@ font-family: 'Oleo Script', cursive; */
   /* font-family: 'Shrikhand', cursive;  */
   /* font-family: 'Sonsie One', cursive; */
 }
-
 
 /* Set a style for all buttons */
 .btn{
@@ -47,4 +44,5 @@ font-family: 'Oleo Script', cursive; */
 
 .pcontainer{
   font-family: 'Rock Salt', cursive;
-  }
+}
+
