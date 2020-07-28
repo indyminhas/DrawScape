@@ -4,32 +4,32 @@ const db = require("../models");
 const bcrypt = require("bcrypt");
 const { route } = require("./handlebars_controller");
 
-//get request to get all user info for the user page
+// request to get all user info for the user page
 router.get('/api/user', (req, res) => {
     db.User.findOne({
         where: { id: req.session.user.id },
-        include: [ db.Room, {model: db.Room, as: 'playroom'}]
-    }
-    ).then(result => {
+        include: [db.Room, { model: db.Room, as: 'playroom' }]
+    }).then(result => {
         res.json(result)
         // res.status(204).end();
     }).catch(err => {
         console.log(err)
         res.status(500).end();
-    })
-    // get request to log user out
-
+    });
 });
 
+// request to log user out, ending their session.
 router.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/login')
 });
 
+// request to grab user session data.
 router.get('/loggedinuser', (req, res) => {
     res.json(req.session.user)
-})
-//post request when user signs up for a username/password, etc
+});
+
+//post request when user signs up for an account
 router.post('/signup', (req, res) => {
     db.User.create({
         user_name: req.body.user_name,
@@ -40,10 +40,10 @@ router.post('/signup', (req, res) => {
         res.status(204).end();
     }).catch(err => {
         return res.status(500).end();
-    })
-})
+    });
+});
 
-//check if user exists
+//post request to log user into account, or deny if login unsuccessful
 router.post('/login', (req, res) => {
     db.User.findOne({ where: { email: req.body.email } }).then(data => {
         if (!data) {
@@ -63,7 +63,7 @@ router.post('/login', (req, res) => {
     }).catch(err => {
         return res.status(500).end()
     });
-})
+});
 
 //put request for updating username
 router.put('/api/user/username', (req, res) => {
@@ -78,9 +78,8 @@ router.put('/api/user/username', (req, res) => {
         res.status(204).end();
     }).catch(err => {
         res.status(500).end();
-    })
-
-})
+    });
+});
 
 //delete request to shut down user's profile
 router.delete('/api/user', (req, res) => {
@@ -94,8 +93,7 @@ router.delete('/api/user', (req, res) => {
     }).catch(function (err) {
         console.log(err)
         res.status(500).end();
-    })
-
-})
+    });
+});
 
 module.exports = router;

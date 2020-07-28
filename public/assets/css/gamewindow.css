@@ -87,7 +87,7 @@
   }
   button.stroke-choice {
     background: none !important;
-    border: 2px solid black !important;
+    border: 2px solid #616161 !important;
     margin: 3px 0;
   }
   .copyContainer {
