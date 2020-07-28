@@ -6,9 +6,7 @@ const emailInput = document.getElementById('emailInput')
 const passInput = document.getElementById('passInput')
 const roomNumber = document.getElementById('room-number').value
 const signUpErr = document.getElementById('signup-error')
-
-console.log(roomNumber)
-
+const container = document.getElementById('container');
 
 
 signUpForm.addEventListener('submit', e => {
@@ -22,6 +20,7 @@ signUpForm.addEventListener('submit', e => {
     // This is the post request to the messages table
     $.post("/signup", user).then(response=>{
         signUpErr.textContent = "Sign Up Success"
+        container.classList.remove('right-panel-active');
     }).catch(err=>{
         signUpErr.textContent = "Sign Up Failed"
     });
@@ -59,23 +58,12 @@ logInForm.addEventListener('submit', e => {
 })
 
 
-
-
-// do get request from database to get specific user data based on username
-// and password
-// check to see if the username and password entered matched the data sent back
-
-// if username and password match, redirect user to user's profile page
-
-
 // Welcome page sign in
 
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
 
 signUpButton.addEventListener('click', () => {
-    console.log ("you click this")
     container.classList.add('right-panel-active');
 });
 

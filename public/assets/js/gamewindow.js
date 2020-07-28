@@ -61,7 +61,7 @@ socket.on('game-start', object => {
         $("#current-drawer").text("")
         $("<h5>").text(gamePlayObj.users[gamePlayObj.drawingUser % gamePlayObj.users.length] + ' is drawing...').appendTo("#current-drawer")
         $(".scores").empty()
-        $("<h5>").text("Scores:").appendTo(".scores")
+        $(`<h5 class = "scoreHeading">`).text("Scores:").appendTo(".scores")
         for (let i in object.scores) {
             $(`<p>`).text(`${i}: ${object.scores[i]}`).appendTo(".scores")
         }
@@ -78,13 +78,18 @@ socket.on('game-start', object => {
     else {      
         drawing = true
         gamePlayObj.game = false
+        $("#current-drawer").empty()
+        $(".scores").empty()
+        $(`<h5 class="scoreHeading">To Play Game</h5>`).appendTo(".scores")
+        $(`<h5 class="scoreHeading"> Select Total Rounds</h5>`).appendTo(".scores")
+        $(`<h5 class="scoreHeading">Hit Start Button!</h5>`).appendTo(".scores")
         $("#word").text("")
         $('#roundsdiv').removeClass('hide')
         $('#roundsdiv2').removeClass('hide')
         $('#startbtndiv').removeClass('hide')
         $('#worddiv').addClass('hide')
         console.log(object.scores)
-        $(".scores").empty()
+        $(".scores1").empty()
         var scoreArr = []
         for (let i in object.scores) {
            scoreArr.push([i, object.scores[i]])
@@ -93,10 +98,10 @@ socket.on('game-start', object => {
             return a[1] - b[1];
         });
         scoreArr.forEach(element => {
-            $(".scores").text(element[0] + ": " + element[1])
+            $(".scores1").text(element[0] + ": " + element[1])
         })
-        $("<h5>").text("Scores:").prependTo(".scores")
-        $("<h5>").text("GAME OVER").prependTo(".scores")
+        $("<h5>").text("Scores:").prependTo(".scores1")
+        $("<h5>").text("GAME OVER").prependTo(".scores1")
         $("#modal-activator")[0].click()
     }
 

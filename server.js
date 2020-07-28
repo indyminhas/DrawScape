@@ -59,7 +59,7 @@ app.use(junctionRoute);
 // Syncing our sequelize models and then starting our Express and socket.io app
 // =============================================================
 var server;
-db.sequelize.sync({ force: true}).then(function () {
+db.sequelize.sync({ force: false}).then(function () {
   server = app.listen(PORT, function () {
     console.log("Server listening on PORT " + PORT);
   });
@@ -155,6 +155,7 @@ db.sequelize.sync({ force: true}).then(function () {
         delete scores[room.room][room.user_name]
         allUsers[room.room]=allUsers[room.room].filter(element => element !== room.user_name)
         io.to(room.room).emit('chat-message', room.user_name + " left the room.")
+        if(allUsers[room.room].length === 0)gameStatus[room.room] = false
       })
     });
   });
