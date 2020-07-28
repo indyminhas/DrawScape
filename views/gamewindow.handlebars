@@ -9,7 +9,6 @@
       <ul class="left hide-on-med-and-down">
         <li><a href="/user"><i class="material-icons">person_outline</i></a></li>
       </ul>
-      <a href="#home" class="brand-logo center white-text header-title">DrawBoarding</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
       </ul>
@@ -23,36 +22,37 @@
 
 
   <main class="container">
-    <div class="row valign-wrapper gameView" id="gameArea">
-      <div class="col s4 m3 l2" id="startbtndiv">
-        <button id="Game-Start-Button" class="btn black-text">Start Game</button>
-      </div>
-      <div class="col s4 m3 l2 left-align" id="roundsdiv">
-        <p># of rounds</p>
-      </div>
-      <div class="col s4 m3 l2 left-align" id="roundsdiv2">
-        <input type="number" name="rounds" id="roundsinput" value="3" min="1" max="10">
-      </div>
-      <div class="input-field col s8 m6">
-        <div class="row">
-          <div class="col s12 m6 hide pull-m4" id="worddiv">
 
-            <span id="word"></span>
-            <span id="current-drawer"></span>
-            <span class="scores"></span>
-          </div>
-          <div class="col s12 m6">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12">
+
+
+
+
+
+    <div class="row topStuff">
+      <div class="col s12 topStuff">
         {{!-- Game Info is hidden while the game is not running --}}
-        <div class="row">
-          <div class="col m9">
-            <div class="row align-wrapper">
-              <div class="input-field col s12">
+        <div class="row topStuff">
+          <div class="col m9 topStuff blah">
+            <div class="row valign-wrapper gameView" id="gameArea">
+              <div class="col m4 borderblue" id="startbtndiv">
+                <button id="Game-Start-Button" class="btn black-text borderblue">Play</button>
+              </div>
+              <div class="col m4 borderblue" id="roundsdiv">
+                <input type="number" name="rounds" id="roundsinput" value="3" min="1" max="10">
+              </div>
+              <div class="col m4 borderblue" id="roundsdiv2">
+                <p> rounds</p>
+              </div>
+              <div class="col m4" id="current-drawer">
+              </div>
+              <div class="col m8" id="word">
+              </div>
+              <div class="col m4">
+              </div>
+
+            </div>
+            <div class="row align-wrapper topStuff">
+              <div class="input-field col s12 topStuff">
                 <canvas class="right" id="paper" width="960" height="500"></canvas>
                 <div class="center col s12 m12 l12" id="color-stroke-bar">
                   <button class="btn-floating color-choice btn-small" data-color='#000000' id='black-button'></button>
@@ -72,6 +72,11 @@
 
           {{!-- chat box --}}
           <div class="input-field col m3 center chatWindow">
+            <div class="scores">
+              <h5 class="scoreHeading">To Play Game</h5>
+              <h5 class="scoreHeading"> Select Total Rounds</h5>
+              <h5 class="scoreHeading">Hit Start Button!</h5>
+            </div>
             <div id="message-container" class="messageContainer">
             </div>
             <form id="send-container">
@@ -84,7 +89,7 @@
 
 
         {{!-- Shareable link copy paste --}}
-        <div class="row">
+        <div class="row copyContainer">
           <input type="button" class="btn black-text" id="copy-button" value="Copy Url" onclick="Copy();" />
           <textarea id="paste-box" rows="1"></textarea>
         </div>
@@ -94,19 +99,20 @@
   </main>
 
   <!-- Modal Trigger -->
-  <a id="modal-activator" class="waves-effect waves-light btn modal-trigger modal-close black-text" href="#modal2">Modal</a>
+  <a id="modal-activator" class="waves-effect waves-light btn modal-trigger modal-close black-text"
+    href="#modal2">Modal</a>
 
   <br>
 
   {{!-- Modal for Game Win --}}
   <div id="modal2" class="modal">
     <div class="modal-content">
-      <span class="scores"></span>
+      <span class="scores1"></span>
     </div>
   </div>
 
   <!--Footer-->
- <footer class="page-footer blue lighten-2">
+  <footer class="page-footer blue lighten-2 gameFooter">
     <div class="pcontainer">
       <div class="row">
         <div class="col l5 s12">
@@ -147,11 +153,7 @@
 
 
 
-<script src="/assets/js/gamewindow.js"></script>
-<script src="/assets/js/chat.js"></script>
-<script src="/assets/js/drawing.js"></script>
+  <script src="/assets/js/gamewindow.js"></script>
+  <script src="/assets/js/chat.js"></script>
+  <script src="/assets/js/drawing.js"></script>
 </body>
-
-
-
-

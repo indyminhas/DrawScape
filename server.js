@@ -155,6 +155,7 @@ db.sequelize.sync({ force: false}).then(function () {
         delete scores[room.room][room.user_name]
         allUsers[room.room]=allUsers[room.room].filter(element => element !== room.user_name)
         io.to(room.room).emit('chat-message', room.user_name + " left the room.")
+        if(allUsers[room.room].length === 0)gameStatus[room.room] = false
       })
     });
   });
