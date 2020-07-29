@@ -31,7 +31,13 @@ DrawScape is a Node JS application. It's server was built using the Node web app
 
 ## Installation
 
-To install this application for development purposes, you will need a MySQL account for data storage. Beyond this, various npm dependencies must be installed. These include: bcrypt, express, express-handlebars, express-session, memorystore, mysql2, sequelize, and socket.io. These are outlined in the package.json file and can be easily installed using Node.js.
+To install this application for development purposes, you will need a MySQL database for data storage. Beyond this, various npm dependencies must be installed. These include: bcrypt, express, express-handlebars, express-session, memorystore, mysql2, sequelize, and socket.io. These are outlined in the package.json file and can be easily installed using Node.js.
+For installing dependencies run:
+    npm install
+For starting the app run:
+    npm start
+
+A deployed version of the app cn be [found here](https://drawscape.herokuapp.com).
 
 
 
@@ -67,13 +73,21 @@ This application is covered under a [MIT License](https://opensource.org/license
 
 ## Contributing
 
-As the developers of the application, please message us if you would like to contribute to the application. 
+To contribute to this application, create a pull request. Here are the steps needed for doing that:
+
+* Fork the repo
+* Create a feature branch (git checkout -b NAME-HERE)
+* Commit your new feature (git commit -m 'Add some feature')
+* Push your branch (git push)
+* Create a new Pull Request
+        
+Following a code review, your feature will be merged. 
 
 
 
 ## Tests
 
-Not sure about tests :D . Do you guys want to add here?
+There are no project specific tests provided.
 
 
 
