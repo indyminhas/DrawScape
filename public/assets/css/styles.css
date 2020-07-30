@@ -41,14 +41,8 @@ font-family: 'Oleo Script', cursive; */
 
 /* FOOTER */
 
-<<<<<<< HEAD
-.pcontainer{
-  font-family: 'Rock Salt', cursive;
-  padding: .5rem;
-=======
 .pcontainer {
   font-family: "Rock Salt", cursive;
->>>>>>> dev
 }
 
 .copyright {
