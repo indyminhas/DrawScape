@@ -96,7 +96,7 @@ There are no project specific tests provided.
 Got questions? Feel free to contact the developers.  
 Github username:  [MegaGrega](https://github.com/MegaGrega)  
 Github username:  [maria-helbling](https://github.com/maria-helbling)  
-Github username:  [domjparker](https://github.com/domjparker)   Email address: dominic.j.parker@gmail.com   
+Github username:  [domjparker](https://github.com/domjparker)    
 Github username:  [indyminhas](https://github.com/indyminhas)
 
 
